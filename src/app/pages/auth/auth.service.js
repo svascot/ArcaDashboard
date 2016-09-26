@@ -13,11 +13,13 @@
 
     return{
      login :function(usuario){
-       alert("hola");
         var query = "http://52.43.59.235:5000/auth/login";
-        return $http.post(query,usuario).then(resultado =>{
-          console.dir(resultado.data);
-        })
+        return $http.post(query,usuario).then(
+          resultado =>{
+            console.dir(resultado.data);
+            return resultado.data
+          }
+        )
     }
   }
 
