@@ -5,14 +5,14 @@
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.theme')
+  angular.module('BlurAdmin.pages.auth')
     .service('AuthService', AuthService);
 
   /** @ngInject */
   function AuthService($http) {
 
     return{
-     login :function(usuario){
+      login :function(usuario){
         var query = "http://52.43.59.235:5000/auth/login";
         return $http.post(query,usuario).then(
           resultado =>{
@@ -20,9 +20,9 @@
             return resultado.data
           }
         )
+      }
     }
-  }
-
+    
   }
 
 })();

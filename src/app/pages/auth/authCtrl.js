@@ -5,7 +5,7 @@
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.pages.tables')
+  angular.module('BlurAdmin.pages.auth')
       .controller('AuthCtrl', AuthCtrl);
 
   /** @ngInject */
@@ -15,7 +15,6 @@
     $scope.login = function(){
       AuthService.login($scope.user).then(function(response){
           usuario=response;
-          alert(response.status);
         if(usuario) {
           $location.path('/');
         } else {
