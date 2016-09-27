@@ -1,22 +1,19 @@
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.pages.vehiculos')
-    .service('VehiculosService', VehiculosService);
+  angular.module('BlurAdmin.pages.viajes')
+    .service('ViajesService', ViajesService);
 
   /** @ngInject */
-  function VehiculosService($http) {
+  function ViajesService($http) {
 
     return{
-      filtrar :function(vehiculo){
+      listarVehiculos :function(vehiculo){
         var query = "http://52.43.59.235:5000/vehiculo/filtrar";
         return $http.post(query,vehiculo).then(
           function(resultado){
             console.dir(resultado.data);
             return resultado.data
-          },
-          function(error){
-            console.dir(error)
           }
         )
       }
