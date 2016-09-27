@@ -2,10 +2,10 @@
   'use strict';
 
   angular.module('BlurAdmin.pages.vehiculos')
-    .service('VehiculosService', VehiculosService);
+    .service('FiltrarVehiculosService', FiltrarVehiculosService);
 
   /** @ngInject */
-  function VehiculosService($http) {
+  function FiltrarVehiculosService($http) {
 
     return{
       filtrar :function(vehiculo){

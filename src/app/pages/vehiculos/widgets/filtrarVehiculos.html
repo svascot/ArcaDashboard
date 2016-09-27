@@ -1,0 +1,61 @@
+<form name="form" ng-submit="filtrar()">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <input type="text" class="form-control input-sm" id="input1"
+                placeholder="Capacidad de personas" nd-model="filtro.capacidad">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control input-sm" id="input2"
+                placeholder="Placa" nd-model="filtro.placa">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control input-sm" id="input3"
+                placeholder="Marca" nd-model="filtro.marca">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control input-sm" id="input4"
+                placeholder="Modelo" nd-model="filtro.modelo">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control input-sm" id="input5"
+                placeholder="Referencia" nd-model="filtro.referencia">
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="checkbox">
+        <label class="checkbox-inline custom-checkbox nowrap">
+          <input type="checkbox" id="inlineCheckbox01" value="option1">
+          <span>Audio</span>
+        </label>
+      </div>
+      <div class="checkbox">
+        <label class="checkbox-inline custom-checkbox nowrap">
+          <input type="checkbox" id="inlineCheckbox02" value="option2">
+          <span>Video</span>
+        </label>
+      </div>
+      <div class="checkbox">
+        <label class="checkbox-inline custom-checkbox nowrap">
+          <input type="checkbox" id="inlineCheckbox03" value="option3">
+          <span>Baño</span>
+        </label>
+      </div>
+      <div class="checkbox">
+        <label class="checkbox-inline custom-checkbox nowrap">
+          <input type="checkbox" id="inlineCheckbox04" value="option4">
+          <span>Aire</span>
+        </label>
+      </div>
+      <div class="checkbox">
+        <label class="checkbox-inline custom-checkbox nowrap">
+          <input type="checkbox" id="inlineCheckbox05" value="option5">
+          <span>Silla reclinable</span>
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="row col-md-6">
+    <button type="submit" class="btn btn-primary">Buscar</button>
+  </div>
+</form>
