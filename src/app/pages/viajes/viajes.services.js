@@ -9,7 +9,7 @@
 
     return{
       listarVehiculos :function(vehiculo){
-        var query = "http://52.43.59.235:5000/vehiculo/filtrar";
+        var query = "http://52.39.7.127:3000/vehiculo/filtrar";
         return $http.post(query,vehiculo).then(
           function(resultado){
             console.dir(resultado.data);

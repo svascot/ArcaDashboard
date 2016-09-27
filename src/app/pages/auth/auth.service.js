@@ -13,7 +13,7 @@
 
     return{
       login :function(usuario){
-        var query = "http://52.43.59.235:5000/auth/login";
+        var query = "http://52.39.7.127:3000/auth/login";
         return $http.post(query,usuario).then(
           function(resultado ){
             console.dir(resultado.data);
