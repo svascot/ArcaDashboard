@@ -49,7 +49,9 @@ node_modules
 gulp.1
 build
 
-/src/release
 /release
 /bower_components
+#/.tmp
+.DS_Store
+.travis.yml
 /.tmp
