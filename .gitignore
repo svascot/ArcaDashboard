@@ -54,3 +54,4 @@ build
 #/.tmp
 .DS_Store
 .travis.yml
+/.tmp

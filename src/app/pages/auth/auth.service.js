@@ -15,8 +15,9 @@
       login :function(usuario){
         var query = "http://52.43.59.235:5000/auth/login";
         return $http.post(query,usuario).then(
-          resultado =>{
+          function(resultado ){
             console.dir(resultado.data);
+            localStorage.setItem("user", JSON.stringify(resultado.data));
             return resultado.data
           }
         )
