@@ -7,7 +7,7 @@
   /** @ngInject */
   function ViajesCtrl($scope,ViajesService,VehiculosService) {
     
-    VehiculosService.filtrar({}).then(function(vehiculos){
+    VehiculosService.listarVehiculos({}).then(function(vehiculos){
     	$scope.vehiculos = vehiculos;
     })
 

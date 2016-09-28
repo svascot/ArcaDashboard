@@ -36,6 +36,7 @@
     }, 7000);
 
     $rootScope.$baSidebarService = baSidebarService;
+    $rootScope.serviceURL = "http://localhost:3000/"
   }
 
 })();

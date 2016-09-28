@@ -5,11 +5,12 @@
     .service('VehiculosService', VehiculosService);
 
   /** @ngInject */
-  function VehiculosService($http) {
+  function VehiculosService($http,$rootScope) {
 
     return{
       listarVehiculos :function(vehiculo){
-        var query = "http://52.39.7.127:3000/vehiculo/filtrar";
+        var query = $rootScope.serviceURL+"vehiculo/filtrar";
+        window.console.log(query);
         return $http.post(query,vehiculo).then(
           function(resultado){
             console.dir(resultado.data);
