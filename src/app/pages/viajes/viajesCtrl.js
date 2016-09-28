@@ -5,14 +5,17 @@
       .controller('ViajesCtrl', ViajesCtrl);
 
   /** @ngInject */
-  function ViajesCtrl($scope,ViajesService,VehiculosService) {
+  function ViajesCtrl($scope,ViajesService,VehiculosService,vehiculos) {
     
-    VehiculosService.filtrar({}).then(function(vehiculos){
-    	$scope.vehiculos = vehiculos;
-    })
+    $scope.vehiculos =vehiculos;
 
+    
     $scope.crearViaje = function(viaje){
-    	console.dir(viaje);
+    	ViajesService.crearViaje(viaje).then(function(response){
+        console.dir(response)
+        alert("Exito")
+        $scope.viaje = {};
+      })
     }
   }
 })();
