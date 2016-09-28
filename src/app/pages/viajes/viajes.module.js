@@ -16,6 +16,16 @@
             icon: 'ion-android-calendar',
             order: 2,
           },
+           resolve: {
+            VehiculosService:'VehiculosService',
+            vehiculos:function(VehiculosService){
+               return VehiculosService.listarVehiculos({}).then(function(vehiculos){
+                       return vehiculos;
+               })
+            }
+           }
+
+
         });
   }
 

@@ -8,9 +8,9 @@
   function ViajesService($http,$rootScope) {
 
     return{
-      listarVehiculos :function(vehiculo){
-        var query = $rootScope.serviceURL+"vehiculo/filtrar";
-        return $http.post(query,vehiculo).then(
+      crearViaje :function(viaje){
+        var query = $rootScope.serviceURL+"viaje/";
+        return $http.post(query,{viaje:viaje}).then(
           function(resultado){
             console.dir(resultado.data);
             return resultado.data

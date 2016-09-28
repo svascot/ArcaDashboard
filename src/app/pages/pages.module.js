@@ -18,6 +18,7 @@
     'BlurAdmin.pages.profile',
     'BlurAdmin.pages.auth',
     'BlurAdmin.pages.vehiculos',
+    'BlurAdmin.pages.crearVehiculos',
     'BlurAdmin.pages.viajes',
   ])
       .config(routeConfig);
