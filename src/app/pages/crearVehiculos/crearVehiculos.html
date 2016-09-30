@@ -1,63 +1,89 @@
-<form class="form-horizontal" ng-submit="crearVehiculo(vehiculo)">
-  <div class="form-group">
-    <label  class="col-sm-2 control-label">Placa</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control"  placeholder="Placa"  ng-model="vehiculo.placa">
-    </div>
-  </div>
-   <div class="form-group">
-    <label  class="col-sm-2 control-label">Marca</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control"  placeholder="Marca"  ng-model="vehiculo.fechaInicio">
-    </div>
-  </div>
-  <div class="form-group">
-    <label  class="col-sm-2 control-label">Referencia</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control"  placeholder="Referencia"  ng-model="vehiculo.referencia">
-    </div>
-  </div>
-  <div class="form-group">
-    <label  class="col-sm-2 control-label">Capacidad </label>
-    <div class="col-sm-10">
-      <input type="number" class="form-control"  placeholder="Capacidad" ng-model="vehiculo.capacidad">
-    </div>
-  </div>
-  <div class="form-group">
-    <label class="checkbox-inline custom-checkbox nowrap">
-        <input type="checkbox" id="inlineCheckbox01" value="true"  ng-model="vehiculo.audio">
-        <span>Audio</span>
-      </label>
-  </div>
-  <div class="form-group">
-    <label class="checkbox-inline custom-checkbox nowrap">
-        <input type="checkbox" id="inlineCheckbox01" ng-model="vehiculo.video">
-        <span>Video</span>
-      </label>
-  </div>
-  <div class="form-group">
-    <label class="checkbox-inline custom-checkbox nowrap">
-        <input type="checkbox" id="inlineCheckbox01"  ng-model="vehiculo.aire">
-        <span>Aire</span>
-      </label>
-  </div>
-  <div class="form-group">
-    <label class="checkbox-inline custom-checkbox nowrap">
-        <input type="checkbox" id="inlineCheckbox01"  ng-model="vehiculo.bano">
-        <span>Baño</span>
-      </label>
-  </div>
- <div class="form-group">
-    <label class="checkbox-inline custom-checkbox nowrap">
-        <input type="checkbox" id="inlineCheckbox01"  ng-model="vehiculo.reclinable">
-        <span>Sillas reclinables</span>
-      </label>
-  </div>
 
-<div class="form-group">
-  <div class="col-sm-offset-2 col-sm-10">
-    <button type="submit" class="btn btn-success">Crear vehiculo</button>
+  <div class="row">
+    <div class="col-md-6">
+      <div
+          ba-panel
+          ba-panel-title="Registrar vehiculos"
+          ba-panel-class="with-scroll">
+        <form class="form-horizontal" ng-submit="crearVehiculo(vehiculo)">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" class="form-control input-sm" 
+                        placeholder="Capacidad de personas" ng-model="vehiculo.capacidad">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control input-sm"
+                        placeholder="Placa" ng-model="vehiculo.placa">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control input-sm" 
+                        placeholder="Marca" ng-model="vehiculo.marca">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control input-sm" 
+                        placeholder="Modelo" ng-model="vehiculo.modelo">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control input-sm" 
+                        placeholder="Referencia" ng-model="vehiculo.referencia">
+              </div>
+            </div>
+            <div class="col-md-6">
+                <div class="checkbox">
+                    <label class="checkbox-inline custom-checkbox nowrap">
+                      <input type="checkbox"  ng-model="vehiculo.audio">
+                      <span>Audio</span>
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label class="checkbox-inline custom-checkbox nowrap">
+                      <input type="checkbox"  ng-model="vehiculo.video">
+                      <span>Video</span>
+                    </label>
+                </div>
+                <div class="checkbox">
+                  <label class="checkbox-inline custom-checkbox nowrap">
+                      <input type="checkbox"   ng-model="vehiculo.aire">
+                      <span>Aire</span>
+                    </label>
+                </div>
+                <div class="checkbox">
+                  <label class="checkbox-inline custom-checkbox nowrap">
+                      <input type="checkbox"  ng-model="vehiculo.bano">
+                      <span>Baño</span>
+                    </label>
+                </div>
+               <div class="checkbox">
+                  <label class="checkbox-inline custom-checkbox nowrap">
+                      <input type="checkbox" ng-model="vehiculo.reclinable">
+                      <span>Sillas reclinables</span>
+                    </label>
+                </div>              
+              </div>
+          </div>
+          <div class="row col-md-6">
+            <button type="submit" class="btn btn-primary">Registrar</button>
+          </div>
+          </form>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div
+          ba-panel
+          ba-panel-title="Lista de vehiculos"
+          ba-panel-class="with-scroll">
+        <div>
+           <input type="search" ng-model="q" placeholder="Placa" />
+              <ul >
+                   <li  ng-repeat="vehiculo in vehiculos | filter:q as results">
+                      {{vehiculo.placa}} 
+                   </li>
+                   <li ng-if="results.length === 0">
+                         <strong>No results found...</strong>
+                    </li>
+              </ul>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-
-</form>

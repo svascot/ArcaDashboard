@@ -36,8 +36,24 @@
     }, 7000);
 
     $rootScope.$baSidebarService = baSidebarService;
-    //$rootScope.serviceURL = "http://localhost:3000/"
-    $rootScope.serviceURL = "http://52.39.7.127:3000/"
+    $rootScope.serviceURL = "http://localhost:3000/"
+    //$rootScope.serviceURL = "http://52.39.7.127:3000/"
+
+    $rootScope.toastDefautlOptions={
+        "autoDismiss": true,
+        "positionClass": "toast-top-right",
+        "type": "info",
+        "timeOut": "3000",
+        "extendedTimeOut": "2000",
+        "allowHtml": false,
+        "closeButton": false,
+        "tapToDismiss": true,
+        "progressBar": false,
+        "newestOnTop": true,
+        "maxOpened": 0,
+        "preventDuplicates": false,
+        "preventOpenDuplicates": false
+      }
   }
 
 })();
