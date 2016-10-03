@@ -6,8 +6,8 @@
 
   /** @ngInject */
   function FiltrarVehiculosCtrl($scope,$rootScope,VehiculosService) {
-
-    $scope.vehiculos = [
+       $scope.vehiculos = {};
+   /** $scope.vehiculos = [
       {
         "AgenciumId":"2",
         "placa":"tpt028",
@@ -64,7 +64,7 @@
         "marca":"Chevrolet",
         "referencia":"Tahoe"
       },
-    ];
+    ];*/
 
     $scope.filtrar = function(filtro){
       console.dir(filtro)
