@@ -1,0 +1,90 @@
+<div class="row">
+  <div class="col-md-6">
+    <div
+        ba-panel
+        ba-panel-title="Filtrar vehiculos"
+        ba-panel-class="with-scroll">
+
+        <form name="form" ng-submit="filtrar(filtro)">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" class="form-control input-sm" id="input1"
+                        placeholder="Capacidad de personas" ng-model="filtro.capacidad">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control input-sm" id="input2"
+                        placeholder="Placa" ng-model="filtro.placa">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control input-sm" id="input3"
+                        placeholder="Marca" ng-model="filtro.marca">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control input-sm" id="input4"
+                        placeholder="Modelo" ng-model="filtro.modelo">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control input-sm" id="input5"
+                        placeholder="Referencia" ng-model="filtro.referencia">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="checkbox">
+                <label class="checkbox-inline custom-checkbox nowrap">
+                  <input type="checkbox" id="inlineCheckbox01" value="option1"
+                          ng-model="filtro.audio">
+                  <span>Audio</span>
+                </label>
+              </div>
+              <div class="checkbox">
+                <label class="checkbox-inline custom-checkbox nowrap">
+                  <input type="checkbox" id="inlineCheckbox02" value="option2"
+                          ng-model="filtro.video">
+                  <span>Video</span>
+                </label>
+              </div>
+              <div class="checkbox">
+                <label class="checkbox-inline custom-checkbox nowrap">
+                  <input type="checkbox" id="inlineCheckbox03" value="option3"
+                          ng-model="filtro.bano">
+                  <span>Baño</span>
+                </label>
+              </div>
+              <div class="checkbox">
+                <label class="checkbox-inline custom-checkbox nowrap">
+                  <input type="checkbox" id="inlineCheckbox04" value="option4"
+                          ng-model="filtro.aire">
+                  <span>Aire</span>
+                </label>
+              </div>
+              <div class="checkbox">
+                <label class="checkbox-inline custom-checkbox nowrap">
+                  <input type="checkbox" id="inlineCheckbox05" value="option5"
+                          ng-model="filtro.reclinable">
+                  <span>Silla reclinable</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="row col-md-6">
+            <button type="submit" class="btn btn-primary">Buscar</button>
+          </div>
+        </form>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div
+        ba-panel
+        ba-panel-title="Lista de vehiculos"
+        ba-panel-class="with-scroll">
+      <div>
+        <ul>
+          <li ng-repeat="vehiculo in vehiculos">
+            {{vehiculo.placa}}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

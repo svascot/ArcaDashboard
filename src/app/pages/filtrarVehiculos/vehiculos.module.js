@@ -9,14 +9,13 @@
     $stateProvider
         .state('vehiculos', {
           url: '/vehiculos',
-          templateUrl: 'app/pages/vehiculos/vehiculos.html',
+          templateUrl: 'app/pages/filtrarVehiculos/filtrarVehiculos.html',
+          controller: 'FiltrarVehiculosCtrl',
           title: 'Vehiculos',
           sidebarMeta: {
             icon: 'ion-android-car',
             order: 2,
           },
-        })
-        ;
+        });
   }
-
 })();
