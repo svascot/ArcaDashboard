@@ -79,11 +79,24 @@
         ba-panel-title="Lista de vehiculos"
         ba-panel-class="with-scroll">
       <div>
-        <ul>
-          <li ng-repeat="vehiculo in vehiculos">
-            {{vehiculo.placa}}
-          </li>
-        </ul>
+        <div class="feed-messages-container" track-width="smallContainerWidth" min-width="360">
+          <div class="feed-message" ng-repeat="vehiculo in vehiculos" ng-click="">
+            <div class="message-icon">
+              <img class="photo-icon" ng-src={{vehiculo.imagen}}>
+            </div>
+            <div class="text-block text-message">
+              <div class="message-header">
+                <span class="author">{{vehiculo.marca}} {{vehiculo.referencia}}</span>
+              </div>
+              <div class="message-content line-clamp">
+                <span>
+                  <i class="ion-android-car"></i> {{vehiculo.placa}}
+                  <i class="ion-person-stalker"></i> {{vehiculo.capacidad}}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
