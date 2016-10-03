@@ -44,5 +44,7 @@
   },
   "scripts": {
     "postinstall": "bower install"
+  },
+  "dependencies": {
   }
 }

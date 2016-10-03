@@ -9,6 +9,7 @@
 
     return{
       listarVehiculos :function(vehiculo){
+      
         var query = $rootScope.serviceURL+"vehiculo/filtrar";
         window.console.log(query);
         return $http.post(query,{filtro:vehiculo}).then(
@@ -17,11 +18,39 @@
             return resultado.data
           }
         )
+       
+          /*
+          var deferred = $q.defer();
+           setTimeout(function() {
+             deferred.resolve([{"AgenciumId":2,"placa":"tpt019","capacidad":15,"modelo":"2017","audio":1,"video":0,"aire":true,"bano":true,"reclinable":true,"imagen":"123456","marca":"Toyota","referencia":"Tundra"}])
+          }, 1000);
+           return deferred.promise;
+         */
       },
       crearVehiculo :function(vehiculo){
         var query = $rootScope.serviceURL+"vehiculo";
         window.console.log(query);
         return $http.post(query,{vehiculo:vehiculo}).then(
+          function(resultado){
+            console.dir(resultado.data);
+            return resultado.data
+          }
+        )
+      },
+      eliminarVehiculo:function(vehiculo){
+        var query = $rootScope.serviceURL+"vehiculo";
+        window.console.log(query);
+        return $http.delete(query,{uuid:vehiculo.uuid}).then(
+          function(resultado){
+            console.dir(resultado.data);
+            return resultado.data
+          }
+        )
+      },
+      actualizarVehiculo:function(vehiculo){
+        var query = $rootScope.serviceURL+"vehiculo";
+        window.console.log(query);
+        return $http.patch(query,{vehiculo:vehiculo}).then(
           function(resultado){
             console.dir(resultado.data);
             return resultado.data

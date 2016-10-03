@@ -24,7 +24,11 @@
           var input = $(elem).find('input');
           input.bootstrapSwitch({
             size: 'small',
-            onColor: attr.color
+            onColor: attr.color,
+            onText:"Si",
+            offText:"No",
+            offColor:"danger"
+
           });
           input.on('switchChange.bootstrapSwitch', function(event, state) {
             scope.ngModel = state;
