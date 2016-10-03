@@ -51,6 +51,7 @@ build
 
 /release
 /bower_components
+/app/bower_components
 #/.tmp
 .DS_Store
 .travis.yml

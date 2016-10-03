@@ -17,8 +17,13 @@
         }
       }
     }
+<<<<<<< HEAD
+
+
+=======
     
     
+>>>>>>> a8ffc28fd523d9978643488468c58f70cdfeaf9d
     $scope.verDetalles= function(vehiculo){
       if(!vehiculo.expanded){
         vehiculo.expanded = false;
@@ -31,18 +36,30 @@
           vehiculo = vehiculoActualizado;
           openedToasts.push(toastr["success"]("Vehiculo actualizado", "Exito", $rootScope.toastDefautlOptions));
         })
+<<<<<<< HEAD
+
+=======
         
+>>>>>>> a8ffc28fd523d9978643488468c58f70cdfeaf9d
       }
     }
     $scope.eliminarVehiculo= function(vehiculo){
      if (confirm("Desea eliminar el vehiculo?") == true) {
+<<<<<<< HEAD
+          VehiculosService.eliminarVehiculo(vehiculo).then(function(vehiculoActualizado){
+=======
           VehiculosService.eliminarVehiculo(vehiculo).then(function(vehiculoActualizado){         
+>>>>>>> a8ffc28fd523d9978643488468c58f70cdfeaf9d
           removerVehiculoDeLaLista(vehiculo);
           openedToasts.push(toastr["success"]("Vehiculo eliminado", "Exito", $rootScope.toastDefautlOptions));
         })
       }
     }
+<<<<<<< HEAD
+    $scope.crearVehiculo = function(vehiculo){
+=======
     $scope.crearVehiculo = function(vehiculo){      
+>>>>>>> a8ffc28fd523d9978643488468c58f70cdfeaf9d
 
       VehiculosService.crearVehiculo(vehiculo).then(function(response){
         console.dir(response)
