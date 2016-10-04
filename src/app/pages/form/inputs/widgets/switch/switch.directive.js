@@ -23,7 +23,7 @@
         $timeout(function(){
           var input = $(elem).find('input');
           input.bootstrapSwitch({
-            size: 'small',
+            size: 'mini',
             onColor: attr.color,
             onText:"Si",
             offText:"No",

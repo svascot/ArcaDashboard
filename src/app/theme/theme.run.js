@@ -36,8 +36,8 @@
     }, 7000);
 
     $rootScope.$baSidebarService = baSidebarService;
-    //$rootScope.serviceURL = "http://localhost:3000/"
-    $rootScope.serviceURL = "http://52.39.7.127:3000/"
+    $rootScope.serviceURL = "http://localhost:3000/"
+    //$rootScope.serviceURL = "http://52.39.7.127:3000/"
 
     $rootScope.toastDefautlOptions={
         "autoDismiss": true,
