@@ -9,7 +9,7 @@
     .run(themeRun);
 
   /** @ngInject */
-  function themeRun($timeout, $rootScope, layoutPaths, preloader, $q, baSidebarService, themeLayoutSettings) {
+  function themeRun($timeout, $rootScope, layoutPaths, preloader, $q, baSidebarService, themeLayoutSettings,$uibModal) {
     var whatToWait = [
       preloader.loadAmCharts(),
       $timeout(3000)
@@ -36,8 +36,8 @@
     }, 7000);
 
     $rootScope.$baSidebarService = baSidebarService;
-    //$rootScope.serviceURL = "http://localhost:3000/"
-    $rootScope.serviceURL = "http://52.39.7.127:3000/"
+    $rootScope.serviceURL = "http://localhost:3000/"
+    //$rootScope.serviceURL = "http://52.39.7.127:3000/"
 
     $rootScope.toastDefautlOptions={
         "autoDismiss": true,
@@ -54,6 +54,41 @@
         "preventDuplicates": false,
         "preventOpenDuplicates": false
       }
+
+    $rootScope.modalLoadingStack= []
+    
+
+    $rootScope.openModal = function (template, size,text) {
+
+      $uibModal.open({
+        animation: true,
+        template: template,
+        //md,lg,sm
+        size: size,        
+        controller:'ModalsPageCtrl',
+        resolve: {
+          text: function () {
+            return text;
+          }
+        }
+      });
+    };
+    $rootScope.openLoadingModal = function () {
+
+       $rootScope.modalLoadingStack.push($uibModal.open({
+        animation: true,
+        template: '<div class="modal-content">  <div class="modal-header bg-success">    <i class="ion-android-warning modal-icon"></i><span> Cargando</span>  </div>  <div class="modal-body text-center">  <div class="progress">  <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">  </div> </div> </div>',
+        size: 'lg',
+        backdrop:'static'
+      }));
+    };
+
+    $rootScope.closeLoadingModal = function () {
+      $rootScope.modalLoadingStack[$rootScope.modalLoadingStack.length -1].close();
+      $rootScope.modalLoadingStack.pop()
+
+    };
+      
   }
 
 })();

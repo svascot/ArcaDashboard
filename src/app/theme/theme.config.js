@@ -9,7 +9,7 @@
     .config(config);
 
   /** @ngInject */
-  function config(baConfigProvider, colorHelper) {
+  function config(baConfigProvider, colorHelper, $httpProvider) {
     //baConfigProvider.changeTheme({blur: true});
     //
     //baConfigProvider.changeColors({
@@ -19,5 +19,6 @@
     //    white: '#ffffff',
     //  },
     //});
+    $httpProvider.interceptors.push('intercerptor');
   }
 })();

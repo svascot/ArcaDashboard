@@ -5,7 +5,7 @@
       .controller('AuthCtrl', AuthCtrl);
 
   /** @ngInject */
-  function AuthCtrl($scope,$location, AuthService) {
+  function AuthCtrl($scope,$location, AuthService,$http) {
     $scope.user = {};
     var usuario;
     $scope.login = function(){
@@ -19,5 +19,14 @@
 
       })
     }
+
+  $http.get("http://52.39.7.127:3000/vehiculos")
+    .then(function(response) {
+      console.log("aaa")
+      console.dir(response)
+        $scope.myWelcome = response.data;
+    });
+
+
   }
 })();
