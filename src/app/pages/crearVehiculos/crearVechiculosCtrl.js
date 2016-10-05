@@ -17,33 +17,34 @@
         }
       }
     }
-    
-    
+
     $scope.verDetalles= function(vehiculo){
       if(!vehiculo.expanded){
         vehiculo.expanded = false;
       }
         vehiculo.expanded = !vehiculo.expanded;
     }
+
     $scope.actualizarVehiculo= function(vehiculo){
       if (confirm("Desea guardar los cambios?") == true) {
         VehiculosService.actualizarVehiculo(vehiculo).then(function(vehiculoActualizado){
           vehiculo = vehiculoActualizado;
           openedToasts.push(toastr["success"]("Vehiculo actualizado", "Exito", $rootScope.toastDefautlOptions));
         })
-        
+
       }
     }
+
     $scope.eliminarVehiculo= function(vehiculo){
      if (confirm("Desea eliminar el vehiculo?") == true) {
-          VehiculosService.eliminarVehiculo(vehiculo).then(function(vehiculoActualizado){         
+          VehiculosService.eliminarVehiculo(vehiculo).then(function(vehiculoActualizado){
           removerVehiculoDeLaLista(vehiculo);
           openedToasts.push(toastr["success"]("Vehiculo eliminado", "Exito", $rootScope.toastDefautlOptions));
         })
       }
     }
-    $scope.crearVehiculo = function(vehiculo){      
 
+    $scope.crearVehiculo = function(vehiculo){
       VehiculosService.crearVehiculo(vehiculo).then(function(response){
         console.dir(response)
           openedToasts.push(toastr["success"]("Velhiculo registrado", "Exito", $rootScope.toastDefautlOptions));
