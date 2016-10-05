@@ -20,12 +20,7 @@
       })
     }
 
-  $http.get("http://52.39.7.127:3000/vehiculos")
-    .then(function(response) {
-      console.log("aaa")
-      console.dir(response)
-        $scope.myWelcome = response.data;
-    });
+
 
 
   }
