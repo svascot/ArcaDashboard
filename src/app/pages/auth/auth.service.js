@@ -21,7 +21,16 @@
             return resultado.data
           }
         )
+      },
+      logout :function(){
+        var query = $rootScope.serviceURL+"auth/logout";
+        return $http.post(query).then(
+          function(resultado ){            
+            return resultado.data
+          }
+        )
       }
+
     }
     
   }

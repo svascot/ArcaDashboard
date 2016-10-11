@@ -1,0 +1,33 @@
+
+  <div class="row">
+
+   
+    <div class="col-md-6">
+      <div
+          ba-panel
+          ba-panel-title="Lista de vehiculos"
+          ba-panel-class="with-scroll">
+
+          <div class="form-group">
+                <input type="search" class="form-control input-sm text-uppercase"
+                        ng-model="q" placeholder="Placa">
+          </div>
+          <div class="feed-messages-container" track-width="smallContainerWidth"
+              min-width="360">
+            <div class="feed-message" ng-repeat="vehiculo in vehiculos| filter:q as results "
+                ng-click="verDetalles(vehiculo)">
+              
+                <div class="text-block text-message">
+                  <div class="message-header">
+                    <span class="author">{{vehiculo.marca}} {{vehiculo.referencia}} {{vehiculo.modelo}}</span>
+                  </div>
+                  
+
+
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+
+  </div>
