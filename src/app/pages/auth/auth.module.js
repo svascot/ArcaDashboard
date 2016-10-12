@@ -9,7 +9,7 @@
     $stateProvider
         .state('auth', {
           url: '/auth',
-          templateUrl: 'app/pages/auth/auth.html',
+          templateUrl: 'auth.html',
           controller: "AuthCtrl",
           title: 'Authentication',
           sidebarMeta: {

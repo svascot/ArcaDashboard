@@ -9,7 +9,7 @@
     .run(themeRun);
 
   /** @ngInject */
-  function themeRun($timeout, $rootScope, layoutPaths, preloader, $q, baSidebarService, themeLayoutSettings,$uibModal) {
+  function themeRun($timeout, $rootScope, layoutPaths, preloader, $q, baSidebarService, themeLayoutSettings,$uibModal,$state) {
     var whatToWait = [
       preloader.loadAmCharts(),
       $timeout(3000)
@@ -36,8 +36,8 @@
     }, 7000);
 
     $rootScope.$baSidebarService = baSidebarService;
-    //$rootScope.serviceURL = "http://localhost:3000/"
-    $rootScope.serviceURL = "http://52.39.7.127:3000/"
+    $rootScope.serviceURL = "http://localhost:3000/"
+    //$rootScope.serviceURL = "http://52.39.7.127:3000/"
 
     $rootScope.toastDefautlOptions={
         "autoDismiss": true,
@@ -88,6 +88,12 @@
       $rootScope.modalLoadingStack.pop()
 
     };
+    $rootScope.estaEnLogin= function(){
+        if($state.is('auth')){
+          return true
+        }
+        return false;
+      }
       
   }
 

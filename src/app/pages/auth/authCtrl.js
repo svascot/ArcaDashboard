@@ -6,11 +6,10 @@
 
   /** @ngInject */
   function AuthCtrl($scope,$location, AuthService,$http) {
-    $scope.user = {};
-    var usuario;
-    $scope.login = function(){
-      AuthService.login($scope.user).then(function(response){
-          usuario=response;
+      
+    $scope.login = function(user){
+      AuthService.login(user).then(function(response){
+          var usuario=response;
         if(usuario) {
           $location.path('/');
         } else {
