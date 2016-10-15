@@ -5,7 +5,9 @@
       .controller('FiltrarVehiculosCtrl', FiltrarVehiculosCtrl);
 
   /** @ngInject */
-  function FiltrarVehiculosCtrl($scope,$rootScope,VehiculosService) {
+    var openedToasts =[];
+  function FiltrarVehiculosCtrl($scope,$rootScope,VehiculosService,ViajesService,toastr, toastrConfig) {
+
     $scope.vehiculos = {};
   /**  $scope.vehiculos = [
       {
@@ -79,6 +81,16 @@
       VehiculosService.listarVehiculos(filtro).then(function(response){
         $scope.vehiculos = response;
       })
+    }
+
+    $scope.asignarViaje = function(viaje,vehiculo){
+        viaje.VehiculoId = vehiculo.id;
+        ViajesService.crearViaje(viaje).then(function(response){
+        console.dir(response)
+        openedToasts.push(toastr["success"]("Viaje creado", "Exito", $rootScope.toastDefautlOptions));
+        $scope.viaje = {};
+      })
+    
     }
   }
 })();

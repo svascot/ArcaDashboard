@@ -8,31 +8,32 @@
   var openedToasts =[];
 
   function diagramaOcupacionCtrl($scope,VehiculosService,toastr, toastrConfig,$rootScope,vehiculos) {
-    $scope.vehiculos = vehiculos
-      var now = moment().minutes(0).seconds(0).milliseconds(0);
-  var groupCount = 4;
-  var itemCount = 20;
-
-  // create a data set with groups
-  var names = ['John', 'Alston', 'Lee', 'Grant'];
+     var now = moment().minutes(0).seconds(0).milliseconds(0);
   var groups = new vis.DataSet();
-  for (var g = 0; g < groupCount; g++) {
-    groups.add({id: g, content: names[g]});
-  }
-
-  // create a dataset with items
   var items = new vis.DataSet();
-  for (var i = 0; i < itemCount; i++) {
-    var start = now.clone().add(Math.random() * 200, 'hours');
-    var group = Math.floor(Math.random() * groupCount);
-    items.add({
-      id: i,
-      group: group,
-      content: 'item ' + i +
-          ' <span style="color:#97B0F8;">(' + names[group] + ')</span>',
-      start: start,
-      type: 'box'
+  // create a data set with groups
+
+  for (var j = vehiculos.length - 1; j >= 0; j--) {
+     var vehiculo = vehiculos[j];
+  
+   
+    groups.add({id:j,content:vehiculo.placa})
+
+    if(vehiculo.Viajes){
+    for (var i = vehiculo.Viajes.length - 1; i >= 0; i--) {
+      var viaje = vehiculo.Viajes[i]
+      //alert (new Date(viaje.fechaInicio))
+      console.log(new Date(viaje.fechaFin).getTime()*1000)
+      items.add({
+      id:  viaje.id,
+      group:(groups.length -1),
+      content: ' <span>(' + viaje.destino + ')</span>',
+      start: viaje.fechaInicio,
+      end:viaje.fechaFin,
+      type: 'range'
     });
+    }
+    }
   }
 
   // create visualization

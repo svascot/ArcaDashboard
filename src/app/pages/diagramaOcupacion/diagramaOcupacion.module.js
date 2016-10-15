@@ -18,11 +18,11 @@
           },
           resolve: {
             VehiculosService:'VehiculosService',
-            vehiculos:function(VehiculosService){/*
+            vehiculos:function(VehiculosService){
                return VehiculosService.listarVehiculos({}).then(function(vehiculos){
+                console.dir(vehiculos);
                        return vehiculos;
-               })+*/ 
-               return [];
+               })
             }
            }
         })
