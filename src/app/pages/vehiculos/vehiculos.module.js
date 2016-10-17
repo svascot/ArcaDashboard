@@ -9,8 +9,8 @@
     $stateProvider
         .state('vehiculos', {
           url: '/vehiculos',
-          templateUrl: 'app/pages/filtrarVehiculos/filtrarVehiculos.html',
-          controller: 'FiltrarVehiculosCtrl',
+          templateUrl: 'app/pages/vehiculos/vehiculos.html',
+          controller: 'VehiculosCtrl',
           title: 'Vehiculos',
           sidebarMeta: {
             icon: 'ion-android-car',

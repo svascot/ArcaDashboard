@@ -2,12 +2,24 @@
   'use strict';
 
   angular.module('BlurAdmin.pages.vehiculos')
-      .controller('FiltrarVehiculosCtrl', FiltrarVehiculosCtrl);
+      .controller('VehiculosCtrl', VehiculosCtrl);
 
   /** @ngInject */
     var openedToasts =[];
-  function FiltrarVehiculosCtrl($scope,$rootScope,VehiculosService,ViajesService,toastr, toastrConfig) {
+  function VehiculosCtrl($scope,$rootScope,VehiculosService,ViajesService,toastr, toastrConfig) {
+   
 
+    $scope.openCalendar = function(e,prop) {
+        this[prop] =true
+        e.preventDefault();
+        e.stopPropagation();
+        
+    };
+      $scope.abrirCalendarioViaje = function(e,vehiculo,prop){
+        vehiculo[prop] = true
+        e.preventDefault();
+        e.stopPropagation();
+      }
     $scope.vehiculos = {};
   /**  $scope.vehiculos = [
       {
