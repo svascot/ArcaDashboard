@@ -17,7 +17,7 @@
     };
       
     $scope.login = function(user){
-    console.log(user.date)/*
+    
       AuthService.login(user).then(function(response){
           var usuario=response;
         if(usuario) {
@@ -27,7 +27,7 @@
         }
 
       })
-      */
+      
     }
 
 
