@@ -6,7 +6,7 @@
           ba-panel
           ba-panel-title="Registrar vehiculos"
           ba-panel-class="with-scroll">
-        <form class="form-horizontal" ng-submit="crearVehiculo(vehiculo)">
+        <form class="form-horizontal" ng-submit="crearVehiculo(vehiculo,imagenVehiculo)">
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
@@ -29,6 +29,13 @@
                 <input type="text" class="form-control input-sm"
                         placeholder="Referencia" ng-model="vehiculo.referencia">
               </div>
+
+              <div class="form-group">
+                 <button class="btn btn-primary" ngf-select ng-model="imagenVehiculo" ngf-multiple="false" ngf-max-size="2MB" style="margin-top: 6%;margin-left: 3%;"><span class="glyphicon glyphicon-paperclip span-adjuntar" style="color: white;" style="    margin-left: 2%;margin-top: 1%;"></span>Imagen
+                  </button>
+                  {{imagenVehiculo.name}}
+              </div>
+
             </div>
             <div class="col-md-6">
                 <div class="checkbox">
@@ -61,6 +68,7 @@
                       <span>Sillas reclinables</span>
                     </label>
                 </div>
+               
               </div>
           </div>
           <div class="row col-md-6">

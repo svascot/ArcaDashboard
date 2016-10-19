@@ -22,6 +22,7 @@
                return VehiculosService.listarVehiculos({}).then(function(vehiculos){
                        return vehiculos;
                })
+               
             }
            }
         })

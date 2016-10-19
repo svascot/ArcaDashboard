@@ -7,8 +7,11 @@
   /** @ngInject */
   var openedToasts =[];
 
-  function CrearVehiculoCtrl($scope,VehiculosService,toastr, toastrConfig,$rootScope,vehiculos) {
+  function CrearVehiculoCtrl($scope,VehiculosService,toastr, toastrConfig,$rootScope,vehiculos,uploadToAWS) {
     $scope.vehiculos = vehiculos
+
+    
+
     var removerVehiculoDeLaLista = function(vehiculo){
       for (var i = $scope.vehiculos.length - 1; i >= 0; i--) {
         if($scope.vehiculos[i].id == vehiculo.id){
@@ -44,15 +47,21 @@
       }
     }
 
-    $scope.crearVehiculo = function(vehiculo){
-      VehiculosService.crearVehiculo(vehiculo).then(function(response){
-        console.dir(response)
-          openedToasts.push(toastr["success"]("Velhiculo registrado", "Exito", $rootScope.toastDefautlOptions));
-          $scope.vehiculo = {};
-          VehiculosService.listarVehiculos({}).then(function(vehiculos){
-                       $scope.vehiculos = vehiculos;
-          })
-      })
+    $scope.crearVehiculo = function(vehiculo,imagenVehiculo){
+
+       uploadToAWS.uploadFiles(new Array(imagenVehiculo)).then(function(urls){
+          vehiculo.imagen= urls[0].endPoint          
+          VehiculosService.crearVehiculo(vehiculo).then(function(response){
+            console.dir(response)
+              openedToasts.push(toastr["success"]("Velhiculo registrado", "Exito", $rootScope.toastDefautlOptions));
+              $scope.vehiculo = {};
+              VehiculosService.listarVehiculos({}).then(function(vehiculos){
+                           $scope.vehiculos = vehiculos;
+              })
+          })          
+       })
+
+      
     }
 
   }

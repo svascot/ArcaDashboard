@@ -36,8 +36,9 @@
     }, 7000);
 
     $rootScope.$baSidebarService = baSidebarService;
-    //$rootScope.serviceURL = "http://localhost:3000/"
-    $rootScope.serviceURL = "http://arkap.co/"
+    $rootScope.serviceURL = "http://localhost:3000/"
+    //$rootScope.serviceURL = "http://arkap.co/"
+    $rootScope.s3bucketURL = "https://s3-us-west-2.amazonaws.com/arca/"
 
     $rootScope.toastDefautlOptions={
         "autoDismiss": true,
