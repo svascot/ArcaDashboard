@@ -2,6 +2,7 @@
 
 angular.module('BlurAdmin', [
   'ngAnimate',
+  'environment',
   'ui.bootstrap',
   'ui.bootstrap.datetimepicker',
   'ui.sortable',

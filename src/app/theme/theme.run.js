@@ -9,7 +9,7 @@
     .run(themeRun);
 
   /** @ngInject */
-  function themeRun($timeout, $rootScope, layoutPaths, preloader, $q, baSidebarService, themeLayoutSettings,$uibModal,$state) {
+  function themeRun($timeout, $rootScope, layoutPaths, preloader, $q, baSidebarService, themeLayoutSettings,$uibModal,$state,envService) {
     var whatToWait = [
       preloader.loadAmCharts(),
       $timeout(3000)
@@ -37,8 +37,8 @@
 
     $rootScope.$baSidebarService = baSidebarService;
     //$rootScope.serviceURL = "http://localhost:3000/"
-    $rootScope.serviceURL = "http://arkap.co/"
-    $rootScope.s3bucketURL = "https://s3-us-west-2.amazonaws.com/arca/"
+    $rootScope.serviceURL = envService.read('apiUrl');
+    $rootScope.s3bucketURL = envService.read('bucketS3');
 
     $rootScope.toastDefautlOptions={
         "autoDismiss": true,

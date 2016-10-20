@@ -9,7 +9,7 @@
     .config(config);
 
   /** @ngInject */
-  function config(baConfigProvider, colorHelper, $httpProvider) {
+  function config(baConfigProvider, colorHelper,envServiceProvider,$httpProvider) {
     //baConfigProvider.changeTheme({blur: true});
     //
     //baConfigProvider.changeColors({
@@ -20,5 +20,31 @@
     //  },
     //});
     $httpProvider.interceptors.push('intercerptor');
+
+    envServiceProvider.config({
+        domains: {
+            development: ['localhost'],
+            production: ['arkap.co']
+        },
+        vars: {
+            development: {
+                apiUrl: 'http://localhost:3000/',
+                bucketS3: 'https://s3-us-west-2.amazonaws.com/arca/'
+
+            },
+            production: {
+                apiUrl: 'http://arkap.co/', //aws load balancer
+                bucketS3: 'https://s3-us-west-2.amazonaws.com/arca/'
+            }
+        }
+    });
+
+    // run the environment check, so the comprobation is made
+    // before controllers and services are built
+    envServiceProvider.check();
+
+
+
+
   }
 })();
