@@ -11,7 +11,7 @@
           url: '/vehiculos',
           templateUrl: 'app/pages/vehiculos/vehiculos.html',
           controller: 'VehiculosCtrl',
-          title: 'Vehiculos',
+          title: 'Crear viajes',
           sidebarMeta: {
             icon: 'ion-android-car',
             order: 2,
