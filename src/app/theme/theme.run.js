@@ -57,7 +57,7 @@
       }
 
     $rootScope.modalLoadingStack= []
-    
+
 
     $rootScope.openModal = function (template, size,text) {
 
@@ -65,7 +65,7 @@
         animation: true,
         template: template,
         //md,lg,sm
-        size: size,        
+        size: size,
         controller:'ModalsPageCtrl',
         resolve: {
           text: function () {
@@ -74,6 +74,17 @@
         }
       });
     };
+
+    $rootScope.openModalController = function (templateUrl, controller) {
+      $uibModal.open({
+        animation: true,
+        templateUrl: templateUrl,
+        //md,lg,sm
+        size: 'lg',
+        controller:controller
+      });
+    };
+
     $rootScope.openLoadingModal = function () {
 
        $rootScope.modalLoadingStack.push($uibModal.open({
@@ -95,7 +106,7 @@
         }
         return false;
       }
-      
+
   }
 
 })();

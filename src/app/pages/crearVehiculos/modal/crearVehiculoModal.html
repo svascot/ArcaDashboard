@@ -1,0 +1,74 @@
+<div class="modal-content">
+  <div class="modal-header bg-primary">
+    <span> Registrar vehiculos</span>
+  </div>
+
+    <form class="form-horizontal">
+      <div class="modal-body">
+        <div class="col-md-6">
+          <div class="form-group">
+            <input type="text" class="form-control input-sm"
+                    placeholder="Capacidad de personas" ng-model="vehiculo.capacidad">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control input-smt text-uppercase"
+                    placeholder="Placa" ng-model="vehiculo.placa">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control input-sm"
+                    placeholder="Marca" ng-model="vehiculo.marca">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control input-sm"
+                    placeholder="Modelo" ng-model="vehiculo.modelo">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control input-sm"
+                    placeholder="Referencia" ng-model="vehiculo.referencia">
+          </div>
+          <div class="form-group">
+             <button class="btn btn-primary" ngf-select ng-model="imagenVehiculo"
+                      ngf-multiple="false" ngf-max-size="2MB" >
+                      <span class="glyphicon glyphicon-paperclip span-adjuntar">Imagen</span>
+              </button>
+              {{imagenVehiculo.name}}
+          </div>
+        </div>
+        <div class="col-md-6">
+            <div class="checkbox">
+                <label class="checkbox-inline custom-checkbox nowrap">
+                  <input type="checkbox"  ng-model="vehiculo.audio">
+                  <span>Audio</span>
+                </label>
+            </div>
+            <div class="checkbox">
+                <label class="checkbox-inline custom-checkbox nowrap">
+                  <input type="checkbox"  ng-model="vehiculo.video">
+                  <span>Video</span>
+                </label>
+            </div>
+            <div class="checkbox">
+              <label class="checkbox-inline custom-checkbox nowrap">
+                  <input type="checkbox"   ng-model="vehiculo.aire">
+                  <span>Aire</span>
+                </label>
+            </div>
+            <div class="checkbox">
+              <label class="checkbox-inline custom-checkbox nowrap">
+                  <input type="checkbox"  ng-model="vehiculo.bano">
+                  <span>Baño</span>
+                </label>
+            </div>
+           <div class="checkbox">
+              <label class="checkbox-inline custom-checkbox nowrap">
+                  <input type="checkbox" ng-model="vehiculo.reclinable">
+                  <span>Sillas reclinables</span>
+                </label>
+            </div>
+          </div>
+        </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="crearVehiculo(vehiculo,imagenVehiculo)">Registrar</button>
+      </div>
+      </form>
+</div>

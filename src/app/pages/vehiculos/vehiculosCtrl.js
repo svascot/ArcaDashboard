@@ -7,13 +7,13 @@
   /** @ngInject */
     var openedToasts =[];
   function VehiculosCtrl($scope,$rootScope,VehiculosService,ViajesService,toastr, toastrConfig) {
-   
 
+//TODO Cambiar tooooooodo con el diseno de mona 
     $scope.openCalendar = function(e,prop) {
         this[prop] =true
         e.preventDefault();
         e.stopPropagation();
-        
+
     };
       $scope.abrirCalendarioViaje = function(e,vehiculo,prop){
         vehiculo[prop] = true
@@ -102,7 +102,7 @@
         openedToasts.push(toastr["success"]("Viaje creado", "Exito", $rootScope.toastDefautlOptions));
         $scope.viaje = {};
       })
-    
+
     }
   }
 })();
