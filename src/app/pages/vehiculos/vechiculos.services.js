@@ -54,9 +54,9 @@
         )
       },
       eliminarVehiculo:function(vehiculo){
-        var query = $rootScope.serviceURL+"vehiculo";
+        var query = $rootScope.serviceURL+"vehiculo/"+vehiculo.uuid;
         window.console.log(query);
-        return $http.delete(query,{uuid:vehiculo.uuid}).then(
+        return $http.delete(query).then(
           function(resultado){
             console.dir(resultado.data);
             return resultado.data
