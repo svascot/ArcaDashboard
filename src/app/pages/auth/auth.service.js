@@ -9,7 +9,7 @@
     .service('AuthService', AuthService);
 
   /** @ngInject */
-  function AuthService($http,$rootScope) {
+  function AuthService($http,$rootScope, $state) {
 
     return{
       login :function(usuario){
@@ -25,10 +25,14 @@
       logout :function(){
         var query = $rootScope.serviceURL+"auth/logout";
         return $http.post(query).then(
-          function(resultado ){            
+          function(resultado ){  
+          localStorage.removeItem("user")          
             return resultado.data
           }
         )
+      },
+      getUser : function(){
+        return JSON.parse(localStorage.getItem("user"))
       }
 
     }

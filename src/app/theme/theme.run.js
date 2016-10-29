@@ -9,11 +9,22 @@
     .run(themeRun);
 
   /** @ngInject */
-  function themeRun($timeout, $rootScope, layoutPaths, preloader, $q, baSidebarService, themeLayoutSettings,$uibModal,$state,envService) {
+  function themeRun($timeout, $rootScope, layoutPaths, preloader, $q, baSidebarService, themeLayoutSettings,$uibModal,$state,envService,AuthService) {
     var whatToWait = [
       preloader.loadAmCharts(),
-      $timeout(3000)
+      $timeout(500)
     ];
+
+  var checkLoguedInFN=  (function checkLoguedIn(){
+                          var user = AuthService.getUser();
+                          if(!user){
+                           $timeout(function() {
+                              $state.go('auth');
+                            });
+                          }
+                          return checkLoguedIn;
+                        })()
+
 
     var theme = themeLayoutSettings;
     if (theme.blur) {
@@ -105,8 +116,14 @@
           return true
         }
         return false;
-      }
+      };
+    $rootScope.$on('$stateChangeStart', 
+      function(event, toState, toParams, fromState, fromParams){ 
+        checkLoguedInFN();
 
+      })
+
+     
   }
 
 })();

@@ -11,11 +11,7 @@
           url: '/auth',
           templateUrl: 'auth.html',
           controller: "AuthCtrl",
-          title: 'Authentication',
-          sidebarMeta: {
-            icon: 'ion-android-lock',
-            order: 1,
-          },
+          title: 'Authentication'
         });
   }
 
