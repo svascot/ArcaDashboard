@@ -19,7 +19,7 @@
                           var user = AuthService.getUser();
                           if(!user){
                            $timeout(function() {
-                              $state.go('auth');
+                             // $state.go('auth');
                             });
                           }
                           return checkLoguedIn;
