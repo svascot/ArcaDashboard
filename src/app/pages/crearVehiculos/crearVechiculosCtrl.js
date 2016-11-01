@@ -9,7 +9,7 @@
 
   function CrearVehiculoCtrl($scope,VehiculosService,toastr, toastrConfig,$rootScope,vehiculos,uploadToAWS) {
 
-//TODO Cambiar tooooooodo con el diseno de mona 
+//TODO Cambiar tooooooodo con el diseno de mona
     $scope.vehiculos = vehiculos
     var removerVehiculoDeLaLista = function(vehiculo){
       for (var i = $scope.vehiculos.length - 1; i >= 0; i--) {
@@ -73,7 +73,9 @@
     }
 
     $scope.openCrearVehiculo = function(){
-      $rootScope.openModalController('app/pages/crearVehiculos/crearVehiculoModal.html','CrearVehiculoModalCtrl')
+      $rootScope.openModalController('app/pages/crearVehiculos/modal/crearVehiculoModal.html','CrearVehiculoModalCtrl',{vehiculos:function () {
+        return vehiculos;
+      }})
     }
 
   }

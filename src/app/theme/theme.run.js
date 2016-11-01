@@ -75,13 +75,14 @@
       });
     };
 
-    $rootScope.openModalController = function (templateUrl, controller) {
+    $rootScope.openModalController = function (templateUrl, controller,resolver) {
       $uibModal.open({
         animation: true,
         templateUrl: templateUrl,
         //md,lg,sm
         size: 'lg',
-        controller:controller
+        controller:controller,
+        resolve:resolver
       });
     };
 
