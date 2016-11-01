@@ -1,19 +1,19 @@
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.pages.vehiculos', [])
+  angular.module('BlurAdmin.pages.viaje', [])
       .config(routeConfig);
 
    /** @ngInject */
   function routeConfig($stateProvider) {
     $stateProvider
-        .state('vehiculos', {
-          url: '/vehiculos',
-          templateUrl: 'app/pages/vehiculos/vehiculos.html',
-          controller: 'VehiculosCtrl',
+        .state('viaje', {
+          url: '/viaje',
+          templateUrl: 'app/pages/crearViaje/viaje.html',
+          controller: 'ViajeCtrl',
           title: 'Crear viajes',
           sidebarMeta: {
-            icon: 'ion-android-car',
+            icon: 'ion-android-calendar',
             order: 2,
           },
         });

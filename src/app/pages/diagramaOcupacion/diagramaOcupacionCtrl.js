@@ -7,7 +7,7 @@
   /** @ngInject */
   var openedToasts =[];
 
-  function diagramaOcupacionCtrl($scope,VehiculosService,toastr, toastrConfig,$rootScope,vehiculos) {
+  function diagramaOcupacionCtrl($scope,ViajeService,toastr, toastrConfig,$rootScope,vehiculos) {
      var now = moment().minutes(0).seconds(0).milliseconds(0);
   var groups = new vis.DataSet();
   var items = new vis.DataSet();
@@ -15,8 +15,8 @@
 
   for (var j = vehiculos.length - 1; j >= 0; j--) {
      var vehiculo = vehiculos[j];
-  
-   
+
+
     groups.add({id:j,content:vehiculo.placa})
 
     if(vehiculo.Viajes){
