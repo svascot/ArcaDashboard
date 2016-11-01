@@ -7,7 +7,7 @@
   /** @ngInject */
   var openedToasts =[];
 
-  function CrearVehiculoCtrl($scope,VehiculosService,toastr, toastrConfig,$rootScope,vehiculos,uploadToAWS) {
+  function CrearVehiculoCtrl($scope,ViajeService,toastr, toastrConfig,$rootScope,vehiculos,uploadToAWS) {
 
 //TODO Cambiar tooooooodo con el diseno de mona
     $scope.vehiculos = vehiculos
@@ -33,7 +33,7 @@
 
           uploadToAWS.uploadFiles(new Array(vehiculo.nuevaImagen)).then(function(urls){
             vehiculo.imagen= urls[0].endPoint
-            VehiculosService.actualizarVehiculo(vehiculo).then(function(vehiculoActualizado){
+            ViajeService.actualizarVehiculo(vehiculo).then(function(vehiculoActualizado){
             vehiculo = vehiculoActualizado;
             openedToasts.push(toastr["success"]("Vehiculo actualizado", "Exito", $rootScope.toastDefautlOptions));
           })
@@ -41,7 +41,7 @@
 
         }
         else{
-          VehiculosService.actualizarVehiculo(vehiculo).then(function(vehiculoActualizado){
+          ViajeService.actualizarVehiculo(vehiculo).then(function(vehiculoActualizado){
           vehiculo = vehiculoActualizado;
           openedToasts.push(toastr["success"]("Vehiculo actualizado", "Exito", $rootScope.toastDefautlOptions));
         })
@@ -51,7 +51,7 @@
 
     $scope.eliminarVehiculo= function(vehiculo){
      if (confirm("Desea eliminar el vehiculo?") == true) {
-          VehiculosService.eliminarVehiculo(vehiculo).then(function(vehiculoActualizado){
+          ViajeService.eliminarVehiculo(vehiculo).then(function(vehiculoActualizado){
           removerVehiculoDeLaLista(vehiculo);
           openedToasts.push(toastr["success"]("Vehiculo eliminado", "Exito", $rootScope.toastDefautlOptions));
         })
@@ -61,11 +61,11 @@
     $scope.crearVehiculo = function(vehiculo,imagenVehiculo){
        uploadToAWS.uploadFiles(new Array(imagenVehiculo)).then(function(urls){
           vehiculo.imagen= urls[0].endPoint
-          VehiculosService.crearVehiculo(vehiculo).then(function(response){
+          ViajeService.crearVehiculo(vehiculo).then(function(response){
             console.dir(response)
               openedToasts.push(toastr["success"]("Velhiculo registrado", "Exito", $rootScope.toastDefautlOptions));
               $scope.vehiculo = {};
-              VehiculosService.listarVehiculos({}).then(function(vehiculos){
+              ViajeService.listarVehiculos({}).then(function(vehiculos){
                            $scope.vehiculos = vehiculos;
               })
           })

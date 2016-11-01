@@ -17,12 +17,12 @@
     'BlurAdmin.pages.maps',
     'BlurAdmin.pages.profile',
     'BlurAdmin.pages.auth',
-    'BlurAdmin.pages.vehiculos',
+    'BlurAdmin.pages.viaje',
     'BlurAdmin.pages.crearVehiculos',
     'BlurAdmin.pages.viajes',
     'BlurAdmin.pages.documentos',
     'BlurAdmin.pages.diagramaOcupacion',
-    
+
   ])
       .config(routeConfig);
 

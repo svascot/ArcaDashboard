@@ -6,9 +6,8 @@
 
   /** @ngInject */
     var openedToasts =[];
-  function ViajeCtrl($scope,$rootScope,VehiculosService,ViajesService,toastr, toastrConfig) {
+  function ViajeCtrl($scope,$rootScope,ViajeService,ViajesService,toastr, toastrConfig) {
 
-//TODO Cambiar tooooooodo con el diseno de mona
     $scope.openCalendar = function(e,prop) {
         this[prop] =true
         e.preventDefault();
@@ -90,7 +89,7 @@
         filtro.fechaInicio = filtro.fechaInicio.getTime()
         filtro.fechaFin = filtro.fechaFin.getTime()
       }
-      VehiculosService.listarVehiculos(filtro).then(function(response){
+      ViajeService.listarVehiculos(filtro).then(function(response){
         $scope.vehiculos = response;
       })
     }

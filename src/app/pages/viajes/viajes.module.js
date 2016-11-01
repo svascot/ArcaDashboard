@@ -17,9 +17,9 @@
             order: 2,
           },
            resolve: {
-            VehiculosService:'VehiculosService',
-            vehiculos:function(VehiculosService){
-               return VehiculosService.listarVehiculos({}).then(function(vehiculos){
+            ViajeService:'ViajeService',
+            vehiculos:function(ViajeService){
+               return ViajeService.listarVehiculos({}).then(function(vehiculos){
                        return vehiculos;
                })
             }
