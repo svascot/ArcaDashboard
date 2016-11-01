@@ -19,6 +19,8 @@
         e.preventDefault();
         e.stopPropagation();
       }
+
+    $scope.filtro = {};
     $scope.vehiculos = {};
   /**  $scope.vehiculos = [
       {
@@ -81,6 +83,10 @@
 */
     $scope.expand = function(vehiculo){
       vehiculo.expanded = !vehiculo.expanded;
+    }
+
+    $scope.expandFilter = function(){
+      $scope.filtro.expanded = !$scope.filtro.expanded;
     }
 
     $scope.filtrar = function(filtro){
