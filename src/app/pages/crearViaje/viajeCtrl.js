@@ -1,14 +1,14 @@
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.pages.vehiculos')
-      .controller('VehiculosCtrl', VehiculosCtrl);
+  angular.module('BlurAdmin.pages.viaje')
+      .controller('ViajeCtrl', ViajeCtrl);
 
   /** @ngInject */
     var openedToasts =[];
-  function VehiculosCtrl($scope,$rootScope,VehiculosService,ViajesService,toastr, toastrConfig) {
+  function ViajeCtrl($scope,$rootScope,VehiculosService,ViajesService,toastr, toastrConfig) {
 
-//TODO Cambiar tooooooodo con el diseno de mona 
+//TODO Cambiar tooooooodo con el diseno de mona
     $scope.openCalendar = function(e,prop) {
         this[prop] =true
         e.preventDefault();

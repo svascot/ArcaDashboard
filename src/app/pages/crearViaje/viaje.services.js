@@ -1,15 +1,15 @@
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.pages.vehiculos')
-    .service('VehiculosService', VehiculosService);
+  angular.module('BlurAdmin.pages.viaje')
+    .service('ViajeService', ViajeService);
 
   /** @ngInject */
-  function VehiculosService($http,$rootScope,$q) {
+  function ViajeService($http,$rootScope,$q) {
 
     return{
       listarVehiculos :function(vehiculo){
-       
+
         var query = $rootScope.serviceURL+"vehiculo/filtrar";
         window.console.log(query);
         return $http.post(query,{filtro:vehiculo}).then(
@@ -19,7 +19,7 @@
           }
         )
        /*
-         
+
           var deferred = $q.defer();
            setTimeout(function() {
              deferred.resolve([{"AgenciumId":2,"placa":"tpt019","capacidad":15,"modelo":"2017","audio":1,"video":0,"aire":true,"bano":true,"reclinable":true,"imagen":"123456","marca":"Toyota","referencia":"Tundra",
