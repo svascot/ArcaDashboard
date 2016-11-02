@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-12">
     <div
         ba-panel
         ba-panel-title="Filtrar vehiculos"
@@ -24,30 +24,35 @@
                 <input type="text" class="form-control input-sm" id="input1"
                         placeholder="Telefono" ng-model="usuario.telefono">
               </div>
+            </div>
+          <div class="col-md-6">
               <div class="form-group">
                 <label>Fecha de nacimiento</label>
                 <p class="input-group">
-                    <input type="text" class="form-control" datetime-picker="dd MMM yyyy HH:mm" ng-model="usuario.fechaNacimiento" 
+                    <input type="text" class="form-control" datetime-picker="dd MMM yyyy" ng-model="usuario.fechaNacimiento" 
                     is-open="fechaNacimiento"  />
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default" ng-click="openCalendar($event, 'fechaNacimiento')"><i class="fa fa-calendar"></i></button>
                     </span>
                 </p>
               </div>
-              <select class="form-control selectpicker with-search" data-live-search="true" title="Rol"    selectpicker
-               ng-model="usuario.rol">
-                <option value="despachador">Despachador</option>
-                <option value="conductor">Cliente</option>
-                <option value="cliente">Conductor</option>
-              </select>
-
-               <div class="form-group">
+              <div class="form-group">
                 <input type="password" class="form-control input-sm" id="input1"
                         placeholder="Contaseña" ng-model="usuario.password">
                </div>
 
+              <select class="form-control selectpicker with-search" data-live-search="true" title="Rol"    selectpicker
+               ng-model="usuario.rol">
+                <option value="gerente">Gerente</option>
+                <option value="despachador">Despachador</option>
+                <option value="cliente">Cliente</option>
+                <option value="conductor">Conductor</option>
+              </select>
+
+               
+
                <div class="form-group">
-                              <label>{{usuario.imagen.name}}</label>
+                              <label>{{usuario.imagen.name || 'Seleccionar imagen'}}</label>
                                <button class="btn btn-primary" ngf-select ng-model="usuario.imagen" ngf-multiple="false" ngf-max-size="2MB" style="margin-top: 6%;margin-left: 3%;"><span class="glyphicon glyphicon-paperclip span-adjuntar" style="color: white;" style="margin-left: 2%;margin-top: 1%;"> Foto</span>
                                 </button>
 
@@ -59,10 +64,50 @@
           <div class="row col-md-6">
             <button type="submit" class="btn btn-primary">Registrar usuario</button>
           </div>
+           </div>
         </form>
     </div>
   </div>
   
    
-
 </div>
+<div class="row">
+    <div class="col-md-12">
+      <div ba-panel ba-panel-title="Personal" ba-panel-class="with-scroll">
+       <div class="horizontal-scroll">
+          <table class="table table-hover" st-table="personal" st-safe-src="usuarios">
+            <thead>
+            <tr class="sortable">
+             
+              <th >Foto</th>
+              <th st-sort="nombre">Nombre</th>
+              <th st-sort="cedula">Cedula</th>
+              <th st-sort="fechaNacimiento">fechaNacimiento</th>
+              <th st-sort="email">Email</th>
+              <th st-sort="celular">Celular</th>
+              <th st-sort="rol">Rol</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in personal  track by $index" class="editable-tr-wrap">
+              <td><img  ng-src="{{item.foto}}" width="50" height="50"></td>
+              <td><span editable-text="item.nombre" blur="cancel">{{item.nombre}}</span></td>
+              <td><span editable-text="item.cedula" blur="cancel">{{item.cedula}}</span></td>
+              <td><span editable-text="item.fechaNacimiento" blur="cancel">{{item.fechaNacimiento  | date:"dd/MM/yyyy"}}</span></td>
+              <td><a class="email-link" ng-href="mailto:{{item.email}}">{{item.email}}</a></td>
+              <td><span editable-text="item.celular" blur="cancel">{{item.celular}}</span></td>
+              <td><span editable-text="item.rol" blur="cancel">{{item.rol}}</span></td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+              <td colspan="6" class="text-center">
+                <div st-pagination="" st-items-by-page="12" st-displayed-pages="5"></div>
+              </td>
+            </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -6,8 +6,9 @@
 
   /** @ngInject */
     var openedToasts =[];
-  function UsuariosCtrl($scope,$rootScope,UsuariosService,toastr, toastrConfig,uploadToAWS) {
+  function UsuariosCtrl($scope,$rootScope,UsuariosService,toastr, toastrConfig,uploadToAWS,usuarios,$timeout) {
 
+    $scope.usuarios = usuarios;
 
     $scope.openCalendar = function(e,prop) {
         this[prop] =true
@@ -21,8 +22,20 @@
         uploadToAWS.uploadFiles(new Array(usuario.imagen)).then(function(urls){
         usuario.foto= urls[0].endPoint        
         UsuariosService.crearUsuario(usuario).then(function(response){          
-          openedToasts.push(toastr["success"]("Usuario registrado", "Exito", $rootScope.toastDefautlOptions));
-          $scope.usuario = {};
+          openedToasts.push(toastr["success"]("Usuario registrado", "Exito", $rootScope.toastDefautlOptions));    
+          $scope.usuarios.push(response.data); 
+             $timeout(function() {
+                           $scope.$apply()
+            });     
+                    
+            console.dir($scope.usuarios)
+
+        },function(err){
+          console.dir(err);
+            if(err.status == 412){
+              openedToasts.push(toastr["error"](err.message, "No tienens permiso para crear ese tipo de usuario", $rootScope.toastDefautlOptions));
+
+            }
         })
 
         })
