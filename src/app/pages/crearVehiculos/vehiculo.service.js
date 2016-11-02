@@ -1,23 +1,14 @@
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.pages.viaje')
-    .service('ViajeService', ViajeService);
+  angular.module('BlurAdmin.pages.crearVehiculos')
+    .service('CrearVehiculosService', CrearVehiculosService);
 
   /** @ngInject */
-  function ViajeService($http,$rootScope,$q) {
+  function CrearVehiculosService($http,$rootScope,$q) {
 
     return{
-
-      crearViaje :function(viaje){
-        var query = $rootScope.serviceURL+"viaje/";
-        return $http.post(query,{viaje:viaje}).then(
-          function(resultado){
-            console.dir(resultado.data);
-            return resultado.data
-          }
-        )
-      },
+      
       listarVehiculos :function(vehiculo){
         var query = $rootScope.serviceURL+"vehiculo/filtrar";
         window.console.log(query);
@@ -51,7 +42,39 @@
           }, 1000);
            return deferred.promise;
          */
+      },
+      crearVehiculo :function(vehiculo){
+        var query = $rootScope.serviceURL+"vehiculo";
+        window.console.log(query);
+        return $http.post(query,{vehiculo:vehiculo}).then(
+          function(resultado){
+            console.dir(resultado.data);
+            return resultado.data
+          }
+        )
+      },
+      eliminarVehiculo:function(vehiculo){
+        var query = $rootScope.serviceURL+"vehiculo/"+vehiculo.uuid;
+        window.console.log(query);
+        return $http.delete(query).then(
+          function(resultado){
+            console.dir(resultado.data);
+            return resultado.data
+          }
+        )
+      },
+      actualizarVehiculo:function(vehiculo){
+        var query = $rootScope.serviceURL+"vehiculo";
+        window.console.log(query);
+        return $http.patch(query,{vehiculo:vehiculo}).then(
+          function(resultado){
+            console.dir(resultado.data);
+            return resultado.data
+          }
+        )
       }
+
+
 
     }
 

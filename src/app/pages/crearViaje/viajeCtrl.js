@@ -19,6 +19,8 @@
         e.preventDefault();
         e.stopPropagation();
       }
+
+    $scope.filtro = {};
     $scope.vehiculos = {};
   /**  $scope.vehiculos = [
       {
@@ -83,11 +85,19 @@
       vehiculo.expanded = !vehiculo.expanded;
     }
 
+    $scope.expandFilter = function(){
+      $scope.filtro.expanded = !$scope.filtro.expanded;
+    }
+
     $scope.filtrar = function(filtro){
       console.dir(filtro)
       if(filtro.fechaInicio != null && filtro.fechaFin != null){
+        //viaje.fechaInicio = filtro.fechaInicio;
+        //viaje.fechaFin = filtro.fechaFin;
+
         filtro.fechaInicio = filtro.fechaInicio.getTime()
         filtro.fechaFin = filtro.fechaFin.getTime()
+
       }
       ViajeService.listarVehiculos(filtro).then(function(response){
         $scope.vehiculos = response;
@@ -96,7 +106,15 @@
 
     $scope.asignarViaje = function(viaje,vehiculo){
         viaje.VehiculoId = vehiculo.id;
-        ViajesService.crearViaje(viaje).then(function(response){
+
+        alert(viaje.VehiculoId + ", " +
+              vehiculo.id + ", " +
+              viaje.origen + ", " +
+              viaje.destino + ", " +
+              viaje.fechaFin + ", " +
+              viaje.fechaInicio);
+
+        ViajeService.crearViaje(viaje).then(function(response){
         console.dir(response)
         openedToasts.push(toastr["success"]("Viaje creado", "Exito", $rootScope.toastDefautlOptions));
         $scope.viaje = {};

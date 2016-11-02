@@ -8,47 +8,32 @@
         <form name="form" ng-submit="filtrar(filtro)">
           <div class="row">
             <div class="col-md-6">
+                <div class="form-group">
+        					<label>Fecha de ida</label>
+        					<p class="input-group">
+                      <input type="text" class="form-control" datetime-picker="dd MMM yyyy HH:mm" ng-model="filtro.fechaInicio" is-open="fechainicioOpen"  />
+                      <span class="input-group-btn">
+                          <button type="button" class="btn btn-default" ng-click="openCalendar($event,'fechainicioOpen')"><i class="fa fa-calendar"></i></button>
+                      </span>
+                  </p>
+        				</div>
+                <div class="form-group">
+        					<label>Fecha de regreso</label>
+        					<p class="input-group">
+                      <input type="text" class="form-control" datetime-picker="dd MMM yyyy HH:mm" ng-model="filtro.fechaFin" is-open="fechafinOpen"  />
+                      <span class="input-group-btn">
+                          <button type="button" class="btn btn-default" ng-click="openCalendar($event, 'fechafinOpen')"><i class="fa fa-calendar"></i></button>
+                      </span>
+                  </p>
+        				</div>
 
               <div class="form-group">
-      					<label>Fecha de ida</label>
-      					<p class="input-group">
-                    <input type="text" class="form-control" datetime-picker="dd MMM yyyy HH:mm" ng-model="filtro.fechaInicio" is-open="fechainicioOpen"  />
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="openCalendar($event,'fechainicioOpen')"><i class="fa fa-calendar"></i></button>
-                    </span>
-                </p>
-      				</div>
-      				<div class="form-group">
-      					<label>Fecha de regreso</label>
-      					<p class="input-group">
-                    <input type="text" class="form-control" datetime-picker="dd MMM yyyy HH:mm" ng-model="filtro.fechaFin" is-open="fechafinOpen"  />
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="openCalendar($event, 'fechafinOpen')"><i class="fa fa-calendar"></i></button>
-                    </span>
-                </p>
-      				</div>
-              <div class="form-group">
+                <label>Capacidad de pasajeros</label>
                 <input type="text" class="form-control input-sm" id="input1"
-                        placeholder="Capacidad de personas" ng-model="filtro.capacidad">
+                        placeholder="Maximo 41 pasajeros" ng-model="filtro.capacidad">
               </div>
-              <div class="form-group">
-                <input type="text" class="form-control input-sm" id="input2"
-                        placeholder="Placa" ng-model="filtro.placa">
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control input-sm" id="input3"
-                        placeholder="Marca" ng-model="filtro.marca">
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control input-sm" id="input4"
-                        placeholder="Modelo" ng-model="filtro.modelo">
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control input-sm" id="input5"
-                        placeholder="Referencia" ng-model="filtro.referencia">
-              </div>
-            </div>
-            <div class="col-md-6">
+
+              <label>Cualidades</label>
               <div class="checkbox">
                 <label class="checkbox-inline custom-checkbox nowrap">
                   <input type="checkbox" id="inlineCheckbox01" value="option1"
@@ -85,8 +70,48 @@
                 </label>
               </div>
             </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                      <label>Origen</label>
+                      <input type="text" class="form-control input-sm"
+                           ng-model="viaje.origen">
+                </div>
+                <div class="form-group">
+                      <label>Destino</label>
+                      <input type="text" class="form-control input-sm"
+                            ng-model="viaje.destino">
+                </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <button type="button" ng-click="expandFilter()" class="btn btn-primary btn-xs">Opciones avanzadas</button>
+              </div>
+
+              <div ng-show="filtro.expanded">
+                <div class="form-group">
+                  <input type="text" class="form-control input-sm" id="input2"
+                          placeholder="Placa" ng-model="filtro.placa">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control input-sm" id="input3"
+                          placeholder="Marca" ng-model="filtro.marca">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control input-sm" id="input4"
+                          placeholder="Modelo" ng-model="filtro.modelo">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control input-sm" id="input5"
+                          placeholder="Referencia" ng-model="filtro.referencia">
+                </div>
+              </div>
+
+            </div>
+
           </div>
-          <div class="row col-md-6">
+          <div class="row col-md-12">
             <button type="submit" class="btn btn-primary">Buscar vehiculos</button>
           </div>
         </form>
@@ -99,9 +124,9 @@
         ba-panel-class="with-scroll">
       <div>
         <div class="feed-messages-container" track-width="smallContainerWidth" min-width="360">
-          <div class="feed-message" ng-repeat="vehiculo in vehiculos" >
+          <div class="feed-message" ng-repeat="vehiculo in vehiculos" ng-click="asignarViaje(viaje,vehiculo)">
             <div class="message-icon">
-              <img class="photo-icon" ng-src={{vehiculo.imagen}} ng-click="expand(vehiculo)">
+              <img class="photo-icon" ng-src={{vehiculo.imagen}}>
             </div>
             <div class="text-block text-message">
               <div class="message-header">
@@ -140,51 +165,51 @@
               <br>
               <hr>
               <div class="preview  text-right" ng-show="vehiculo.expanded">
-                 
+
                   <div class="row col-md-12">
                       <div class="col-md-6">
                         <div class="form-group">
                               <label>Fecha de inicio</label>
                               <p class="input-group">
-                                  <input type="text" class="form-control" datetime-picker="dd MMM yyyy HH:mm" 
+                                  <input type="text" class="form-control input-sm" datetime-picker="dd MMM yyyy HH:mm"
                                   ng-model="viaje.fechaInicio" is-open="vehiculo.fechaInicioOpen"  />
                                   <span class="input-group-btn">
-                                      <button type="button" class="btn btn-default" ng-click="abrirCalendarioViaje($event, vehiculo,'fechaInicioOpen')"><i class="fa fa-calendar"></i></button>
+                                      <button type="button" class="btn btn-default input-sm" ng-click="abrirCalendarioViaje($event, vehiculo,'fechaInicioOpen')"><i class="fa fa-calendar"></i></button>
                                   </span>
                               </p>
                          </div>
-                        
+
                          <div class="form-group">
                                <label>Origen</label>
                                <input type="text" class="form-control input-sm"
                                     ng-model="viaje.origen">
                          </div>
-                         
+
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Fecha de regreso</label>
                                 <p class="input-group">
-                                    <input type="text" class="form-control" datetime-picker="dd MMM yyyy HH:mm" 
+                                    <input type="text" class="form-control" datetime-picker="dd MMM yyyy HH:mm"
                                     ng-model="viaje.fechaFin" is-open="vehiculo.fechaFinOpen"  />
                                     <span class="input-group-btn">
                                         <button type="button" class="btn btn-default" ng-click="abrirCalendarioViaje($event, vehiculo,'fechaFinOpen')"><i class="fa fa-calendar"></i></button>
                                     </span>
                                 </p>
                            </div>
-                           
+
                             <div class="form-group">
                                   <label>Destino</label>
                                   <input type="text" class="form-control input-sm"
                                         ng-model="viaje.destino">
                             </div>
                           </div>
-                         
-                    </div>
+
+                  </div>
                     <button type="button" ng-click="asignarViaje(viaje,vehiculo)" class="btn btn-primary btn-sm">Asignar viaje</button>
                   </div>
-                
+
               </div>
             </div>
           </div>
