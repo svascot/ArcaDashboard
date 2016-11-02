@@ -22,6 +22,7 @@
     'BlurAdmin.pages.viajes',
     'BlurAdmin.pages.documentos',
     'BlurAdmin.pages.diagramaOcupacion',
+    'BlurAdmin.pages.usuarios',
 
   ])
       .config(routeConfig);
