@@ -11,10 +11,10 @@
           url: '/viaje',
           templateUrl: 'app/pages/crearViaje/viaje.html',
           controller: 'ViajeCtrl',
-          title: 'Crear viajes',
+          title: 'Viajes',
           sidebarMeta: {
             icon: 'ion-android-calendar',
-            order: 2,
+            order: 1,
           },
         });
   }

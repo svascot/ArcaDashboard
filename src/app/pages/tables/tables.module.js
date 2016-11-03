@@ -17,10 +17,10 @@
           abstract: true,
           controller: 'TablesPageCtrl',
           title: 'Tables',
-          sidebarMeta: {
+          /*sidebarMeta: {
             icon: 'ion-grid',
             order: 300,
-          },
+          },*/
         }).state('tables.basic', {
           url: '/basic',
           templateUrl: 'app/pages/tables/basic/tables.html',

@@ -105,7 +105,7 @@
     }
 
     $scope.asignarViaje = function(viaje,vehiculo){
-        viaje.VehiculoId = vehiculo.id;
+      //  viaje.VehiculoId = vehiculo.id;
 
         alert(viaje.VehiculoId + ", " +
               vehiculo.id + ", " +
@@ -114,11 +114,11 @@
               viaje.fechaFin + ", " +
               viaje.fechaInicio);
 
-        ViajeService.crearViaje(viaje).then(function(response){
+      /*  ViajeService.crearViaje(viaje).then(function(response){
         console.dir(response)
         openedToasts.push(toastr["success"]("Viaje creado", "Exito", $rootScope.toastDefautlOptions));
         $scope.viaje = {};
-      })
+      })*/
 
     }
   }

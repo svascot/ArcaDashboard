@@ -12,10 +12,10 @@
           templateUrl: 'app/pages/viajes/viajes.html',
           controller: "ViajesCtrl",
           title: 'Viajes',
-          sidebarMeta: {
+          /*sidebarMeta: {
             icon: 'ion-android-calendar',
             order: 2,
-          },
+          },*/
            resolve: {
             ViajeService:'ViajeService',
             vehiculos:function(ViajeService){

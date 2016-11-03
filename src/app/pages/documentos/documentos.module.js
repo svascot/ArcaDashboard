@@ -14,7 +14,7 @@
           controller:'DocumentosCtrl',
           sidebarMeta: {
             icon: 'ion-document-text',
-            order: 3,
+            order: 5,
           },
           resolve: {
             ViajeService:'ViajeService',

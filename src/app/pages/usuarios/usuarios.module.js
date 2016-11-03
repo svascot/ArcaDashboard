@@ -14,7 +14,7 @@
           title: 'Usuarios',
           sidebarMeta: {
             icon: 'ion-person-stalker',
-            order: 2,
+            order: 4,
           },
           resolve: {
             UsuariosService:'UsuariosService',

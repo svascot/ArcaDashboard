@@ -10,11 +10,11 @@
         .state('crearVehiculos', {
           url: '/crearVehiculos',
           templateUrl: 'app/pages/crearVehiculos/crearVehiculos.html',
-          title: 'Registrar vehiculos',
+          title: 'Vehiculos',
           controller:'CrearVehiculoCtrl',
           sidebarMeta: {
             icon: 'ion-android-car',
-            order: 2,
+            order: 3,
           },
           resolve: {
             ViajeService:'ViajeService',

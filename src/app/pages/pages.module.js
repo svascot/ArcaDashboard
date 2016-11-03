@@ -31,7 +31,7 @@
   function routeConfig($urlRouterProvider, baSidebarServiceProvider) {
     $urlRouterProvider.otherwise('/dashboard');
 
-    baSidebarServiceProvider.addStaticItem({
+  /*  baSidebarServiceProvider.addStaticItem({
       title: 'Pages',
       icon: 'ion-document',
       subMenu: [{
@@ -64,7 +64,7 @@
           disabled: true
         }]
       }]
-    });
+    });*/
   }
 
 })();
