@@ -2,13 +2,13 @@
   'use strict';
 
   angular.module('BlurAdmin.pages.crearVehiculos')
-    .service('CrearVehiculosService', CrearVehiculosService);
+    .service('VehiculosService', VehiculosService);
 
   /** @ngInject */
-  function CrearVehiculosService($http,$rootScope,$q) {
+  function VehiculosService($http,$rootScope,$q) {
 
     return{
-      
+
       listarVehiculos :function(vehiculo){
         var query = $rootScope.serviceURL+"vehiculo/filtrar";
         window.console.log(query);

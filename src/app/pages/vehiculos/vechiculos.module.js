@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.pages.crearVehiculos', [])
+  angular.module('BlurAdmin.pages.vehiculos', [])
       .config(routeConfig);
 
    /** @ngInject */
@@ -9,9 +9,9 @@
     $stateProvider
         .state('crearVehiculos', {
           url: '/crearVehiculos',
-          templateUrl: 'app/pages/crearVehiculos/crearVehiculos.html',
+          templateUrl: 'app/pages/vehiculos/vehiculos.html',
           title: 'Vehiculos',
-          controller:'CrearVehiculoCtrl',
+          controller:'vehiculoCtrl',
           sidebarMeta: {
             icon: 'ion-android-car',
             order: 3,
