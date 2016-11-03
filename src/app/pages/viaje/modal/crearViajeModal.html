@@ -1,0 +1,21 @@
+
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" ng-click="$dismiss()" aria-label="Close">
+      <em class="ion-ios-close-empty sn-link-close"></em>
+    </button>
+    <h4 class="modal-title">Asignar viaje</h4>
+  </div>
+  <div class="modal-body">
+    Esta seguro que desea crear el viaje con las siguientes caracteristicas?
+    Vehiculo: {{vehiculo.placa}}
+    Capaidad de pasajeros: {{vehiculo.capacidad}}
+    Origen: {{viaje.origen}}
+    Destino: {{viaje.destino}}
+    Fecha de salida: {{viaje.fechaInicio}}
+    Fecha de regreso: {{viaje.fechaFin}}
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" ng-click="asignarViaje()">Asignar viaje</button>
+  </div>
+</div>

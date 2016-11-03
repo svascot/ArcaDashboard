@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.pages.crearVehiculos')
+  angular.module('BlurAdmin.pages.vehiculos')
     .service('VehiculosService', VehiculosService);
 
   /** @ngInject */

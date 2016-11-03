@@ -9,7 +9,7 @@
     $stateProvider
         .state('viaje', {
           url: '/viaje',
-          templateUrl: 'app/pages/crearViaje/viaje.html',
+          templateUrl: 'app/pages/viaje/viaje.html',
           controller: 'ViajeCtrl',
           title: 'Viajes',
           sidebarMeta: {

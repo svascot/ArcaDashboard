@@ -5,8 +5,8 @@
       .controller('ViajeCtrl', ViajeCtrl);
 
   /** @ngInject */
-    var openedToasts =[];
-  function ViajeCtrl($scope,$rootScope,ViajeService,ViajesService,toastr, toastrConfig) {
+  var openedToasts =[];
+  function ViajeCtrl($scope,$rootScope,ViajeService,toastr, toastrConfig) {
 
     $scope.openCalendar = function(e,prop) {
         this[prop] =true
@@ -20,6 +20,7 @@
         e.stopPropagation();
       }
 
+    $scope.viaje = {};
     $scope.filtro = {};
     $scope.vehiculos = {};
   /**  $scope.vehiculos = [
@@ -92,8 +93,8 @@
     $scope.filtrar = function(filtro){
       console.dir(filtro)
       if(filtro.fechaInicio != null && filtro.fechaFin != null){
-        //viaje.fechaInicio = filtro.fechaInicio;
-        //viaje.fechaFin = filtro.fechaFin;
+        $scope.viaje.fechaInicio = filtro.fechaInicio;
+        $scope.viaje.fechaFin = filtro.fechaFin;
 
         filtro.fechaInicio = filtro.fechaInicio.getTime()
         filtro.fechaFin = filtro.fechaFin.getTime()
@@ -104,22 +105,28 @@
       })
     }
 
-    $scope.asignarViaje = function(viaje,vehiculo){
-      //  viaje.VehiculoId = vehiculo.id;
+    /*$scope.asignarViaje = function(viaje,vehiculo){
 
-        alert(viaje.VehiculoId + ", " +
-              vehiculo.id + ", " +
-              viaje.origen + ", " +
-              viaje.destino + ", " +
-              viaje.fechaFin + ", " +
-              viaje.fechaInicio);
+      viaje.VehiculoId = vehiculo.id;
 
-      /*  ViajeService.crearViaje(viaje).then(function(response){
+      ViajeService.crearViaje(viaje).then(function(response){
         console.dir(response)
         openedToasts.push(toastr["success"]("Viaje creado", "Exito", $rootScope.toastDefautlOptions));
         $scope.viaje = {};
-      })*/
+      })
+    }*/
 
+    $scope.openCrearViaje = function(viaje,vehiculo){
+      $rootScope.openModalController('app/pages/viaje/modal/crearViajeModal.html','CrearViajeModalCtrl',
+        {
+          viaje:function () {
+            return viaje;
+          },
+          vehiculo:function () {
+            return vehiculo;
+          }
+        }
+      )
     }
   }
 })();

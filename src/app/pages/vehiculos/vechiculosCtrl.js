@@ -73,9 +73,13 @@
     }
 
     $scope.openCrearVehiculo = function(){
-      $rootScope.openModalController('app/pages/vehiculos/modal/crearVehiculoModal.html','CrearVehiculoModalCtrl',{vehiculos:function () {
-        return vehiculos;
-      }})
+      $rootScope.openModalController('app/pages/vehiculos/modal/crearVehiculoModal.html','CrearVehiculoModalCtrl',
+        {
+          vehiculos:function () {
+            return vehiculos;
+          }
+        }
+      )
     }
 
   }
