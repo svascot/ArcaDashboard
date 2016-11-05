@@ -85,8 +85,9 @@
                                         ng-model="vehiculo.capacidad">
                             </div>
                             <div class="form-group">
-                              <label>{{vehiculo.nuevaImagen}}</label>
-                               <button class="btn btn-primary" ngf-select ng-model="vehiculo.nuevaImagen" ngf-multiple="false" ngf-max-size="2MB" style="margin-top: 6%;margin-left: 3%;"><span class="glyphicon glyphicon-paperclip span-adjuntar" style="color: white;" style="margin-left: 2%;margin-top: 1%;">Imagen</span>
+                              <label>{{vehiculo.Usuario.nombre || 'Sin conductor asignado'}}</label>
+                               <button class="btn btn-primary" ng-click="openModalAsignarConductor(vehiculo)">
+                               <span style="color: white;" style="margin-left: 2%;margin-top: 1%;"> Asignar coductor</span>
                                 </button>
 
                             </div>

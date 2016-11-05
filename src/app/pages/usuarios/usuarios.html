@@ -91,12 +91,12 @@
             <tbody>
             <tr ng-repeat="item in personal  track by $index" class="editable-tr-wrap">
               <td><img  ng-src="{{item.foto}}" width="50" height="50"></td>
-              <td><span editable-text="item.nombre" blur="cancel">{{item.nombre}}</span></td>
-              <td><span editable-text="item.cedula" blur="cancel">{{item.cedula}}</span></td>
-              <td><span editable-text="item.fechaNacimiento" blur="cancel">{{item.fechaNacimiento  | date:"dd/MM/yyyy"}}</span></td>
-              <td><a class="email-link" ng-href="mailto:{{item.email}}">{{item.email}}</a></td>
-              <td><span editable-text="item.celular" blur="cancel">{{item.celular}}</span></td>
-              <td><span editable-text="item.rol" blur="cancel">{{item.rol}}</span></td>
+              <td><span  >{{item.nombre}}</span></td>
+              <td><span >{{item.cedula}}</span></td>
+              <td><span  >{{item.fechaNacimiento  | date:"dd/MM/yyyy"}}</span></td>
+              <td><a class="email-link" >{{item.email}}</a></td>
+              <td><span >{{item.celular}}</span></td>
+              <td><span >{{item.rol}}</span></td>
             </tr>
             </tbody>
             <tfoot>

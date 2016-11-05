@@ -7,7 +7,7 @@
   /** @ngInject */
   var openedToasts =[];
 
-  function vehiculoCtrl($scope,VehiculosService,toastr, toastrConfig,$rootScope,vehiculos,uploadToAWS) {
+  function vehiculoCtrl($scope,VehiculosService,toastr, toastrConfig,$rootScope,vehiculos,uploadToAWS,UsuariosService) {
 
 //TODO Cambiar tooooooodo con el diseno de mona
     $scope.vehiculos = vehiculos
@@ -31,13 +31,13 @@
       if (confirm("Desea guardar los cambios?") == true) {
         if(vehiculo.nuevaImagen){
 
-          uploadToAWS.uploadFiles(new Array(vehiculo.nuevaImagen)).then(function(urls){
-            vehiculo.imagen= urls[0].endPoint
+         // uploadToAWS.uploadFiles(new Array(vehiculo.nuevaImagen)).then(function(urls){
+           // vehiculo.imagen= urls[0].endPoint
             VehiculosService.actualizarVehiculo(vehiculo).then(function(vehiculoActualizado){
             vehiculo = vehiculoActualizado;
             openedToasts.push(toastr["success"]("Vehiculo actualizado", "Exito", $rootScope.toastDefautlOptions));
           })
-         })
+         //})
 
         }
         else{
@@ -78,6 +78,21 @@
           vehiculos:function () {
             return vehiculos;
           }
+        }
+      )
+    }
+    $scope.openModalAsignarConductor = function(vehiculo){
+      $rootScope.openModalController('app/pages/vehiculos/modal/asignarConductorModal.html','AsignarConductorModal',
+        {
+          vehiculo:function () {
+            return vehiculo;
+          },
+          conductores:function () {
+            return UsuariosService.listar('conductor').then(function(conductores){
+                return conductores
+            })
+          }
+
         }
       )
     }

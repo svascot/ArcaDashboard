@@ -16,10 +16,9 @@
             icon: 'ion-android-car',
             order: 3,
           },
-          resolve: {
-            ViajeService:'ViajeService',
-            vehiculos:function(ViajeService){
-               return ViajeService.listarVehiculos({}).then(function(vehiculos){
+          resolve: {            
+            vehiculos:function(VehiculosService){
+               return VehiculosService.listarVehiculos({}).then(function(vehiculos){
                        return vehiculos;
                })
 
