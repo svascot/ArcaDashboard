@@ -5,7 +5,8 @@
       .controller('AsignarConductorModal', AsignarConductorModal);
 
   /** @ngInject */
-  function AsignarConductorModal($scope,VehiculosService,$rootScope,conductores,vehiculo) {
+  var openedToasts =[];
+  function AsignarConductorModal($scope,VehiculosService,$rootScope,conductores,vehiculo,toastr, toastrConfig) {
 
     $scope.conductores = conductores;
     $scope.vehiculo = vehiculo;
@@ -16,6 +17,7 @@
            
               openedToasts.push(toastr["success"]("Conductor asignado", "Exito", $rootScope.toastDefautlOptions));
               $scope.vehiculo = {};
+              $rootScope.currentOpenModal.close();
               
           })
        

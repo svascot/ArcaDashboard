@@ -87,14 +87,15 @@
     };
 
     $rootScope.openModalController = function (templateUrl, controller,resolver) {
-      $uibModal.open({
-        animation: true,
-        templateUrl: templateUrl,
-        //md,lg,sm
-        size: 'lg',
-        controller:controller,
-        resolve:resolver
-      });
+    	$rootScope.currentOpenModal = $uibModal.open({
+	        animation: true,
+	        templateUrl: templateUrl,
+	        //md,lg,sm
+	        size: 'lg',
+	        controller:controller,
+	        resolve:resolver
+	      });
+
     };
 
     $rootScope.openLoadingModal = function () {
