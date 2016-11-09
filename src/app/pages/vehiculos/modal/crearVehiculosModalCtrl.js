@@ -5,7 +5,8 @@
       .controller('CrearVehiculoModalCtrl', CrearVehiculoModalCtrl);
 
   /** @ngInject */
-  function CrearVehiculoModalCtrl($scope,VehiculosService,$rootScope,vehiculos,uploadToAWS) {
+  var openedToasts =[];
+  function CrearVehiculoModalCtrl($scope,VehiculosService,$rootScope,vehiculos,uploadToAWS,toastr,toastrConfig) {
 
     $scope.crearVehiculo = function(vehiculo,imagenVehiculo){
        uploadToAWS.uploadFiles(new Array(imagenVehiculo)).then(function(urls){
@@ -20,6 +21,10 @@
           })
        })
     }
+    cerrarModal();
+  }
 
+  function cerrarModal(){
+    //$rootScope.currentOpenModal.close();
   }
 })();

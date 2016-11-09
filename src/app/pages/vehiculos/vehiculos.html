@@ -47,6 +47,9 @@
                         <span ng-show={{vehiculo.aire}}>
                           Aire
                         </span>
+                        <span ng-show={{vehiculo.wifi}}>
+                          WiFi
+                        </span>
                         <span ng-show={{vehiculo.audio}}>
                           Audio
                         </span>
@@ -99,9 +102,13 @@
                                  <span>Sillas reclinables</span>
                             </div>
                             <div class="form-group">
-                                  <switch color="primary" ng-model="vehiculo.audio" ></switch>
-                                  <span>Audio</span>
+                                  <switch color="primary" ng-model="vehiculo.wifi" ></switch>
+                                  <span>WiFi</span>
                              </div>
+                             <div class="form-group">
+                                   <switch color="primary" ng-model="vehiculo.audio" ></switch>
+                                   <span>Audio</span>
+                              </div>
                              <div class="form-group">
                                   <switch color="primary" ng-model="vehiculo.video" ></switch>
                                   <span>Video</span>
