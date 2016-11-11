@@ -11,7 +11,7 @@
                 <div class="form-group">
         					<label>Fecha de ida</label>
         					<p class="input-group">
-                      <input type="text" class="form-control" datetime-picker="dd MMM yyyy HH:mm" ng-model="filtro.fechaInicio" is-open="fechainicioOpen"  />
+                      <input type="text" required class="form-control" datetime-picker="dd MMM yyyy HH:mm" ng-model="filtro.fechaInicio" is-open="fechainicioOpen"  />
                       <span class="input-group-btn">
                           <button type="button" class="btn btn-default" ng-click="openCalendar($event,'fechainicioOpen')"><i class="fa fa-calendar"></i></button>
                       </span>
@@ -20,7 +20,7 @@
                 <div class="form-group">
         					<label>Fecha de regreso</label>
         					<p class="input-group">
-                      <input type="text" class="form-control" datetime-picker="dd MMM yyyy HH:mm" ng-model="filtro.fechaFin" is-open="fechafinOpen"  />
+                      <input type="text" required class="form-control" datetime-picker="dd MMM yyyy HH:mm" ng-model="filtro.fechaFin" is-open="fechafinOpen"  />
                       <span class="input-group-btn">
                           <button type="button" class="btn btn-default" ng-click="openCalendar($event, 'fechafinOpen')"><i class="fa fa-calendar"></i></button>
                       </span>
@@ -29,7 +29,7 @@
 
               <div class="form-group">
                 <label>Capacidad de pasajeros</label>
-                <input type="text" class="form-control input-sm" id="input1"
+                <input type="text" required class="form-control input-sm" id="input1"
                         placeholder="Maximo 41 pasajeros" ng-model="filtro.capacidad">
               </div>
 
@@ -81,12 +81,12 @@
             <div class="col-md-6">
                 <div class="form-group">
                       <label>Origen</label>
-                      <input type="text" class="form-control input-sm"
+                      <input type="text" required class="form-control input-sm"
                            ng-model="viaje.origen">
                 </div>
                 <div class="form-group">
                       <label>Destino</label>
-                      <input type="text" class="form-control input-sm"
+                      <input type="text" required class="form-control input-sm"
                             ng-model="viaje.destino">
                 </div>
             </div>
@@ -130,7 +130,7 @@
         ba-panel-title="Lista de vehiculos"
         ba-panel-class="with-scroll">
         <div class="feed-messages-container" track-width="smallContainerWidth" min-width="360">
-          <div class="feed-message" ng-repeat="vehiculo in vehiculos" ng-click="openCrearViaje(viaje,vehiculo)">
+          <div class="feed-message" style="min-height: 95px;" ng-repeat="vehiculo in vehiculos" ng-click="openCrearViaje(viaje,vehiculo)">
             <div class="message-icon">
               <img class="photo-icon" ng-src={{vehiculo.imagen}}>
             </div>
@@ -139,33 +139,47 @@
                 <span class="author">{{vehiculo.marca}} {{vehiculo.referencia}} {{vehiculo.modelo}}</span>
               </div>
               <div class="message-content">
-                <div class="col-md-6">
+                <div class="col-md-12">
+                  <div class="info-label">
+                    <i class="ion-person"></i>
+                     Conductor: <b>{{vehiculo.Usuario.nombre}}</b>
+                  </div>
                   <div class="info-label">
                     <i class="ion-android-car"></i>
-                     {{vehiculo.placa}}
+                     Placa: <b>{{vehiculo.placa}}</b>
                   </div>
                   <div class="info-label">
                     <i class="ion-person-stalker"></i>
-                     {{vehiculo.capacidad}}
+                     Cupo: <b>{{vehiculo.capacidad}}</b>
                   </div>
-                </div>
-                <div class="col-md-6">
-                  <span ng-show={{vehiculo.reclinable}}>
-                    Sillas reclinables
-                  </span>
-                  <span ng-show={{vehiculo.aire}}>
-                    Aire
-                  </span>
-                  <span ng-show={{vehiculo.audio}}>
-                    Audio
-                  </span>
-                  <span ng-show={{vehiculo.video}}>
-                    Video
-                  </span>
-                  <span ng-show={{vehiculo.bano}}>
-                    Baño
-                  </span>
-                </div>
+                  <div class="info-label">
+                    <i class="ion-android-settings"></i>
+                    <span ng-show={{vehiculo.reclinable}}>
+                      Sillas reclinables
+                    </span>
+                    <span ng-show={{vehiculo.aire}}>
+                      Aire
+                    </span>
+                    <span ng-show={{vehiculo.audio}}>
+                      Audio
+                    </span>
+                    <span ng-show={{vehiculo.video}}>
+                      Video
+                    </span>
+                    <span ng-show={{vehiculo.bano}}>
+                      Baño
+                    </span>
+                    <span ng-show={{vehiculo.wifi}}>
+                      WiFi
+                    </span>
+                  </div>
+            <!--    </div>   -->
+            <!--    <div class="col-md-6"> -->
+            <!--      <div class="info-label"> -->
+            <!--        <i class="ion-person"></i> -->
+            <!--         Conductor: {{vehiculo.Usuario.nombre}} -->
+            <!--      </div> -->
+            <!--    </div> -->
               </div>
             </div>
           </div>

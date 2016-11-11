@@ -18,11 +18,8 @@
         openedToasts.push(toastr["success"]("Viaje creado", "Exito", $rootScope.toastDefautlOptions));
         $scope.viaje = {};
       });
-      cerrarModal();
-    }
-
-    function cerrarModal(){
       $rootScope.currentOpenModal.close();
     }
+
   }
 })();

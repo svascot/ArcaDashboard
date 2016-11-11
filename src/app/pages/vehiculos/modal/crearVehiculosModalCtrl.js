@@ -21,10 +21,7 @@
           })
        })
     }
-    cerrarModal();
+    $rootScope.currentOpenModal.close();
   }
-
-  function cerrarModal(){
-    //$rootScope.currentOpenModal.close();
-  }
+  
 })();
