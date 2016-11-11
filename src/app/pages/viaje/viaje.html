@@ -7,6 +7,24 @@
 
         <form name="form" ng-submit="filtrar(filtro)">
           <div class="row">
+            <div class="col-md-12">
+              <div class="input-demo radio-demo">
+                <div class="col-md-6">
+                  <label class="radio-inline custom-radio nowrap">
+                    <input type="radio" name="inlineRadioOptions" ng-model="filtro.tipoViaje"
+                           id="inlineRadio1" ng-value="true">
+                    <span>Ida y regreso</span>
+                  </label>
+                </div>
+                <div class="col-md-6">
+                  <label class="radio-inline custom-radio nowrap">
+                    <input type="radio" name="inlineRadioOptions" ng-model="filtro.tipoViaje"
+                            id="inlineRadio2" ng-value="false">
+                    <span>Ida</span>
+                  </label>
+                </div>
+              </div>
+            </div>
             <div class="col-md-6">
                 <div class="form-group">
         					<label>Fecha de ida</label>
@@ -17,10 +35,10 @@
                       </span>
                   </p>
         				</div>
-                <div class="form-group">
+                <div class="form-group" ng-show="filtro.tipoViaje">
         					<label>Fecha de regreso</label>
         					<p class="input-group">
-                      <input type="text" required class="form-control" datetime-picker="dd MMM yyyy HH:mm" ng-model="filtro.fechaFin" is-open="fechafinOpen"  />
+                      <input type="text" class="form-control" datetime-picker="dd MMM yyyy HH:mm" ng-model="filtro.fechaFin" is-open="fechafinOpen"  />
                       <span class="input-group-btn">
                           <button type="button" class="btn btn-default" ng-click="openCalendar($event, 'fechafinOpen')"><i class="fa fa-calendar"></i></button>
                       </span>

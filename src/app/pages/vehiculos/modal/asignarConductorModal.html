@@ -6,14 +6,18 @@
     <form class="form-horizontal">
       <div class="modal-body">
         <div class="form-group">
-          <select class="form-control selectpicker with-search" data-live-search="true" title="Conductores" selectpicker ng-model="vehiculo.UsuarioId"  ng-options="conductor.id as conductor.nombre  for conductor in conductores">              
+          <select class="form-control selectpicker with-search"
+                  data-live-search="true" title="Conductores" selectpicker
+                  ng-model="vehiculo.UsuarioId"
+                  ng-options="conductor.id as conductor.nombre for conductor in conductores">
             </select>
        </div>
-       
-      
+
+
         </div>
       <div class="modal-footer">
         <button class="btn btn-primary" ng-click="actualizarVehiculo()">Asignar</button>
+        <button class="btn btn-primary" ng-click="$dimis()">Cancelar</button>
       </div>
       </form>
 </div>
