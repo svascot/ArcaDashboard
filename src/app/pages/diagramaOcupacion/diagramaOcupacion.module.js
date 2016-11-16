@@ -13,7 +13,7 @@
           title: 'Diagrama de ocupacion',
           controller:'diagramaOcupacionCtrl',
           sidebarMeta: {
-            icon: 'ion-android-car',
+            icon: 'ion-clock',
             order: 2,
           },
           resolve: {

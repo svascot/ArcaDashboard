@@ -22,6 +22,7 @@
 
     $scope.viaje = {};
     $scope.filtro = {};
+    $scope.filtro.tipoViaje = true;
     $scope.vehiculos = {};
   /**  $scope.vehiculos = [
       {
