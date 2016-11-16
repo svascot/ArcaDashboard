@@ -19,7 +19,15 @@
         }
       }
     }
-
+    $scope.openModalDocumentos = function(vehiculo){
+      $rootScope.openModalController('app/pages/documentos/documentos.html','DocumentosCtrl',
+        {
+          propietario:function () {
+            return vehiculo;
+          }
+        }
+      )
+    }
     $scope.verDetalles= function(vehiculo){
       if(!vehiculo.expanded){
         vehiculo.expanded = false;
