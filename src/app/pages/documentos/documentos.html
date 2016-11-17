@@ -1,37 +1,44 @@
 <div class="modal-content">
-  <div class="modal-header bg-primary">
-    <span> Administrar documentos</span>
+  <div class="modal-header">
+    <button type="button" class="close" ng-click="$dismiss()" aria-label="Close">
+      <em class="ion-ios-close-empty sn-link-close"></em>
+    </button>
+    <h4 class="modal-title">Administrar documentos</h4>
   </div>
-  	<div ng-repeat="d in propietario.Documentos">
-  		{{d.nombre}}
-  		Fecha de expiracion: {{d.fechaExpiracion | date:'dd-MM-yyyy' }} 
-  		<a target="_blank" style="margin left: 1;" class="btn btn-success btn-" role="button" href="{{d.imagen}}" download>Descargar</a> 
-  	</div>
-  	<br>
-  	<hr>
-  	<h4>Nuevo documento
-  	<br>
-  	<div class="form-group">
-            <input type="text" class="form-control input-smt "
-                    placeholder="Nombre del documento" ng-model="documento.nombre">
-          </div>
-    <div class="form-group">
-             <button class="btn btn-primary btn-xs" ngf-select ng-model="imagenDocumento"
-                      ngf-multiple="false" ngf-max-size="2MB" >
-                      <span class="glyphicon glyphicon-paperclip span-adjuntar">Imagen</span>
-              </button>
-              {{imagenDocumento.name}}
-    </div>
-    <div class="form-group">
-			<label>Fecha de expiracion</label>
-			<p class="input-group">
-      <input type="text" class="form-control" datetime-picker="dd MMM yyyy HH:mm" ng-model="documento.fechaExpiracion" 
-      is-open="fechaExpiracionOpen"  />
-      <span class="input-group-btn">
-          <button type="button" class="btn btn-default" ng-click="openCalendar($event,'fechaExpiracionOpen')"><i class="fa fa-calendar"></i></button>
-      </span>
-  		</p>
-    </div>
+  <div class="modal-body">
+      <div ng-repeat="d in propietario.Documentos">
+    		{{d.nombre}}
+    		Fecha de expiracion: {{d.fechaExpiracion | date:'dd-MM-yyyy' }}
+    		<a target="_blank" style="margin left: 1;" class="btn btn-success btn-" role="button" href="{{d.imagen}}" download>Descargar</a>
+    	</div>
+    	<br>
+    	<hr>
+    	<h4>Nuevo documento
+    	<br>
+    	<div class="form-group">
+              <input type="text" class="form-control input-smt "
+                      placeholder="Nombre del documento" ng-model="documento.nombre">
+            </div>
+      <div class="form-group">
+               <button class="btn btn-primary btn-xs" ngf-select ng-model="imagenDocumento"
+                        ngf-multiple="false" ngf-max-size="2MB" >
+                        <span class="glyphicon glyphicon-paperclip span-adjuntar">Imagen</span>
+                </button>
+                {{imagenDocumento.name}}
+      </div>
+      <div class="form-group">
+  			<label>Fecha de expiracion</label>
+  			<p class="input-group">
+        <input type="text" class="form-control" datetime-picker="dd MMM yyyy HH:mm" ng-model="documento.fechaExpiracion"
+        is-open="fechaExpiracionOpen"  />
+        <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="openCalendar($event,'fechaExpiracionOpen')"><i class="fa fa-calendar"></i></button>
+        </span>
+    		</p>
+      </div>
+  </div>
+  <div class="modal-footer">
     <button class="btn btn-primary" ng-click="crearDocumento(documento,imagenDocumento)">Crear</button>
-        
+    <button class="btn btn-primary" ng-click="$dismiss()">Cancelar</button>
+  </div>
 </div>

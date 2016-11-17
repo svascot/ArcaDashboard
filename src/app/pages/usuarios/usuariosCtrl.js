@@ -16,18 +16,28 @@
         e.stopPropagation();
 
     };
-    
+
+    $scope.openModalDocumentos = function(usuario){
+      $rootScope.openModalController('app/pages/documentos/documentos.html','DocumentosCtrl',
+        {
+          propietario:function () {
+            return usuario;
+          }
+        }
+      )
+    }
+
     $scope.crearUsuario = function(usuario){
-          
+
         uploadToAWS.uploadFiles(new Array(usuario.imagen)).then(function(urls){
-        usuario.foto= urls[0].endPoint        
-        UsuariosService.crearUsuario(usuario).then(function(response){          
-          openedToasts.push(toastr["success"]("Usuario registrado", "Exito", $rootScope.toastDefautlOptions));    
-          $scope.usuarios.push(response.data); 
+        usuario.foto= urls[0].endPoint
+        UsuariosService.crearUsuario(usuario).then(function(response){
+          openedToasts.push(toastr["success"]("Usuario registrado", "Exito", $rootScope.toastDefautlOptions));
+          $scope.usuarios.push(response.data);
              $timeout(function() {
                            $scope.$apply()
-            });     
-                    
+            });
+
             console.dir($scope.usuarios)
 
         },function(err){
@@ -37,11 +47,7 @@
 
             }
         })
-
-        })
-
-        
-
+    })
     }
   }
 })();

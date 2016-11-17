@@ -29,7 +29,7 @@
               <div class="form-group">
                 <label>Fecha de nacimiento</label>
                 <p class="input-group">
-                    <input type="text" class="form-control" datetime-picker="dd MMM yyyy" ng-model="usuario.fechaNacimiento" 
+                    <input type="text" class="form-control" datetime-picker="dd MMM yyyy" ng-model="usuario.fechaNacimiento"
                     is-open="fechaNacimiento"  />
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default" ng-click="openCalendar($event, 'fechaNacimiento')"><i class="fa fa-calendar"></i></button>
@@ -49,7 +49,7 @@
                 <option value="conductor">Conductor</option>
               </select>
 
-               
+
 
                <div class="form-group">
                               <label>{{usuario.imagen.name || 'Seleccionar imagen'}}</label>
@@ -68,8 +68,8 @@
         </form>
     </div>
   </div>
-  
-   
+
+
 </div>
 <div class="row">
     <div class="col-md-12">
@@ -78,7 +78,7 @@
           <table class="table table-hover" st-table="personal" st-safe-src="usuarios">
             <thead>
             <tr class="sortable">
-             
+
               <th >Foto</th>
               <th st-sort="nombre">Nombre</th>
               <th st-sort="cedula">Cedula</th>
@@ -89,7 +89,8 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="item in personal  track by $index" class="editable-tr-wrap">
+            <tr ng-repeat="item in personal  track by $index"
+                ng-click="openModalDocumentos(item)" class="editable-tr-wrap">
               <td><img  ng-src="{{item.foto}}" width="50" height="50"></td>
               <td><span  >{{item.nombre}}</span></td>
               <td><span >{{item.cedula}}</span></td>

@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.pages.vehiculos')
+  angular.module('BlurAdmin.pages.documentos')
     .service('DocumentoService', DocumentoService);
 
   /** @ngInject */
@@ -9,7 +9,7 @@
 
     return{
 
-      
+
       crearDocumento :function(documento){
         var query = $rootScope.serviceURL+"documento";
         window.console.log(query);

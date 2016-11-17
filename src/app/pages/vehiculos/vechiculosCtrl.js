@@ -9,7 +9,6 @@
 
   function vehiculoCtrl($scope,VehiculosService,toastr, toastrConfig,$rootScope,vehiculos,uploadToAWS,UsuariosService) {
 
-//TODO Cambiar tooooooodo con el diseno de mona
     $scope.vehiculos = vehiculos
     var removerVehiculoDeLaLista = function(vehiculo){
       for (var i = $scope.vehiculos.length - 1; i >= 0; i--) {
