@@ -1,4 +1,64 @@
 
+
+  <div class="row">
+    <div class="col-md-12"
+         ba-panel
+         ba-panel-title="Inline Form"
+         ba-panel-class="with-scroll">
+
+         <form class="row form-inline">
+
+           <div class="col-md-6">
+             <div class="checkbox">
+                 <label class="checkbox-inline custom-checkbox nowrap">
+                   <input type="checkbox"  ng-model="vehiculo.wifi">
+                   <span>WiFi</span>
+                 </label>
+             </div>
+               <div class="checkbox">
+                   <label class="checkbox-inline custom-checkbox nowrap">
+                     <input type="checkbox"  ng-model="vehiculo.audio">
+                     <span>Audio</span>
+                   </label>
+               </div>
+               <div class="checkbox">
+                   <label class="checkbox-inline custom-checkbox nowrap">
+                     <input type="checkbox"  ng-model="vehiculo.video">
+                     <span>Video</span>
+                   </label>
+               </div>
+               <div class="checkbox">
+                 <label class="checkbox-inline custom-checkbox nowrap">
+                     <input type="checkbox"   ng-model="vehiculo.aire">
+                     <span>Aire</span>
+                   </label>
+               </div>
+               <div class="checkbox">
+                 <label class="checkbox-inline custom-checkbox nowrap">
+                     <input type="checkbox"  ng-model="vehiculo.bano">
+                     <span>Baño</span>
+                   </label>
+               </div>
+              <div class="checkbox">
+                 <label class="checkbox-inline custom-checkbox nowrap">
+                     <input type="checkbox" ng-model="vehiculo.reclinable">
+                     <span>Sillas reclinables</span>
+                   </label>
+               </div>
+             </div>
+
+             <div class="form-group">
+               <input type="text" class="form-control input-sm"
+                       placeholder="Cupo maximo de pasajeros" ng-model="vehiculo.capacidad">
+             </div>
+
+           <button type="submit" ng-click="filtrar(vehiculo)" class="btn btn-primary">Filtrar vehiculos</button>
+         </form>
+
+    </div>
+  </div>
+
+
   <div class="row">
 
       <div class="visualization" id="visualization" style=" box-sizing: border-box;width: 95%;height: 300px;"></div>
