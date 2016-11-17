@@ -20,7 +20,7 @@
           <div class="col-md-12">
             <div class="feed-messages-container" track-width="smallContainerWidth"
                 min-width="360">
-              <div class="feed-message" ng-repeat="vehiculo in vehiculos| filter:q as results "
+              <div class="feed-message" style="min-height: 95px;" ng-repeat="vehiculo in vehiculos| filter:q as results "
                   ng-click="verDetalles(vehiculo)">
                   <div class="message-icon">
                     <img class="photo-icon" ng-src={{vehiculo.imagen}}>
@@ -29,26 +29,26 @@
                     <div class="message-header">
                       <span class="author">{{vehiculo.marca}} {{vehiculo.referencia}} {{vehiculo.modelo}}</span>
                     </div>
-                    <div class="message-content">
-                      <div class="col-md-6">
-                        <div class="info-label">
-                          <i class="ion-android-car"></i>
-                           {{vehiculo.placa}}
-                        </div>
-                        <div class="info-label">
-                          <i class="ion-person-stalker"></i>
-                           {{vehiculo.capacidad}}
-                        </div>
+                    <div class="message-content"><div class="col-md-12">
+                      <div class="info-label">
+                        <i class="ion-person"></i>
+                         Conductor: <b>{{vehiculo.Usuario.nombre}}</b>
                       </div>
-                      <div class="col-md-6">
+                      <div class="info-label">
+                        <i class="ion-android-car"></i>
+                         Placa: <b>{{vehiculo.placa}}</b>
+                      </div>
+                      <div class="info-label">
+                        <i class="ion-person-stalker"></i>
+                         Cupo: <b>{{vehiculo.capacidad}}</b>
+                      </div>
+                      <div class="info-label">
+                        <i class="ion-android-settings"></i>
                         <span ng-show={{vehiculo.reclinable}}>
                           Sillas reclinables
                         </span>
                         <span ng-show={{vehiculo.aire}}>
                           Aire
-                        </span>
-                        <span ng-show={{vehiculo.wifi}}>
-                          WiFi
                         </span>
                         <span ng-show={{vehiculo.audio}}>
                           Audio
@@ -59,83 +59,26 @@
                         <span ng-show={{vehiculo.bano}}>
                           Baño
                         </span>
+                        <span ng-show={{vehiculo.wifi}}>
+                          WiFi
+                        </span>
                       </div>
+                  </div>
                     </div>
                     <div class="preview" ng-show="vehiculo.expanded" >
                       <div class="message-header">
                         <span class="author">Detalles del vehiculo</span>
                       </div>
-                      <div class="row col-md-12">
-                        <div class="col-md-6">
-                          <div class="form-group">
-                                <label>Marca</label>
-                                <input type="text" class="form-control input-sm"
-                                        ng-model="vehiculo.marca">
-                           </div>
-                          <div class="form-group">
-                                <label>Referencia</label>
-                                <input type="text" class="form-control input-sm"
-                                      ng-model="vehiculo.referencia">
-                           </div>
-                           <div class="form-group">
-                                 <label>Modelo</label>
-                                 <input type="text" class="form-control input-sm"
-                                      ng-model="vehiculo.modelo">
-                           </div>
-                           <div class="form-group">
-                                  <label>Capacidad</label>
-                                  <input type="text" class="form-control input-sm"
-                                        ng-model="vehiculo.capacidad">
-                            </div>
-                            <div class="form-group">
-                              <label>{{vehiculo.Usuario.nombre || 'Sin conductor asignado'}}</label>
-                               <button class="btn btn-primary" ng-click="openModalAsignarConductor(vehiculo)">
-                               <span style="color: white;" style="margin-left: 2%;margin-top: 1%;"> Asignar coductor</span>
-                                </button>
-
-                            </div>
-                            <div class="form-group">
-                              
-                               <button class="btn btn-primary" ng-click="openModalDocumentos(vehiculo)">
-                               <span style="color: white;" style="margin-left: 2%;margin-top: 1%;"> Documentos</span>
-                                </button>
-
-                            </div>
-
-                          </div>
-                          <div class="col-md-6">
-                            <div class="form-group">
-                                 <switch color="primary" ng-model="vehiculo.reclinable" ></switch>
-                                 <span>Sillas reclinables</span>
-                            </div>
-                            <div class="form-group">
-                                  <switch color="primary" ng-model="vehiculo.wifi" ></switch>
-                                  <span>WiFi</span>
-                             </div>
-                             <div class="form-group">
-                                   <switch color="primary" ng-model="vehiculo.audio" ></switch>
-                                   <span>Audio</span>
-                              </div>
-                             <div class="form-group">
-                                  <switch color="primary" ng-model="vehiculo.video" ></switch>
-                                  <span>Video</span>
-                             </div>
-                            <div class="form-group">
-                                  <switch color="primary" ng-model="vehiculo.aire" ></switch>
-                                  <span>Aire</span>
-                             </div>
-                            <div class="form-group">
-                                  <switch color="primary" ng-model="vehiculo.bano" ></switch>
-                                  <span>Baño</span>
-                             </div>
-                      </div>
-                    </div>
+                      
                     <div class="row col-md-12">
                       <button type="button" class="btn btn-primary btn-sm"
-                          ng-click="actualizarVehiculo(vehiculo)">Guardar Cambios
+                          ng-click="openModalActualizarVehiculo(vehiculo)">Actualizar
                       </button>
+                      <button class="btn btn-primary btn-sm"
+                      ng-click="openModalAsignarConductor(vehiculo)">Asignar coductor
+                       </button>
                       <button type="button" class="btn btn-danger btn-sm"
-                          ng-click="eliminarVehiculo(vehiculo)">Eliminar vehiculo
+                          ng-click="eliminarVehiculo(vehiculo)">Eliminar
                       </button>
                     </div>
                   </div>

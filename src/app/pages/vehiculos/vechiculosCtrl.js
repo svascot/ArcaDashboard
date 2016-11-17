@@ -35,7 +35,7 @@
         vehiculo.expanded = !vehiculo.expanded;
     }
 
-    $scope.actualizarVehiculo= function(vehiculo){
+    /*$scope.actualizarVehiculo= function(vehiculo){
       if (confirm("Desea guardar los cambios?") == true) {
         if(vehiculo.nuevaImagen){
 
@@ -55,7 +55,7 @@
         })
         }
       }
-    }
+    }*/
 
     $scope.eliminarVehiculo= function(vehiculo){
      if (confirm("Desea eliminar el vehiculo?") == true) {
@@ -89,6 +89,17 @@
         }
       )
     }
+
+    $scope.openModalActualizarVehiculo = function(vehiculo){
+      $rootScope.openModalController('app/pages/vehiculos/modal/actualizarVehiculoModal.html','ActualizarVehiculoModalCtrl',
+        {
+          vehiculo:function () {
+            return vehiculo;
+          }
+        }
+      )
+    }
+
     $scope.openModalAsignarConductor = function(vehiculo){
       $rootScope.openModalController('app/pages/vehiculos/modal/asignarConductorModal.html','AsignarConductorModal',
         {

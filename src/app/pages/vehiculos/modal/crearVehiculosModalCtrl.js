@@ -20,8 +20,8 @@
               })
           })
        })
+       $rootScope.currentOpenModal.close();
     }
-    $rootScope.currentOpenModal.close();
   }
-  
+
 })();
