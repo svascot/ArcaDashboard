@@ -8,6 +8,9 @@
   var openedToasts =[];
 
   function diagramaOcupacionCtrl($scope,ViajeService,toastr,DiagramaOcupacionService,toastrConfig,$rootScope,vehiculos) {
+
+    var cargarDiagrama =(function cargar (vehiculos){
+
       var now = moment().minutes(0).seconds(0).milliseconds(0);
       var groups = new vis.DataSet();
       var items = new vis.DataSet();
@@ -20,24 +23,25 @@
         groups.add({id:j,content:vehiculo.placa})
 
         if(vehiculo.Viajes){
-        for (var i = vehiculo.Viajes.length - 1; i >= 0; i--) {
-          var viaje = vehiculo.Viajes[i]
-          //alert (new Date(viaje.fechaInicio))
-          console.log(new Date(viaje.fechaFin).getTime()*1000)
-          items.add({
-          id:  viaje.id,
-          group:(groups.length -1),
-          content: ' <span>(' + viaje.destino + ')</span>',
-          start: viaje.fechaInicio,
-          end:viaje.fechaFin,
-          type: 'range'
-        });
-        }
+          for (var i = vehiculo.Viajes.length - 1; i >= 0; i--) {
+            var viaje = vehiculo.Viajes[i]
+            //alert (new Date(viaje.fechaInicio))
+            console.log(new Date(viaje.fechaFin).getTime()*1000)
+              items.add({
+                id:  viaje.id,
+                group:(groups.length -1),
+                content: ' <span>(' + viaje.destino + ')</span>',
+                start: viaje.fechaInicio,
+                end:viaje.fechaFin,
+                type: 'range'
+              });
+          }
         }
       }
 
       // create visualization
       var container = document.getElementById('visualization');
+      container.innerHTML = "";
       var options = {
         groupOrder: 'content',  // groupOrder can be a property name or a sorting function
         locale: 'es',
@@ -51,12 +55,19 @@
       timeline.setGroups(groups);
       timeline.setItems(items);
 
+      return  cargar;
+
+    }(vehiculos))
+
+    
+
       $scope.filtrar = function(filtro){
         console.dir(filtro)
           DiagramaOcupacionService.listarVehiculos(filtro).then(function(response){
           $scope.vehiculos = response;
+          cargarDiagrama(response)
         })
       }
 
-      }
+  }
 })();
