@@ -72,6 +72,16 @@
             return resultado.data
           }
         )
+      },
+      actualizarConductor:function(vehiculo){
+        var query = $rootScope.serviceURL+"vehiculo/conductor";
+        window.console.log(query);
+        return $http.patch(query,{vehiculo:vehiculo}).then(
+          function(resultado){
+            console.dir(resultado.data);
+            return resultado.data
+          }
+        )
       }
 
 

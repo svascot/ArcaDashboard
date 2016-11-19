@@ -22,20 +22,16 @@
       },
       listar :function(rol){
        
-        var q = $q.defer();
-        if(usuarios){
-          q.resolve(usuarios);
-        }
+       
         var query = $rootScope.serviceURL+"usuario/";
         if(rol){
           query+=rol;
         }
-        console.log("vamos al servidor a buscar usuarios")
-         $http.get(query).then(function(resultado){
-           usuarios = resultado.data
-            q.resolve(resultado.data)
+        
+         return $http.get(query).then(function(resultado){           
+           return  (resultado.data)
         })
-         return q.promise;
+        
 
 
          
