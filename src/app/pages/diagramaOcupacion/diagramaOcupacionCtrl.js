@@ -29,7 +29,7 @@
             console.log(new Date(viaje.fechaFin).getTime()*1000)
               items.add({
                 id:  viaje.id,
-                group:(groups.length -1),
+                group:(j),
                 content: ' <span>(' + viaje.destino + ')</span>',
                 start: viaje.fechaInicio,
                 end:viaje.fechaFin,
