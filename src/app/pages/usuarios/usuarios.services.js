@@ -17,6 +17,9 @@
         return $http.post(query,{usuario:usuario});
         
       },
+      getUsuario:function(){
+          return JSON.parse(localStorage.getItem('user'));
+      },
       listar :function(rol){
        
         var q = $q.defer();

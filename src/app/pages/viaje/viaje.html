@@ -11,14 +11,14 @@
               <div class="input-demo radio-demo">
                 <div class="col-md-6">
                   <label class="radio-inline custom-radio nowrap">
-                    <input type="radio" name="inlineRadioOptions" ng-model="filtro.tipoViaje"
+                    <input type="radio" name="inlineRadioOptions"
                            id="inlineRadio1" ng-value="true">
                     <span>Ida y regreso</span>
                   </label>
                 </div>
                 <div class="col-md-6">
                   <label class="radio-inline custom-radio nowrap">
-                    <input type="radio" name="inlineRadioOptions" ng-model="filtro.tipoViaje"
+                    <input type="radio" name="inlineRadioOptions" 
                             id="inlineRadio2" ng-value="false">
                     <span>Ida</span>
                   </label>
@@ -35,7 +35,7 @@
                       </span>
                   </p>
         				</div>
-                <div class="form-group" ng-show="filtro.tipoViaje">
+                <div class="form-group">
         					<label>Fecha de regreso</label>
         					<p class="input-group">
                       <input type="text" class="form-control" datetime-picker="dd MMM yyyy HH:mm" ng-model="filtro.fechaFin" is-open="fechafinOpen"  />
