@@ -27,6 +27,13 @@
       )
     }
 
+    $scope.verDetalles= function(item){
+      if(!item.expanded){
+        item.expanded = false;
+      }
+        item.expanded = !item.expanded;
+    }
+
     $scope.crearUsuario = function(usuario){
 
         uploadToAWS.uploadFiles(new Array(usuario.imagen)).then(function(urls){

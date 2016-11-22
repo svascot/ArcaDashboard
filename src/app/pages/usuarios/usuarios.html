@@ -69,46 +69,65 @@
     </div>
   </div>
 
-
-</div>
 <div class="row">
-    <div class="col-md-12">
-      <div ba-panel ba-panel-title="Personal" ba-panel-class="with-scroll">
-       <div class="horizontal-scroll">
-          <table class="table table-hover" st-table="personal" st-safe-src="usuarios">
-            <thead>
-            <tr class="sortable">
+  <div class="col-md-12">
+    <div
+        ba-panel
+        ba-panel-title="Lista de personal"
+        ba-panel-class="with-scroll">
+        <div class="feed-messages-container" track-width="smallContainerWidth" min-width="360">
+          <div class="feed-message" style="min-height: 95px;" ng-repeat="item in usuarios"
+               ng-click="verDetalles(item)">
+            <div class="message-icon">
+              <img class="photo-icon" ng-src={{item.foto}}>
+            </div>
+            <div class="text-block text-message">
+              <div class="message-header">
+                <span class="author">{{item.nombre}} - {{item.rol}}</span>
+              </div>
+              <div class="message-content">
+                <div class="col-md-12">
+                  <div class="info-label">
+                    <i class="ion-person"></i>
+                     Cedula: <b>{{item.cedula}}</b>
+                  </div>
+                  <div class="info-label">
+                    <i class="ion-ios-email"></i>
+                     Correo electronico: <b><a class="email-link" >{{item.email}}</a></b>
+                  </div>
+                  <div class="info-label">
+                    <i class="ion-ios-telephone"></i>
+                     Celular: <b><a class="email-link" >{{item.celular}}</a></b>
+                  </div>
+                  <div class="info-label">
+                    <i class="ion-calendar"></i>
+                     Fecha de nacimiento: <b>{{item.fechaNacimiento  | date:"dd/MM/yyyy"}}</b>
+                  </div>
+              </div>
+            </div>
 
-              <th >Foto</th>
-              <th st-sort="nombre">Nombre</th>
-              <th st-sort="cedula">Cedula</th>
-              <th st-sort="fechaNacimiento">fechaNacimiento</th>
-              <th st-sort="email">Email</th>
-              <th st-sort="celular">Celular</th>
-              <th st-sort="rol">Rol</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="item in personal  track by $index"
-                ng-click="openModalDocumentos(item)" class="editable-tr-wrap">
-              <td><img  ng-src="{{item.foto}}" width="50" height="50"></td>
-              <td><span  >{{item.nombre}}</span></td>
-              <td><span >{{item.cedula}}</span></td>
-              <td><span  >{{item.fechaNacimiento  | date:"dd/MM/yyyy"}}</span></td>
-              <td><a class="email-link" >{{item.email}}</a></td>
-              <td><span >{{item.celular}}</span></td>
-              <td><span >{{item.rol}}</span></td>
-            </tr>
-            </tbody>
-            <tfoot>
-            <tr>
-              <td colspan="6" class="text-center">
-                <div st-pagination="" st-items-by-page="12" st-displayed-pages="5"></div>
-              </td>
-            </tr>
-            </tfoot>
-          </table>
+            <div class="preview" ng-show="item.expanded" >
+              <div class="message-header">
+                <span class="author">Detalles del usuario</span>
+              </div>
+
+
+            <div class="row col-md-12">
+              <button type="button" class="btn btn-primary btn-sm"
+                  ng-click="">Actualizar
+              </button>
+              <button class="btn btn-primary btn-sm"
+                ng-click="openModalDocumentos(item)">Documentos
+              </button>
+              <button type="button" class="btn btn-danger btn-sm"
+                  ng-click="">Eliminar
+              </button>
+            </div>
+          </div>
+
+          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
