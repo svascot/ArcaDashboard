@@ -10,6 +10,7 @@
     		{{d.nombre}}
     		Fecha de expiracion: {{d.fechaExpiracion | date:'dd-MM-yyyy' }}
     		<a target="_blank" style="margin left: 1;" class="btn btn-success btn-" role="button" href="{{d.imagen}}" download>Descargar</a>
+        <button type="button" class="btn btn-default" ng-click="editar(d)">Editar</button>
     	</div>
     	<br>
     	<hr>

@@ -12,10 +12,6 @@
           templateUrl: 'app/pages/documentos/documentos.html',
           title: 'Documentos',
           controller:'DocumentosCtrl',
-          sidebarMeta: {
-            icon: 'ion-document-text',
-            order: 5,
-          },
           resolve: {
             ViajeService:'ViajeService',
             vehiculos:function(ViajeService){
@@ -23,7 +19,7 @@
                        return vehiculos;
                })
             }
-           }
+          }
         })
         ;
   }

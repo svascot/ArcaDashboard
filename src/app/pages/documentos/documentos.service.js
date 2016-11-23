@@ -6,9 +6,16 @@
 
   /** @ngInject */
   function DocumentoService($http,$rootScope,$q) {
+    var documentoSeleccionado = undefined;
 
     return{
-
+      
+      getDocumentoSeleccionado: function(){
+        return documentoSeleccionado;
+      },
+      setDocumentoSeleccionado:function(documento){
+        documentoSeleccionado = documento;
+      },
 
       crearDocumento :function(documento){
         var query = $rootScope.serviceURL+"documento";

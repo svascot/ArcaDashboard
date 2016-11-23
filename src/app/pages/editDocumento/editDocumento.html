@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-md-12">
+    <div
+        ba-panel
+        ba-panel-title="Editar el  documento"
+        ba-panel-class="with-scroll">
+        <div class="feed-messages-container" track-width="smallContainerWidth" min-width="360">
+        <h4>Nombre del documento: </h4> <input type="text" class="form-control input-smt "
+                      placeholder="Nombre del documento" ng-model="documento.nombre">
+            </div>
+        <br>
+        <br>
+        <h4> Archivo: </h4>
+        
+        <button class="btn btn-primary btn-xs" ngf-select ng-model="imagenDocumento"
+                        ngf-multiple="false" ngf-max-size="2MB" >
+                        <span class="glyphicon glyphicon-paperclip span-adjuntar">Imagen</span>
+                </button>
+        {{imagenDocumento.name || 'Seleccione un nuevo archivo'}}
+        <br>
+        <br>
+        <h4>Fecha de expiracion: </h4>
+        <input type="date" ng-model="documento.fechaExpiracion">
+        <div class="row col-md-12">
+            <button type="button" class="btn btn-primary" ng-click="save(imagenDocumento)">Guardar Cambios</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

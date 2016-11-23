@@ -7,7 +7,7 @@
   /** @ngInject */
   var openedToasts =[];
 
-  function DocumentosCtrl($scope,toastr, toastrConfig,$rootScope,uploadToAWS,DocumentoService,propietario) {
+  function DocumentosCtrl($scope,toastr, toastrConfig,$rootScope,uploadToAWS,DocumentoService,propietario,$state) {
     $scope.propietario = propietario;
     console.log("--------")
     console.dir($scope.propietario)
@@ -27,6 +27,11 @@
             })
          })
   	}
+    $scope.editar = function(documento){
+      DocumentoService.setDocumentoSeleccionado(documento);
+      $rootScope.currentOpenModal.close();
+      $state.go('editDocumento');
+    }
 
     $scope.openCalendar = function(e,prop) {
         this[prop] =true
