@@ -2,129 +2,65 @@
   <div class="col-md-12">
     <div
         ba-panel
-        ba-panel-title="Filtrar vehiculos"
-        ba-panel-class="with-scroll">
-
-        <form name="form" ng-submit="crearUsuario(usuario)">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <input type="text" class="form-control input-sm" id="input1"
-                        placeholder="Nombre" ng-model="usuario.nombre">
-              </div>
-              <div class="form-group">
-                <input type="number" class="form-control input-sm" id="input1"
-                        placeholder="Cedula" ng-model="usuario.cedula">
-              </div>
-              <div class="form-group">
-                <input type="email" class="form-control input-sm" id="input1"
-                        placeholder="E-Mail" ng-model="usuario.email">
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control input-sm" id="input1"
-                        placeholder="Telefono" ng-model="usuario.telefono">
-              </div>
-            </div>
-          <div class="col-md-6">
-              <div class="form-group">
-                <label>Fecha de nacimiento</label>
-                <p class="input-group">
-                    <input type="text" class="form-control" datetime-picker="dd MMM yyyy" ng-model="usuario.fechaNacimiento"
-                    is-open="fechaNacimiento"  />
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="openCalendar($event, 'fechaNacimiento')"><i class="fa fa-calendar"></i></button>
-                    </span>
-                </p>
-              </div>
-              <div class="form-group">
-                <input type="password" class="form-control input-sm" id="input1"
-                        placeholder="Contaseña" ng-model="usuario.password">
-               </div>
-
-              <select class="form-control selectpicker with-search" data-live-search="true" title="Rol"    selectpicker
-               ng-model="usuario.rol">
-                <option value="gerente">Gerente</option>
-                <option value="despachador">Despachador</option>
-                <option value="cliente">Cliente</option>
-                <option value="conductor">Conductor</option>
-              </select>
-
-
-
-               <div class="form-group">
-                              <label>{{usuario.imagen.name || 'Seleccionar imagen'}}</label>
-                               <button class="btn btn-primary" ngf-select ng-model="usuario.imagen" ngf-multiple="false" ngf-max-size="2MB" style="margin-top: 6%;margin-left: 3%;"><span class="glyphicon glyphicon-paperclip span-adjuntar" style="color: white;" style="margin-left: 2%;margin-top: 1%;"> Foto</span>
-                                </button>
-
-               </div>
-
-            </div>
-
-          </div>
-          <div class="row col-md-6">
-            <button type="submit" class="btn btn-primary">Registrar usuario</button>
-          </div>
-           </div>
-        </form>
-    </div>
-  </div>
-
-<div class="row">
-  <div class="col-md-12">
-    <div
-        ba-panel
         ba-panel-title="Lista de personal"
         ba-panel-class="with-scroll">
-        <div class="feed-messages-container" track-width="smallContainerWidth" min-width="360">
-          <div class="feed-message" style="min-height: 95px;" ng-repeat="item in usuarios"
-               ng-click="verDetalles(item)">
-            <div class="message-icon">
-              <img class="photo-icon" ng-src={{item.foto}}>
-            </div>
-            <div class="text-block text-message">
-              <div class="message-header">
-                <span class="author">{{item.nombre}} - {{item.rol}}</span>
+        <div class="col-md-6">
+          <button type="button" class="btn btn-primary btn-sm"
+              ng-click="openCrearUsuario()">Crear usuario
+          </button>
+        </div>
+        <div class="col-md-12">
+          <div class="feed-messages-container" track-width="smallContainerWidth" min-width="360">
+            <div class="feed-message" style="min-height: 95px;" ng-repeat="item in usuarios"
+                 ng-click="verDetalles(item)">
+              <div class="message-icon">
+                <img class="photo-icon" ng-src={{item.foto}}>
               </div>
-              <div class="message-content">
-                <div class="col-md-12">
-                  <div class="info-label">
-                    <i class="ion-person"></i>
-                     Cedula: <b>{{item.cedula}}</b>
-                  </div>
-                  <div class="info-label">
-                    <i class="ion-ios-email"></i>
-                     Correo electronico: <b><a class="email-link" >{{item.email}}</a></b>
-                  </div>
-                  <div class="info-label">
-                    <i class="ion-ios-telephone"></i>
-                     Celular: <b><a class="email-link" >{{item.celular}}</a></b>
-                  </div>
-                  <div class="info-label">
-                    <i class="ion-calendar"></i>
-                     Fecha de nacimiento: <b>{{item.fechaNacimiento  | date:"dd/MM/yyyy"}}</b>
-                  </div>
+              <div class="text-block text-message">
+                <div class="message-header">
+                  <span class="author">{{item.nombre}} - {{item.rol}}</span>
+                </div>
+                <div class="message-content">
+                  <div class="col-md-12">
+                    <div class="info-label">
+                      <i class="ion-person"></i>
+                       Cedula: <b>{{item.cedula}}</b>
+                    </div>
+                    <div class="info-label">
+                      <i class="ion-ios-email"></i>
+                       Correo electronico: <b><a class="email-link" >{{item.email}}</a></b>
+                    </div>
+                    <div class="info-label">
+                      <i class="ion-ios-telephone"></i>
+                       Celular: <b><a class="email-link" >{{item.celular}}</a></b>
+                    </div>
+                    <div class="info-label">
+                      <i class="ion-calendar"></i>
+                       Fecha de nacimiento: <b>{{item.fechaNacimiento  | date:"dd/MM/yyyy"}}</b>
+                    </div>
+                </div>
+              </div>
+
+              <div class="preview" ng-show="item.expanded" >
+                <div class="message-header">
+                  <span class="author">Detalles del usuario</span>
+                </div>
+
+
+              <div class="row col-md-12">
+                <button type="button" class="btn btn-primary btn-sm"
+                    ng-click="">Actualizar
+                </button>
+                <button class="btn btn-primary btn-sm"
+                  ng-click="openModalDocumentos(item)">Documentos
+                </button>
+                <button type="button" class="btn btn-danger btn-sm"
+                    ng-click="">Eliminar
+                </button>
               </div>
             </div>
 
-            <div class="preview" ng-show="item.expanded" >
-              <div class="message-header">
-                <span class="author">Detalles del usuario</span>
-              </div>
-
-
-            <div class="row col-md-12">
-              <button type="button" class="btn btn-primary btn-sm"
-                  ng-click="">Actualizar
-              </button>
-              <button class="btn btn-primary btn-sm"
-                ng-click="openModalDocumentos(item)">Documentos
-              </button>
-              <button type="button" class="btn btn-danger btn-sm"
-                  ng-click="">Eliminar
-              </button>
             </div>
-          </div>
-
           </div>
         </div>
       </div>
