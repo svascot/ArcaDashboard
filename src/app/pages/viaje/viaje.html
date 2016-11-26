@@ -98,14 +98,16 @@
 
             <div class="col-md-6">
                 <div class="form-group">
-                      <label>Origen</label>
-                      <input type="text" required class="form-control input-sm"
-                           ng-model="viaje.origen">
+                      <select id="origen" class="form-control selectpicker with-search"
+                      data-live-search="true" title="Origen" selectpicker
+                      ng-model="viaje.origen" ng-options="origen.nombre as origen.nombre for origen in destinos">
+                      </select>
                 </div>
-                <div class="form-group">
-                      <label>Destino</label>
-                      <input type="text" required class="form-control input-sm"
-                            ng-model="viaje.destino">
+                <div class="form-group">                      
+                      <select id="destino" class="form-control selectpicker with-search"
+                      data-live-search="true" title="Destino" selectpicker
+                      ng-model="viaje.destino" ng-options="destino.nombre as destino.nombre for destino in destinos">
+                      </select>
                 </div>
             </div>
 
@@ -114,7 +116,7 @@
                 <button type="button" ng-click="expandFilter()" class="btn btn-primary btn-xs">Opciones avanzadas</button>
               </div>
 
-              <div ng-show="filtro.expanded">
+              <div ng-show="opcionesAvanzadas">
                 <div class="form-group">
                   <input type="text" class="form-control input-sm" id="input2"
                           placeholder="Placa" ng-model="filtro.placa">

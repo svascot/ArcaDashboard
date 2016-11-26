@@ -6,7 +6,8 @@
 
   /** @ngInject */
   var openedToasts =[];
-  function ViajeCtrl($scope,$rootScope,ViajeService,toastr, toastrConfig) {
+  function ViajeCtrl($scope,$rootScope,ViajeService,toastr, toastrConfig,destinos) {
+    $scope.destinos = destinos;
 
     $scope.openCalendar = function(e,prop) {
         this[prop] =true
@@ -25,12 +26,9 @@
     //$scope.filtro.tipoViaje = true;
     $scope.vehiculos = {};
   
-    $scope.expand = function(vehiculo){
-      vehiculo.expanded = !vehiculo.expanded;
-    }
-
+   
     $scope.expandFilter = function(){
-      $scope.filtro.expanded = !$scope.filtro.expanded;
+      $scope.opcionesAvanzadas= !$scope.opcionesAvanzadas;
     }
 
     $scope.filtrar = function(filtro){
@@ -60,5 +58,7 @@
         }
       )
     }
+
+
   }
 })();

@@ -12,8 +12,8 @@
     Capaidad de pasajeros: {{vehiculo.capacidad}}<br>
     Origen: {{viaje.origen}}<br>
     Destino: {{viaje.destino}}<br>
-    Fecha de salida: {{viaje.fechaInicio}}<br>
-    Fecha de regreso: {{viaje.fechaFin}}
+    Fecha de salida: {{viaje.fechaInicio |date:"dd/MM/yyyy '-' h:mma"}}<br>
+    Fecha de regreso: {{viaje.fechaFin |date:"dd/MM/yyyy '-' h:mma" }}
   </div>
   <div class="modal-footer">
     <button class="btn btn-primary" ng-click="asignarViaje()">Asignar viaje</button>

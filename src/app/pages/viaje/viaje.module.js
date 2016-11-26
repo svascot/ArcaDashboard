@@ -16,6 +16,13 @@
             icon: 'ion-android-calendar',
             order: 1,
           },
+          resolve:{
+             destinos:function(ViajeService){
+                  return ViajeService.listarDestinos().then(function(destinos){
+                      return destinos
+                  })
+             }
+          }
         });
   }
 })();
