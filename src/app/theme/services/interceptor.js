@@ -6,7 +6,7 @@
   'use strict';
 
   angular.module('BlurAdmin.theme')
-    .service('intercerptor', intercerptor);
+    .factory('intercerptor', intercerptor);
 
   /** @ngInject */
   function intercerptor($q,$rootScope) {
@@ -16,7 +16,7 @@
    	 warningTemplate ='<div class="modal-content">  <div class="modal-header bg-warning"> <i class="ion-android-warning modal-icon"></i><span> Aleta</span> </div> <div class="modal-body text-center">{{text}}</div> <div class="modal-footer">    <button type="button" class="btn btn-warning" ng-click="$dismiss()">OK</button>  </div></div>';
       
       var intercerptor={};
-	  //var dialog = waitingDialog;
+	  var dialog = waitingDialog;
 	  var showingLoading = false;
 	  var loadingStack = 0;
 	    
@@ -25,7 +25,8 @@
 	        loadingStack--;
 	    }
 	    if(loadingStack==0){
-	   // $rootScope.closeLoadingModal();
+	    //$rootScope.closeLoadingModal();
+	    dialog.hide();	
 	    console.log("Acabo")
 	      $('.modal-backdrop.fade.in').remove();
 	      showingLoading = false;
@@ -35,7 +36,8 @@
 	  var showLoading = function(){
 	      if(loadingStack==0){   
 	         console.log("Cargando")    	      
-	        //$rootScope.openLoadingModal('app/pages/ui/modals/modalTemplates/loadingModal.html','md','','static');               
+	        //$rootScope.openLoadingModal('app/pages/ui/modals/modalTemplates/loadingModal.html','md','','static'); 
+	         dialog.show("Cargando");                
 	      }
 	      loadingStack++;
 	  }
