@@ -9,7 +9,7 @@
     .run(themeRun);
 
   /** @ngInject */
-  function themeRun($timeout, $rootScope, layoutPaths, preloader, $q, baSidebarService, themeLayoutSettings,$uibModal,$state,envService,AuthService) {
+  function themeRun($timeout, $rootScope, layoutPaths, preloader, $q, baSidebarService, themeLayoutSettings,$uibModal,$state,envService,AuthService,$http) {
     var whatToWait = [
       preloader.loadAmCharts(),
       $timeout(500)
@@ -119,6 +119,19 @@
         }
         return false;
       };
+    $rootScope.setAuthorizationToken = function(){
+      var token = localStorage.getItem("arcaToken");
+      if(token){
+        $rootScope.isLoged = true
+        $http.defaults.headers.common.Authorization = 'Bearer '+token;
+      }
+      else{
+        $rootScope.isLoged = false;
+      }
+    }
+
+    $rootScope.setAuthorizationToken()
+
     $rootScope.$on('$stateChangeStart', 
       function(event, toState, toParams, fromState, fromParams){ 
         checkLoguedInFN();

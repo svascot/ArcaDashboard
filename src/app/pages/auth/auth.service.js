@@ -14,11 +14,13 @@
     return{
       login :function(usuario){
         var query = $rootScope.serviceURL+"auth/login";
+        usuario.desarrollo = true;
         return $http.post(query,usuario).then(
           function(resultado ){
             console.dir(resultado.data);
-            localStorage.setItem("user", JSON.stringify(resultado.data));
-            return resultado.data
+            localStorage.setItem("user", JSON.stringify(resultado.data.user));
+            localStorage.setItem("arcaToken", resultado.data.token);
+            return resultado.data.user
           }
         )
       },
