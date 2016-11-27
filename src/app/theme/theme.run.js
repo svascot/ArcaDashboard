@@ -130,7 +130,7 @@
       }
     }
 
-    $rootScope.setAuthorizationToken()
+    $rootScope.setAuthorizationToken()// refactorizar en produccion
 
     $rootScope.$on('$stateChangeStart', 
       function(event, toState, toParams, fromState, fromParams){ 

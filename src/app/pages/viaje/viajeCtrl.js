@@ -32,13 +32,13 @@
     }
 
     $scope.filtrar = function(filtro){
-      console.dir(filtro)
+      console.dir($scope.filtro)
       if(filtro.fechaInicio != null && filtro.fechaFin != null){
         $scope.viaje.fechaInicio = filtro.fechaInicio;
         $scope.viaje.fechaFin = filtro.fechaFin;
 
-        filtro.fechaInicio = filtro.fechaInicio.getTime()
-        filtro.fechaFin = filtro.fechaFin.getTime()
+        filtro.fechaInicio = filtro.fechaInicio;
+        filtro.fechaFin = filtro.fechaFin;
 
       }
       ViajeService.listarVehiculos(filtro).then(function(response){

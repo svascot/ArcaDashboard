@@ -35,10 +35,6 @@ uploadToAWS.getS3Credentials =function(file,uniqueID){
     });
 
 }
-uploadToAWS.putFileToS3 = function(file,signedUrl){
- return $http.put(signedUrl,file)
-
-}
 
 	uploadToAWS.uploadFiles = function(files){
 	  var q = $q.defer();   
@@ -48,6 +44,9 @@ uploadToAWS.putFileToS3 = function(file,signedUrl){
 
 	        for (var i = files.length - 1; i >= 0; i--) {         
 	            var p = uploadToAWS.getS3Credentials(files[i],uniqueID).then(function(signed){
+	            			if(localStorage.getItem("arcaToken")){// eliminar en produccion
+	            				delete $http.defaults.headers.common.Authorization;// eliminar en produccion
+	            			}// eliminar en produccion
 	                         names.push({ endPoint:$rootScope.s3bucketURL+signed.name});
 	                         return $http.put(signed.url,signed.file,{headers: {'Content-Type':signed.contentType}})         
 	                })
@@ -55,8 +54,10 @@ uploadToAWS.putFileToS3 = function(file,signedUrl){
 	        }    
 
 	      return $q.all(uploads).then(function(){
+	      	$rootScope.setAuthorizationToken()// eliminar en produccion
 	        return names;
 	      },function(err){
+	      		$rootScope.setAuthorizationToken()// eliminar en produccion
 	      		console.dir(err)
 	      })
 	    }

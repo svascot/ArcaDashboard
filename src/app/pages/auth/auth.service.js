@@ -28,7 +28,8 @@
         var query = $rootScope.serviceURL+"auth/logout";
         return $http.post(query).then(
           function(resultado ){  
-          localStorage.removeItem("user")          
+          localStorage.removeItem("user");
+          localStorage.removeItem("arcaToken");     
             return resultado.data
           }
         )
