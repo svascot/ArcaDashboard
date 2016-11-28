@@ -9,10 +9,18 @@
     var destinos = undefined;
 
     return{
-
       crearViaje :function(viaje){
         var query = $rootScope.serviceURL+"viaje/";
         return $http.post(query,{viaje:viaje}).then(
+          function(resultado){
+            console.dir(resultado.data);
+            return resultado.data
+          }
+        )
+      },
+      crearViajeRecurrente :function(viaje){
+        var query = $rootScope.serviceURL+"viaje/recurrente";
+        return $http.post(query,viaje).then(
           function(resultado){
             console.dir(resultado.data);
             return resultado.data

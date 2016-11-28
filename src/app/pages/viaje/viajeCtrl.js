@@ -6,8 +6,11 @@
 
   /** @ngInject */
   var openedToasts =[];
-  function ViajeCtrl($scope,$rootScope,ViajeService,toastr, toastrConfig,destinos) {
+  function ViajeCtrl($scope,$rootScope,ViajeService,toastr, toastrConfig,destinos,vehiculos) {
+  	var tabSelected = undefined;
+  	var viajeRecurrente ={}
     $scope.destinos = destinos;
+    $scope.todosLosvehiculos = vehiculos;
 
     $scope.openCalendar = function(e,prop) {
         this[prop] =true
@@ -46,6 +49,7 @@
       })
     }
 
+
     $scope.openCrearViaje = function(viaje,vehiculo){
       $rootScope.openModalController('app/pages/viaje/modal/crearViajeModal.html','CrearViajeModalCtrl',
         {
@@ -58,7 +62,54 @@
         }
       )
     }
+    $scope.tabSelected= function(tab){
+    	tabSelected = tab
+    }
+    $scope.crearViajeRecurrente = function(viaje){
+    	viaje.diasDeLaSemana = viajeRecurrente.diasDeLaSemana;
+    	viaje.trabajaFestivos = viajeRecurrente.trabajaFestivos;
+    	viaje.tiempoDeViaje = Math.trunc((viaje.horaFin.getTime() - viaje.horaInicio.getTime())/1000)
+      viaje.fechaInicio =  new Date(viaje.fechaInicio.getTime() + viaje.tiempoDeViaje *1000)
+      viaje.fechaFin =  new Date(viaje.fechaFin.getTime() + viaje.tiempoDeViaje * 1000)
 
+    	ViajeService.crearViajeRecurrente(viaje).then(function(result){
+    		openedToasts.push(toastr["success"]("Viaje recurrente creado", "Exito", $rootScope.toastDefautlOptions));
+    	})
+    	
+    	
+    } 	
+    $scope.procesarDia =function(dia){
+    	if(viajeRecurrente.diasDeLaSemana){
+    		var index = viajeRecurrente.diasDeLaSemana.indexOf(dia)
+    		if(index>=0){
+    			viajeRecurrente.diasDeLaSemana.splice(index,1)
+    		}else{
+    			viajeRecurrente.diasDeLaSemana.push(dia)
+    		}
+    	}
+    	else{
+    		viajeRecurrente.diasDeLaSemana = []
+    		viajeRecurrente.diasDeLaSemana.push(dia)
+    	}
+    	
+    }
+    $scope.procesarTrabajaFestivos= function(trabajaFestivos){
+    	if(viajeRecurrente.trabajaFestivos){
+    		 viajeRecurrente.trabajaFestivos = false
+    	}else{
+    		viajeRecurrente.trabajaFestivos = true
+    	}
 
+    }
+    $scope.dias = [
+    	{text:"Lunes",color:'#6eba8c',id:1},
+    	{text:"Martes",color:'#0e8174',id:2},
+    	{text:"Miercoles",color:'#b9f2a1',id:3},
+    	{text:"Jueves",color:'#005562',id:4},
+    	{text:"Viernes",color:'#6eba8c',id:5},
+    	{text:"Sabado",color:'#0e8174',id:6},
+    	{text:"Domingo",color:'#b9f2a1',id:0}
+    ]
+ 	
   }
 })();

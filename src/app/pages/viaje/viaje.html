@@ -2,8 +2,10 @@
   <div class="col-md-6">
     <div
         ba-panel
-        ba-panel-title="Filtrar vehiculos"
+        ba-panel-title="Detalles del viaje"
         ba-panel-class="with-scroll">
+<uib-tabset active="$tabSetStatus.activeTab">
+    <uib-tab select="tabSelected('unico')" heading="Unico">
 
         <form name="form" ng-submit="filtrar(filtro)">
           <div class="row">
@@ -47,7 +49,7 @@
 
               <div class="form-group">
                 <label>Capacidad de pasajeros</label>
-                <input type="text" required class="form-control input-sm" id="input1"
+                <input type="text"  class="form-control input-sm" id="input1"
                         placeholder="Maximo 41 pasajeros" ng-model="filtro.capacidad">
               </div>
 
@@ -142,69 +144,118 @@
             <button type="submit" class="btn btn-primary">Buscar vehiculos</button>
           </div>
         </form>
-    </div>
-  </div>
-  <div class="col-md-6">
-    <div
-        ba-panel
-        ba-panel-title="Lista de vehiculos"
-        ba-panel-class="with-scroll">
-        <div class="feed-messages-container" track-width="smallContainerWidth" min-width="360">
-          <div class="feed-message" style="min-height: 95px;" ng-repeat="vehiculo in vehiculos" ng-click="openCrearViaje(viaje,vehiculo)">
-            <div class="message-icon">
-              <img class="photo-icon" ng-src={{vehiculo.imagen}}>
+      </uib-tab>
+      <!--  ////////////////////////////////////////////////////////////////////////////////////////////////////////////  -->
+      <uib-tab  select="tabSelected('recurrente')" heading="Recurrente">
+        <form name="form" >
+          <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                  <label>Fecha de inicio</label>
+                  <p class="input-group" id='fechainicioRecurrente'>
+                      <input type="text" required class="form-control" enable-time="false" datetime-picker="dd MMM yyyy" ng-model="viajeRecurrente.fechaInicio" is-open="fechainicioRecurrenteOpen"  />
+                      <span class="input-group-btn">
+                          <button type="button" class="btn btn-default" ng-click="openCalendar($event,'fechainicioRecurrenteOpen')"><i class="fa fa-calendar"></i></button>
+                      </span>
+                  </p>
+                </div>
+                <div class="form-group">
+                  <label>Fecha final</label>
+                  <p class="input-group">
+                      <input type="text" class="form-control" enable-time="false" datetime-picker="dd MMM yyyy" data-language='es' ng-model="viajeRecurrente.fechaFin" is-open="fechafinalRecurrenteOpen"  />
+                      <span class="input-group-btn">
+                          <button type="button" class="btn btn-default" ng-click="openCalendar($event, 'fechafinalRecurrenteOpen')"><i class="fa fa-calendar"></i></button>
+                      </span>
+                  </p>
+                </div>
+                <div class="form-group">
+                  <label>Hora de inicio</label>
+                  <p class="input-group">
+                      <input type="text" class="form-control" datetime-picker="HH:mm" enable-date="false" id="horaInicio" ng-model="viajeRecurrente.horaInicio" is-open="horaInicioOpen"  />
+                      <span class="input-group-btn">
+                          <button type="button" class="btn btn-default" ng-click="openCalendar($event, 'horaInicioOpen')"><i class="fa fa-clock-o"></i></button>
+                      </span>
+                  </p>
+                </div>
+                <div class="form-group">
+                  <label>Hora fin</label>
+                  <p class="input-group">
+                      <input type="text" class="form-control" datetime-picker="HH:mm" enable-date="false" data-language='es' ng-model="viajeRecurrente.horaFin" is-open="horaFinOpen"  />
+                      <span class="input-group-btn">
+                          <button type="button" class="btn btn-default" ng-click="openCalendar($event, 'horaFinOpen')"><i class="fa fa-clock-o"></i></button>
+                      </span>
+                  </p>
+                </div>
+                <div class="form-group">
+                  <label>Descripcion</label>
+                  <input type="text" class="form-control" ng-model="viajeRecurrente.descripcion" >
+                </div>
+                 <div class="form-group">
+                 <label>Vehiculo</label>
+                  <select class="form-control selectpicker with-search"
+                    data-live-search="true"  selectpicker
+                    ng-model="viajeRecurrente.vehiculoId"
+                    ng-options="vehiculo.id as vehiculo.placa for vehiculo in todosLosvehiculos">
+                  </select>
+                </div>
             </div>
-            <div class="text-block text-message">
-              <div class="message-header">
-                <span class="author">{{vehiculo.marca}} {{vehiculo.referencia}} {{vehiculo.modelo}}</span>
+            <div class="col-md-6">
+
+              <div class="form-group">
+              <label>Dias del compromiso</label>
+                  <div class="task-todo-container" ng-class="{'transparent': transparent}">
+                  
+                    <div class="box-shadow-border"></div>
+                    <ul class="todo-list"  ng-model="diasDeLaSemana">
+                      <li ng-repeat="dia in dias" ng-if="!dia.deleted" ng-init="activeItem=false"
+                          ng-class="{checked: dia.selected, active: activeItem}"
+                          ng-mouseenter="activeItem=true" ng-mouseleave="activeItem=false">
+
+                        <div class="blur-container"><div class="blur-box"></div></div>
+                        <i class="mark" style="background-color: {{::dia.color}}"></i>
+                        <label class="todo-checkbox custom-checkbox custom-input-success">
+                          <input type="checkbox" ng-model="dia.selected" ng-change=procesarDia(dia.id)>
+                          <span class="cut-with-dots">{{ dia.text }}</span>
+                        </label>
+
+                      </li>
+                    </ul>
+                  </div>
               </div>
-              <div class="message-content">
-                <div class="col-md-12">
-                  <div class="info-label">
-                    <i class="ion-person"></i>
-                     Conductor: <b>{{vehiculo.Usuario.nombre}}</b>
+           
+
+            
+              <div class="form-group">
+                  <div class="task-todo-container" ng-class="{'transparent': transparent}">
+                  
+                    <div class="box-shadow-border"></div>
+                    <ul class="todo-list" >
+                      <li  ng-if="!incluyeFestivos" 
+                          ng-class="{checked: incluyeFestivos, active: activeItem}"
+                          ng-mouseenter="activeItem=true" ng-mouseleave="activeItem=false">
+
+                        <div class="blur-container"><div class="blur-box"></div></div>
+                        <i class="mark" style="background-color: red"></i>
+                        <label class="todo-checkbox custom-checkbox custom-input-success">
+                          <input type="checkbox" ng-model="incluyeFestivos" ng-change="procesarTrabajaFestivos(incluyeFestivos)">
+                          <span class="cut-with-dots">Incluir festivos</span>
+                        </label>                      
+                      </li>
+                      
+                    </ul>
                   </div>
-                  <div class="info-label">
-                    <i class="ion-android-car"></i>
-                     Placa: <b>{{vehiculo.placa}}</b>
-                  </div>
-                  <div class="info-label">
-                    <i class="ion-person-stalker"></i>
-                     Cupo: <b>{{vehiculo.capacidad}}</b>
-                  </div>
-                  <div class="info-label">
-                    <i class="ion-android-settings"></i>
-                    <span ng-show={{vehiculo.reclinable}}>
-                      Sillas reclinables
-                    </span>
-                    <span ng-show={{vehiculo.aire}}>
-                      Aire
-                    </span>
-                    <span ng-show={{vehiculo.audio}}>
-                      Audio
-                    </span>
-                    <span ng-show={{vehiculo.video}}>
-                      Video
-                    </span>
-                    <span ng-show={{vehiculo.bano}}>
-                      Baño
-                    </span>
-                    <span ng-show={{vehiculo.wifi}}>
-                      WiFi
-                    </span>
-                  </div>
-            <!--    </div>   -->
-            <!--    <div class="col-md-6"> -->
-            <!--      <div class="info-label"> -->
-            <!--        <i class="ion-person"></i> -->
-            <!--         Conductor: {{vehiculo.Usuario.nombre}} -->
-            <!--      </div> -->
-            <!--    </div> -->
               </div>
             </div>
+
+
           </div>
-        </div>
-      </div>
+          <div class="row col-md-12">
+            <button ng-click="crearViajeRecurrente(viajeRecurrente)" class="btn btn-primary">Asignar viaje</button>
+          </div>
+        </form>
+      </uib-tab>
+    </uib-tabset>
     </div>
   </div>
+
 </div>

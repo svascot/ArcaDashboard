@@ -21,6 +21,11 @@
                   return ViajeService.listarDestinos().then(function(destinos){
                       return destinos
                   })
+             },
+             vehiculos:function(VehiculosService){
+                  return VehiculosService.listarVehiculos().then(function(vehiculos){
+                      return vehiculos
+                  })
              }
           }
         });
