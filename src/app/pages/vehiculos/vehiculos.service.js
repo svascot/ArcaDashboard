@@ -9,7 +9,7 @@
 
     return{
 
-      listarVehiculos :function(vehiculo={}){
+      listarVehiculos :function(vehiculo){
         var query = $rootScope.serviceURL+"vehiculo/filtrar";
         window.console.log(query);
         return $http.post(query,{filtro:vehiculo}).then(
