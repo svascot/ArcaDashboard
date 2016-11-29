@@ -69,8 +69,16 @@
     	viaje.diasDeLaSemana = viajeRecurrente.diasDeLaSemana;
     	viaje.trabajaFestivos = viajeRecurrente.trabajaFestivos;
     	viaje.tiempoDeViaje = Math.trunc((viaje.horaFin.getTime() - viaje.horaInicio.getTime())/1000)
-      viaje.fechaInicio =  new Date(viaje.fechaInicio.getTime() + viaje.tiempoDeViaje *1000)
-      viaje.fechaFin =  new Date(viaje.fechaFin.getTime() + viaje.tiempoDeViaje * 1000)
+      //aca seteo la hora de inicio del viaje//
+      var horaInicio = viaje.horaInicio.getHours();
+      var minutosInicio = viaje.horaInicio.getMinutes();
+
+      viaje.fechaInicio.setHours(viaje.fechaInicio.getHours()+horaInicio);
+      viaje.fechaInicio.setMinutes(viaje.fechaInicio.getMinutes()+minutosInicio)
+
+      viaje.fechaFin.setHours(viaje.fechaFin.getHours()+horaInicio);
+      viaje.fechaFin.setMinutes(viaje.fechaFin.getMinutes()+minutosInicio)
+      ////////////////////////////////////////////////////////////////////
 
     	ViajeService.crearViajeRecurrente(viaje).then(function(result){
     		openedToasts.push(toastr["success"]("Viaje recurrente creado", "Exito", $rootScope.toastDefautlOptions));
