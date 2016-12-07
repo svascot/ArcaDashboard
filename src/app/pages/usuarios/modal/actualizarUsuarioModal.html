@@ -1,0 +1,66 @@
+
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" ng-click="$dismiss()" aria-label="Close">
+      <em class="ion-ios-close-empty sn-link-close"></em>
+    </button>
+    <h4 class="modal-title">Actualizar usuario</h4>
+  </div>
+    <form class="form-horizontal">
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="text" class="form-control input-sm" id="input1"
+                      placeholder="Nombre" ng-model="usuario.nombre">
+            </div>
+            <div class="form-group">
+              <input type="number" class="form-control input-sm" id="input1"
+                      placeholder="Cedula" ng-model="usuario.cedula">
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control input-sm" id="input1"
+                      placeholder="E-Mail" ng-model="usuario.email">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control input-sm" id="input1"
+                      placeholder="Telefono" ng-model="usuario.telefono">
+            </div>
+          </div>
+        <div class="col-md-6">
+            <div class="form-group">
+              <label>Fecha de nacimiento</label>
+              <p class="input-group">
+                  <input type="text" class="form-control" datetime-picker="dd MMM yyyy" ng-model="usuario.fechaNacimiento"
+                  is-open="fechaNacimiento"  />
+                  <span class="input-group-btn">
+                      <button type="button" class="btn btn-default" ng-click="openCalendar($event, 'fechaNacimiento')"><i class="fa fa-calendar"></i></button>
+                  </span>
+              </p>
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control input-sm" id="input1"
+                      placeholder="Contaseña" ng-model="usuario.password">
+             </div>
+
+            <select class="form-control selectpicker with-search" data-live-search="true" title="Rol"    selectpicker
+             ng-model="usuario.rol">
+              <option value="gerente">Gerente</option>
+              <option value="despachador">Despachador</option>
+              <option value="cliente">Cliente</option>
+              <option value="conductor">Conductor</option>
+            </select>
+            <div class="form-group">
+                            <label>{{usuario.imagen.name || 'Seleccionar imagen'}}</label>
+                             <button class="btn btn-primary" ngf-select ng-model="usuario.imagen" ngf-multiple="false" ngf-max-size="2MB" style="margin-top: 6%;margin-left: 3%;"><span class="glyphicon glyphicon-paperclip span-adjuntar" style="color: white;" style="margin-left: 2%;margin-top: 1%;"> Foto</span>
+                              </button>
+             </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="actializarUsuario(usuario)">Actualizar</button>
+        <button class="btn btn-primary" ng-click="$dismiss()">Cancelar</button>
+      </div>
+      </form>
+</div>
