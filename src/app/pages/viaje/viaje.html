@@ -258,4 +258,78 @@
     </div>
   </div>
 
+
+
+
+
+
+
+
+<div class="col-md-6">
+    <div
+        ba-panel
+        ba-panel-title="Lista de vehiculos"
+        ba-panel-class="with-scroll">
+        <div class="feed-messages-container" track-width="smallContainerWidth" min-width="360">
+          <div class="feed-message" style="min-height: 95px;" ng-repeat="vehiculo in vehiculos" ng-click="openCrearViaje(viaje,vehiculo)">
+            <div class="message-icon">
+              <img class="photo-icon" ng-src={{vehiculo.imagen}}>
+            </div>
+            <div class="text-block text-message">
+              <div class="message-header">
+                <span class="author">{{vehiculo.marca}} {{vehiculo.referencia}} {{vehiculo.modelo}}</span>
+              </div>
+              <div class="message-content">
+                <div class="col-md-12">
+                  <div class="info-label">
+                    <i class="ion-person"></i>
+                     Conductor: <b>{{vehiculo.Usuario.nombre}}</b>
+                  </div>
+                  <div class="info-label">
+                    <i class="ion-android-car"></i>
+                     Placa: <b>{{vehiculo.placa}}</b>
+                  </div>
+                  <div class="info-label">
+                    <i class="ion-person-stalker"></i>
+                     Cupo: <b>{{vehiculo.capacidad}}</b>
+                  </div>
+                  <div class="info-label">
+                    <i class="ion-android-settings"></i>
+                    <span ng-show={{vehiculo.reclinable}}>
+                      Sillas reclinables
+                    </span>
+                    <span ng-show={{vehiculo.aire}}>
+                      Aire
+                    </span>
+                    <span ng-show={{vehiculo.audio}}>
+                      Audio
+                    </span>
+                    <span ng-show={{vehiculo.video}}>
+                      Video
+                    </span>
+                    <span ng-show={{vehiculo.bano}}>
+                      Baño
+                    </span>
+                    <span ng-show={{vehiculo.wifi}}>
+                      WiFi
+                    </span>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
 </div>
