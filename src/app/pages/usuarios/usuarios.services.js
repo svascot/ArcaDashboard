@@ -9,65 +9,41 @@
     var def = $q.defer();
     var usuarios;
     return{
-      
+
       crearUsuario :function(usuario){
         var query = $rootScope.serviceURL+"auth/crearUsuario";
         window.console.log(query);
         window.console.dir(usuario);
         return $http.post(query,{usuario:usuario});
-        
+
+      },
+      actualizarUsuario :function(usuario){
+        var query = $rootScope.serviceURL+"usuario";
+        window.console.log(query);
+        return $http.patch(query,{usuario:usuario}).then(
+          function(resultado){
+            console.dir(resultado.data);
+            return resultado.data
+          }
+        )
+
       },
       getUsuario:function(){
           return JSON.parse(localStorage.getItem('user'));
       },
       listar :function(rol){
-       
-       
+
+
         var query = $rootScope.serviceURL+"usuario/";
         if(rol){
           query+=rol;
         }
-        
-         return $http.get(query).then(function(resultado){           
+
+         return $http.get(query).then(function(resultado){
            return  (resultado.data)
         })
-        
-
-
-         
-         /*
-  var deferred = $q.defer();
-           setTimeout(function() {
-             deferred.resolve(  
-              [{
-                  "id": 2,
-                  "deletedAt": null,
-                  "cedula": "1017199032",
-                  "nombre": "Juan Camilo Mejia",
-                  "genero": null,
-                  "fechaNacimiento": null,
-                  "celular": null,
-                  "tipoSangre": null,
-                  "rol": "gerente",
-                  "telefono": null,
-                  "activo": true,
-                  "email": null,
-                  "foto": null,
-                  "uuid": "2346edc0-a301-11e6-bb94-4d71cfa50487",
-                  "AgenciumId": 2
-                }
-              ])
-          }, 1000);
-           return deferred.promise;
-
-      */
       },
-
-
-
-
     }
-
   }
 
 })();

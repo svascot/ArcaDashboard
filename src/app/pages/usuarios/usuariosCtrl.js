@@ -37,6 +37,16 @@
       )
     }
 
+    $scope.openActualizarUsuario = function(usuario){
+      $rootScope.openModalController('app/pages/usuarios/modal/actualizarUsuarioModal.html','ActializarUsuarioModalCtrl',
+        {
+          usuarios:function () {
+            return usuarios;
+          }
+        }
+      )
+    }
+
     $scope.verDetalles= function(item){
       if(!item.expanded){
         item.expanded = false;
