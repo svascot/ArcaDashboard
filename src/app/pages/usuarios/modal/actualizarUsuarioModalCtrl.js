@@ -2,12 +2,12 @@
   'use strict';
 
   angular.module('BlurAdmin.pages.usuarios')
-      .controller('ActializarUsuarioModalCtrl', ActializarUsuarioModalCtrl);
+      .controller('actualizarUsuarioModalCtrl', actualizarUsuarioModalCtrl);
 
   /** @ngInject */
   var openedToasts =[];
-  function ActializarUsuarioModalCtrl($scope,UsuariosService,$rootScope,usuarios,uploadToAWS,toastr,toastrConfig) {
-
+  function actualizarUsuarioModalCtrl($scope,UsuariosService,$rootScope,usuario,uploadToAWS,toastr,toastrConfig) {
+    $scope.usuario = usuario;
     $scope.openCalendar = function(e,prop) {
         this[prop] =true
         e.preventDefault();
@@ -15,11 +15,11 @@
 
     };
 
-    $scope.actializarUsuario = function(usuario){
+    $scope.actualizarUsuario = function(usuario){
 
         uploadToAWS.uploadFiles(new Array(usuario.imagen)).then(function(urls){
         usuario.foto= urls[0].endPoint
-        UsuariosService.actializarUsuario(usuario).then(function(response){
+        UsuariosService.actualizarUsuario(usuario).then(function(response){
           openedToasts.push(toastr["success"]("Usuario actualizado", "Exito", $rootScope.toastDefautlOptions));
           $scope.usuarios.push(response.data);
              $timeout(function() {

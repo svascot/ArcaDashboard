@@ -38,10 +38,10 @@
     }
 
     $scope.openActualizarUsuario = function(usuario){
-      $rootScope.openModalController('app/pages/usuarios/modal/actualizarUsuarioModal.html','ActializarUsuarioModalCtrl',
+      $rootScope.openModalController('app/pages/usuarios/modal/actualizarUsuarioModal.html','actualizarUsuarioModalCtrl',
         {
-          usuarios:function () {
-            return usuarios;
+          usuario:function () {
+            return usuario;
           }
         }
       )
