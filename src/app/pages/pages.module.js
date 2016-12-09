@@ -8,7 +8,7 @@
   angular.module('BlurAdmin.pages', [
     'ui.router',
 
-    'BlurAdmin.pages.dashboard',      
+    'BlurAdmin.pages.dashboard',
     'BlurAdmin.pages.profile',
     'BlurAdmin.pages.auth',
     'BlurAdmin.pages.viaje',
@@ -18,7 +18,8 @@
     'BlurAdmin.pages.usuarios',
     'BlurAdmin.pages.documentos',
     'BlurAdmin.pages.editDocumento',
-    'BlurAdmin.pages.modals', 
+    'BlurAdmin.pages.modals',
+    'BlurAdmin.pages.listarViajes',
 
   ])
       .config(routeConfig);

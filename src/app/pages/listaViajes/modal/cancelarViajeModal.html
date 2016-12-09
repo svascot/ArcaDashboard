@@ -1,0 +1,22 @@
+
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" ng-click="$dismiss()" aria-label="Close">
+      <em class="ion-ios-close-empty sn-link-close"></em>
+    </button>
+    <h4 class="modal-title">Cancelar viaje</h4>
+  </div>
+  <div class="modal-body">
+    Esta seguro que desea cancelar el viaje con las siguientes caracteristicas?<br>
+    Vehiculo: {{vehiculo.placa}} <br>
+    Capaidad de pasajeros: {{vehiculo.capacidad}}<br>
+    Origen: {{viaje.origen}}<br>
+    Destino: {{viaje.destino}}<br>
+    Fecha de salida: {{viaje.fechaInicio |date:"dd/MM/yyyy '-' h:mma"}}<br>
+    Fecha de regreso: {{viaje.fechaFin |date:"dd/MM/yyyy '-' h:mma" }}
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" ng-click="asignarViaje()">Cancelar viaje</button>
+    <button class="btn btn-primary" ng-click="$dismiss()">Omitir</button>
+  </div>
+</div>
