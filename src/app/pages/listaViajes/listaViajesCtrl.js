@@ -8,10 +8,8 @@
   var openedToasts =[];
   function listarViajesCtrl($scope,$rootScope,ViajeService,toastr, toastrConfig,vehiculos) {
 
-
     $scope.viaje = {};
-    //$scope.filtro.tipoViaje = true;
-    $scope.vehiculos = {};
+    $scope.vehiculos = vehiculos;
 
     $scope.verDetalles= function(item){
       if(!item.expanded){
@@ -20,6 +18,11 @@
         item.expanded = !item.expanded;
     }
 
+    $scope.alerta= function(){
+      console.dir("alerta");
+      console.dir($scope.vehiculos);
+      alert($scope.vehiculos);
+    }
 
     $scope.openCancelarViaje = function(viaje,vehiculo){
       $rootScope.openModalController('app/pages/listaViajes/modal/cancelarViajeModal.html','CancelarViajeModalCtrl',

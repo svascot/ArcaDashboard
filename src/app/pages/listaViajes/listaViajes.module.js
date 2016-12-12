@@ -19,6 +19,7 @@
           resolve:{
              vehiculos:function(VehiculosService){
                   return VehiculosService.listarVehiculos().then(function(vehiculos){
+                    console.dir("vehiculos")
                     console.dir(vehiculos);
                       return vehiculos;
                   })
