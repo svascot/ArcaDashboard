@@ -8,15 +8,14 @@
   </div>
   <div class="modal-body">
     Esta seguro que desea cancelar el viaje con las siguientes caracteristicas?<br>
-    Vehiculo: {{vehiculo.placa}} <br>
-    Capaidad de pasajeros: {{vehiculo.capacidad}}<br>
-    Origen: {{viaje.origen}}<br>
-    Destino: {{viaje.destino}}<br>
-    Fecha de salida: {{viaje.fechaInicio |date:"dd/MM/yyyy '-' h:mma"}}<br>
-    Fecha de regreso: {{viaje.fechaFin |date:"dd/MM/yyyy '-' h:mma" }}
+    Vehiculo: <b>{{viaje.placa}}</b><br>
+    Origen: <b>{{viaje.origen}}</b><br>
+    Destino: <b>{{viaje.destino}}</b><br>
+    Fecha de salida: <b>{{viaje.fechaInicio |date:"dd/MM/yyyy '-' h:mma"}}</b><br>
+    Fecha de regreso: <b>{{viaje.fechaFin |date:"dd/MM/yyyy '-' h:mma" }}</b>
   </div>
   <div class="modal-footer">
-    <button class="btn btn-primary" ng-click="asignarViaje()">Cancelar viaje</button>
+    <button class="btn btn-primary" ng-click="cancelarViaje(viaje)">Cancelar viaje</button>
     <button class="btn btn-primary" ng-click="$dismiss()">Omitir</button>
   </div>
 </div>
