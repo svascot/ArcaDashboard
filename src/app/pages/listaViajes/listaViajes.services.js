@@ -9,6 +9,8 @@
 
     return{
       cancelarViaje :function(viaje){
+        console.dir("ViajeUuid");
+        console.dir(viaje);
         var query = $rootScope.serviceURL+"viaje/cancelarViaje";
         return $http.post(query,{viaje:viaje}).then(
           function(resultado){

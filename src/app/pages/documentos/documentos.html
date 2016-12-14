@@ -9,8 +9,8 @@
       <div ng-repeat="d in propietario.Documentos">
     		{{d.nombre}}
     		Fecha de expiracion: {{d.fechaExpiracion | date:'dd-MM-yyyy' }}
-    		<a target="_blank" style="margin left: 1;" class="btn btn-success btn-" role="button" href="{{d.imagen}}" download>Descargar</a>
-        <button type="button" class="btn btn-default" ng-click="editar(d)">Editar</button>
+    		<a target="_blank" style="margin left: 1;" class="btn btn-primary btn-xs" role="button" href="{{d.imagen}}" download>Descargar</a>
+        <button type="button" class="btn btn-primary btn-xs" ng-click="editar(d)">Editar</button>
     	</div>
     	<br>
     	<hr>
@@ -23,7 +23,7 @@
       <div class="form-group">
                <button class="btn btn-primary btn-xs" ngf-select ng-model="imagenDocumento"
                         ngf-multiple="false" ngf-max-size="2MB" >
-                        <span class="glyphicon glyphicon-paperclip span-adjuntar">Imagen</span>
+                        <span class="span-adjuntar">adjuntar documento</span>
                 </button>
                 {{imagenDocumento.name}}
       </div>

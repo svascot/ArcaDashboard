@@ -11,8 +11,10 @@
     $scope.viaje = viaje;
 
     $scope.cancelarViaje = function(viaje){
-
-      listarViajesService.cancelarViaje(viaje).then(function(response){
+      var viajeUuid = {
+        'uuid': viaje.uuid
+      }
+      listarViajesService.cancelarViaje(viajeUuid).then(function(response){
         console.dir(response)
         openedToasts.push(toastr["success"]("Viaje cancelado", "Exito", $rootScope.toastDefautlOptions));
         $scope.viaje = {};
