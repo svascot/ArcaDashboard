@@ -10,7 +10,7 @@
 
   /** @ngInject */
   function BlurFeedCtrl($scope) {
-    $scope.feed = [
+    /*$scope.feed = [
       {
         type: 'text-message',
         author: 'Kostya',
@@ -121,7 +121,7 @@
         expanded: false,
       }
     ];
-
+    */
     $scope.expandMessage = function(message){
       message.expanded = !message.expanded;
     }

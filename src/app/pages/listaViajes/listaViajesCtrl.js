@@ -14,7 +14,7 @@
 
     $scope.switchVehicle = function (vehicle) {
       $scope.vehiculo = vehicle;
-      $scope.viaje.placa = vehicle.placa;
+      $scope.viaje.placa = $scope.vehicle.placa;
     }
 
     $scope.verDetalles= function(item){
