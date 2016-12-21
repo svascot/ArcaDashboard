@@ -1,0 +1,23 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" ng-click="$dismiss()" aria-label="Close">
+      <em class="ion-ios-close-empty sn-link-close"></em>
+    </button>
+    <h4 class="modal-title">Eliminar vehiculo</h4>
+  </div>
+    <form class="form-horizontal">
+      <div class="modal-body">
+        Esta seguro que desea eliminar el vehiculo con las siguientes caracteristicas?<br>
+        Placa: <b>{{vehiculo.placa}}</b><br>
+        Marca: <b>{{vehiculo.marca}}</b><br>
+        Referencia: <b>{{vehiculo.referencia}}</b><br>
+        Modelo: <b>{{vehiculo.modelo}}</b><br>
+        Capacidad: <b>{{vehiculo.capacidad}}</b>
+
+        </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="eliminarVehiculo(vehiculo)">Eliminar</button>
+        <button class="btn btn-primary" ng-click="$dismiss()">Cancelar</button>
+      </div>
+      </form>
+</div>
