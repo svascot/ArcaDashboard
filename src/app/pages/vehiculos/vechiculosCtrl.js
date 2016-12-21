@@ -10,14 +10,6 @@
   function vehiculoCtrl($scope,VehiculosService,toastr, toastrConfig,$rootScope,vehiculos,uploadToAWS,UsuariosService) {
 
     $scope.vehiculos = vehiculos
-    var removerVehiculoDeLaLista = function(vehiculo){
-      for (var i = $scope.vehiculos.length - 1; i >= 0; i--) {
-        if($scope.vehiculos[i].id == vehiculo.id){
-          $scope.vehiculos.splice(i,1);
-          break;
-        }
-      }
-    }
     $scope.openModalDocumentos = function(vehiculo){
       $rootScope.openModalController('app/pages/documentos/documentos.html','DocumentosCtrl',
         {
@@ -32,15 +24,6 @@
         vehiculo.expanded = false;
       }
         vehiculo.expanded = !vehiculo.expanded;
-    }
-
-    $scope.eliminarVehiculo= function(vehiculo){
-     if (confirm("Desea eliminar el vehiculo?") == true) {
-          VehiculosService.eliminarVehiculo(vehiculo).then(function(vehiculoActualizado){
-          removerVehiculoDeLaLista(vehiculo);
-          openedToasts.push(toastr["success"]("Vehiculo eliminado", "Exito", $rootScope.toastDefautlOptions));
-        })
-      }
     }
 
     $scope.crearVehiculo = function(vehiculo,imagenVehiculo){
@@ -72,6 +55,19 @@
         {
           vehiculo:function () {
             return vehiculo;
+          }
+        }
+      )
+    }
+
+    $scope.openModalEliminarVehiculo = function(vehiculo){
+      $rootScope.openModalController('app/pages/vehiculos/modal/eliminarVehiculoModal.html','EliminarVehiculoModalCtrl',
+        {
+          vehiculo:function () {
+            return vehiculo;
+          },
+          vehiculos:function () {
+            return vehiculos;
           }
         }
       )

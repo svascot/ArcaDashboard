@@ -1,14 +1,14 @@
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-6">
     <div
         ba-panel
-        ba-panel-title="Lista de viajes por vehiculo"
+        ba-panel-title="Vehiculos"
         ba-panel-class="with-scroll">
 
 
           <div class="feed-messages-container" track-width="smallContainerWidth" min-width="360">
             <div class="feed-message" style="min-height: 95px;" ng-repeat="vehiculo in vehiculos"
-                 ng-click="verDetalles(vehiculo)">
+                 ng-click="switchVehicle(vehiculo)">
               <div class="message-icon">
                 <img class="photo-icon" ng-src={{vehiculo.foto}}>
               </div>
@@ -17,15 +17,83 @@
                   <span class="author">{{vehiculo.marca}} {{vehiculo.referencia}} {{vehiculo.modelo}}</span>
                 </div>
                 <div class="message-content">
+
                   <div class="col-md-12">
-                    <div class="info-label" ng-repeat="viaje in vehiculo.Viajes">
-                      viaje.uuid
+                    <div class="col-md-12">
+                      <div class="info-label">
+                        <i class="ion-person"></i>
+                         Conductor: <b>{{vehiculo.Usuario.nombre}}</b>
+                      </div>
+                      <div class="info-label">
+                        <i class="ion-android-car"></i>
+                         Placa: <b>{{vehiculo.placa}}</b>
+                      </div>
+                      <div class="info-label">
+                        <i class="ion-person-stalker"></i>
+                         Cupo: <b>{{vehiculo.capacidad}}</b>
+                      </div>
+                      <div class="info-label">
+                        <i class="ion-android-settings"></i>
+                        <span ng-show={{vehiculo.reclinable}}>
+                          Sillas reclinables
+                        </span>
+                        <span ng-show={{vehiculo.aire}}>
+                          Aire
+                        </span>
+                        <span ng-show={{vehiculo.audio}}>
+                          Audio
+                        </span>
+                        <span ng-show={{vehiculo.video}}>
+                          Video
+                        </span>
+                        <span ng-show={{vehiculo.bano}}>
+                          Baño
+                        </span>
+                        <span ng-show={{vehiculo.wifi}}>
+                          WiFi
+                        </span>
+                      </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div
+        ba-panel
+        ba-panel-title="Lista de viajes por vehiculo"
+        ba-panel-class="with-scroll">
+
+
+          <div class="feed-messages-container" track-width="smallContainerWidth" min-width="360">
+            <div class="feed-message" style="min-height: 95px;" ng-repeat="viaje in vehiculo.Viajes"
+                 ng-click="verDetalles(vehiculo)">
+            <!--  <div class="message-icon">
+                <img class="photo-icon" ng-src={{vehiculo.foto}}>
+              </div> -->
+              <div class="text-block text-message">
+                <div class="message-header">
+                  <span class="author">Origen: {{viaje.origen}}, Destino: {{viaje.destino}}</span>
+                </div>
+                <div class="message-content">
+                  <div class="col-md-12">
+                    <div class="info-label">
+                      Estado: <b>{{viaje.estado}}</b><br>
+                      Fecha de salida: <b>{{viaje.fechaInicio |date:"dd/MM/yyyy '-' h:mma"}}</b><br>
+                      Fecha de regreso: <b>{{viaje.fechaFin |date:"dd/MM/yyyy '-' h:mma" }}</b>
                     </div>
 
                 </div>
               </div>
 
-              <div class="preview" ng-show="item.expanded" >
+              <div class="preview" ng-show="vehiculo.expanded" >
                 <div class="message-header">
                   <span class="author">Acciones</span>
                 </div>
@@ -33,7 +101,7 @@
 
               <div class="row col-md-12">
                 <button type="button" class="btn btn-danger btn-sm"
-                    ng-click="">Eliminar
+                    ng-click="openCancelarViaje(viaje)">Eliminar
                 </button>
               </div>
             </div>

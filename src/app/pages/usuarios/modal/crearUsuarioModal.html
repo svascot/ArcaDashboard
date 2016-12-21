@@ -8,8 +8,7 @@
   </div>
     <form class="form-horizontal">
       <div class="modal-body">
-        <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-5">
             <div class="form-group">
               <input type="text" class="form-control input-sm" id="input1"
                       placeholder="Nombre" ng-model="usuario.nombre">
@@ -26,8 +25,13 @@
               <input type="text" class="form-control input-sm" id="input1"
                       placeholder="Telefono" ng-model="usuario.telefono">
             </div>
+
+            <div class="form-group">
+              <input type="password" class="form-control input-sm" id="input1"
+                      placeholder="Contaseña" ng-model="usuario.password">
+             </div>
           </div>
-        <div class="col-md-6">
+        <div class="col-md-6" style="margin-left: 3%;">
             <div class="form-group">
               <label>Fecha de nacimiento</label>
               <p class="input-group">
@@ -38,31 +42,29 @@
                   </span>
               </p>
             </div>
-            <div class="form-group">
-              <input type="password" class="form-control input-sm" id="input1"
-                      placeholder="Contaseña" ng-model="usuario.password">
-             </div>
 
-            <select class="form-control selectpicker with-search" data-live-search="true" title="Rol"    selectpicker
-             ng-model="usuario.rol">
-              <option value="gerente">Gerente</option>
-              <option value="despachador">Despachador</option>
-              <option value="cliente">Cliente</option>
-              <option value="conductor">Conductor</option>
-            </select>
-
-
+             <div class="row form-group">
+               <label>Rol del usuario </label>
+              <select class="form-control selectpicker with-search" data-live-search="true" title="Rol"    selectpicker
+               ng-model="usuario.rol">
+                <option value="gerente">Gerente</option>
+                <option value="despachador">Despachador</option>
+                <option value="cliente">Cliente</option>
+                <option value="conductor">Conductor</option>
+              </select>
+            </div>
 
              <div class="form-group">
                             <label>{{usuario.imagen.name || 'Seleccionar imagen'}}</label>
-                             <button class="btn btn-primary" ngf-select ng-model="usuario.imagen" ngf-multiple="false" ngf-max-size="2MB" style="margin-top: 6%;margin-left: 3%;"><span class="glyphicon glyphicon-paperclip span-adjuntar" style="color: white;" style="margin-left: 2%;margin-top: 1%;"> Foto</span>
+                             <button class="btn btn-primary btn-xs" ngf-select ng-model="usuario.imagen"
+                                    ngf-multiple="false" ngf-max-size="2MB" style="margin-top: 6%;margin-left: 3%;">
+                                        <span class="span-adjuntar" style="color: white;" style="margin-left: 2%;margin-top: 1%;"> Adjuntar foto</span>
                               </button>
 
              </div>
 
           </div>
 
-        </div>
       </div>
       <div class="modal-footer">
         <button class="btn btn-primary" ng-click="crearUsuario(usuario)">Registrar</button>

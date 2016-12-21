@@ -1,4 +1,53 @@
-<dashboard-pie-chart></dashboard-pie-chart>
+<div class="row pie-charts">
+  <div class="pie-chart-item-container" ng-repeat="chart in charts">
+    <div ba-panel>
+      <div class="pie-chart-item">
+        <!--<div class="chart" rel="{{ ::chart.color }}" data-percent="60"> <span class="percent"></span> </div>-->
+        <div class="description">
+          <div>{{ ::chart.description }}</div>
+          <div class="description-stats">{{ ::chart.stats }}</div>
+        </div>
+        <i class="chart-icon i-{{ ::chart.icon }}"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-xlg-3 col-lg-6 col-md-6 col-sm-12 col-xs-12"
+     ba-panel
+     ba-panel-title="Lista de usuarios"
+     ba-panel-class="large-panel with-scroll feed-panel">
+
+  <div class="row">
+    <div class="feed-messages-container" track-width="smallContainerWidth">
+      <div class="feed-message" ng-repeat="usuario in usuarios"  min-width="360">
+        <div class="message-icon">
+          <img class="photo-icon" ng-src="{{usuario.foto}}">
+        </div>
+
+        <div class="text-block text-message">
+          <div class="message-header">
+            <span class="author">{{usuario.nombre}} - {{usuario.rol}}</span>
+          </div>
+          <div class="message-content line-clamp" ng-class="{'line-clamp-2' : !message.expanded}">
+            <div class="info-label">
+              <i class="ion-ios-email"></i>
+               Correo electronico: <b><a class="email-link" >{{usuario.email}}</a></b>
+            </div>
+            <div class="info-label">
+              <i class="ion-ios-telephone"></i>
+               Telefono: <b><a class="email-link" >{{usuario.telefono}}</a></b>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!--<dashboard-pie-chart></dashboard-pie-chart>
 
 <div class="row">
   <div class="col-lg-6 col-md-12 col-sm-12"
@@ -54,7 +103,7 @@
   </div>
 </div>
 
-<!--<div class="row">
+<div class="row">
   <div class="col-lg-4 col-sm-6 col-xs-12">
     <div ba-panel ba-panel-title="Weather" ba-panel-class="medium-panel with-scroll">
       <blur-weather forecast="5"></blur-weather>

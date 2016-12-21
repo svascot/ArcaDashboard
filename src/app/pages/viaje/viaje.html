@@ -12,16 +12,16 @@
             <div class="col-md-12">
               <div class="input-demo radio-demo">
                 <div class="col-md-6">
-                  <label class="radio-inline custom-radio nowrap">
+                  <label class="radio-inline custom-radio nowrap disabled">
                     <input type="radio" name="inlineRadioOptions"
-                           id="inlineRadio1" ng-value="true">
+                           id="inlineRadio1" ng-value="true" disabled>
                     <span>Ida y regreso</span>
                   </label>
                 </div>
                 <div class="col-md-6">
-                  <label class="radio-inline custom-radio nowrap">
+                  <label class="radio-inline custom-radio nowrap disabled">
                     <input type="radio" name="inlineRadioOptions"
-                            id="inlineRadio2" ng-value="false">
+                            id="inlineRadio2" ng-value="false" disabled>
                     <span>Ida</span>
                   </label>
                 </div>
@@ -105,7 +105,7 @@
                       ng-model="viaje.origen" ng-options="origen.nombre as origen.nombre for origen in destinos">
                       </select>
                 </div>
-                <div class="form-group">                      
+                <div class="form-group">
                       <select id="destino" class="form-control selectpicker with-search"
                       data-live-search="true" title="Destino" selectpicker
                       ng-model="viaje.destino" ng-options="destino.nombre as destino.nombre for destino in destinos">
@@ -204,7 +204,7 @@
               <div class="form-group">
               <label>Dias del compromiso</label>
                   <div class="task-todo-container" ng-class="{'transparent': transparent}">
-                  
+
                     <div class="box-shadow-border"></div>
                     <ul class="todo-list"  ng-model="diasDeLaSemana">
                       <li ng-repeat="dia in dias" ng-if="!dia.deleted" ng-init="activeItem=false"
@@ -222,15 +222,15 @@
                     </ul>
                   </div>
               </div>
-           
 
-            
+
+
               <div class="form-group">
                   <div class="task-todo-container" ng-class="{'transparent': transparent}">
-                  
+
                     <div class="box-shadow-border"></div>
                     <ul class="todo-list" >
-                      <li  ng-if="!incluyeFestivos" 
+                      <li  ng-if="!incluyeFestivos"
                           ng-class="{checked: incluyeFestivos, active: activeItem}"
                           ng-mouseenter="activeItem=true" ng-mouseleave="activeItem=false">
 
@@ -239,9 +239,9 @@
                         <label class="todo-checkbox custom-checkbox custom-input-success">
                           <input type="checkbox" ng-model="incluyeFestivos" ng-change="procesarTrabajaFestivos(incluyeFestivos)">
                           <span class="cut-with-dots">Incluir festivos</span>
-                        </label>                      
+                        </label>
                       </li>
-                      
+
                     </ul>
                   </div>
               </div>

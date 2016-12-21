@@ -1,7 +1,3 @@
-/**
- * @author v.lugovsky
- * created on 16.12.2015
- */
 (function () {
   'use strict';
 
@@ -14,11 +10,24 @@
         .state('dashboard', {
           url: '/dashboard',
           templateUrl: 'app/pages/dashboard/dashboard.html',
+          controller: 'dashboardCtrl',
           title: 'Dashboard',
           sidebarMeta: {
             icon: 'ion-android-home',
             order: 0,
           },
+          resolve:{
+             vehiculos:function(VehiculosService){
+                  return VehiculosService.listarVehiculos().then(function(vehiculos){
+                      return vehiculos;
+                  })
+             },
+             usuarios:function(UsuariosService){
+                return UsuariosService.listar().then(function(usuarios){
+                        return usuarios;
+                })
+             }
+          }
         });
   }
 

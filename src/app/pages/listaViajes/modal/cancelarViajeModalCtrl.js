@@ -6,14 +6,15 @@
 
   /** @ngInject */
   var openedToasts =[];
-  function CancelarViajeModalCtrl($scope,$rootScope,ViajeService,toastr,toastrConfig,viaje,vehiculo) {
+  function CancelarViajeModalCtrl($scope,$rootScope,listarViajesService,toastr,toastrConfig,viaje) {
 
     $scope.viaje = viaje;
-    $scope.vehiculo = vehiculo;
 
-    $scope.cancelarViaje = function(){
-      viaje.VehiculoId = vehiculo.id;
-      listarViajesService.cancelarViaje(viaje).then(function(response){
+    $scope.cancelarViaje = function(viaje){
+      var viajeUuid = {
+        'uuid': viaje.uuid
+      }
+      listarViajesService.cancelarViaje(viajeUuid).then(function(response){
         console.dir(response)
         openedToasts.push(toastr["success"]("Viaje cancelado", "Exito", $rootScope.toastDefautlOptions));
         $scope.viaje = {};

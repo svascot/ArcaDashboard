@@ -8,7 +8,6 @@
   </div>
     <form class="form-horizontal">
       <div class="modal-body">
-        <div class="row">
           <div class="col-md-6">
 
             <div class="form-group">
@@ -25,11 +24,11 @@
             </div>
             <div class="form-group">
               <input type="text" class="form-control input-sm"
-                     placeholder="Modelo" ng-model="vehiculo.modelo">
+                     placeholder="Referencia" ng-model="vehiculo.referencia">
             </div>
             <div class="form-group">
               <input type="text" class="form-control input-sm"
-                     placeholder="Referencia" ng-model="vehiculo.referencia">
+                     placeholder="Modelo" ng-model="vehiculo.modelo">
             </div>
             <div class="form-group">
                <button class="btn btn-primary btn-xs" ngf-select ng-model="imagenVehiculo"
@@ -76,7 +75,6 @@
                   </label>
               </div>
             </div>
-          </div>
         </div>
       <div class="modal-footer">
         <button class="btn btn-primary" ng-click="crearVehiculo(vehiculo,imagenVehiculo)">Registrar</button>
