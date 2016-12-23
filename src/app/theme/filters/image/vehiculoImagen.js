@@ -9,9 +9,9 @@
       .filter('vehiculoImagen', vehiculoImagen);
 
   /** @ngInject */
-  function vehiculoImagen(layoutPaths) {
+  function vehiculoImagen() {
     return function(vehiculo) {
-      return layoutPaths.images.vehiculos+"/"+vehiculo.marca+""+vehiculo.referencia+""+vehiculo.modelo+".jpg"
+      return "https://s3-us-west-2.amazonaws.com/arca/vehiculos/"+vehiculo.marca+""+vehiculo.referencia+""+vehiculo.modelo+".jpg"
     };
   }
 

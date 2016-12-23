@@ -16,16 +16,18 @@
     };
     
     $scope.crearUsuario = function(usuario){
-
-        uploadToAWS.uploadFiles(new Array(usuario.imagen)).then(function(urls){
-        usuario.foto= urls[0].endPoint
+        var imagen = []
+        if(usuario.imagen){
+          imagen.push(usuario.imagen)
+        }
+        uploadToAWS.uploadFiles(imagen).then(function(urls){
+          if(urls){
+            usuario.foto= urls[0].endPoint
+          }
+        
         UsuariosService.crearUsuario(usuario).then(function(response){
           openedToasts.push(toastr["success"]("Usuario registrado", "Exito", $rootScope.toastDefautlOptions));
-          $scope.usuarios.push(response.data);
-             $timeout(function() {
-                           $scope.$apply()
-            });
-                console.dir($scope.usuarios)
+          usuarios.push(response.data);                             
             },function(err){
               console.dir(err);
                 if(err.status == 412){
