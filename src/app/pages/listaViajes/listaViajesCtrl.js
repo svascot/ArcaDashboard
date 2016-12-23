@@ -7,21 +7,23 @@
   /** @ngInject */
   var openedToasts =[];
   function listarViajesCtrl($scope,$rootScope,ViajeService,toastr, toastrConfig,vehiculos) {
-    
+
     $scope.viaje = {};
     $scope.vehiculos = vehiculos;
     $scope.vehiculo = {};
 
     $scope.switchVehicle = function (vehicle) {
       $scope.vehiculo = vehicle;
-      $scope.viaje.placa = $scope.vehicle.placa;
+      $scope.viaje.placa = vehicle.placa;
     }
 
     $scope.verDetalles= function(item){
-      if(!item.expanded){
-        item.expanded = false;
+      if(item.estado != "Cancelado"){
+        if(!item.expanded){
+          item.expanded = false;
+        }
+          item.expanded = !item.expanded;
       }
-        item.expanded = !item.expanded;
     }
 
     $scope.openCancelarViaje = function(viaje){

@@ -6,8 +6,8 @@
         ba-panel-class="with-scroll">
         <div class="col-md-6">
           <div class="form-group">
-                <input type="search" class="form-control input-sm text-uppercase"
-                        ng-model="q" placeholder="Placa">
+                <input type="search" class="form-control input-sm"
+                        ng-model="q" placeholder="Placa, Marca o Referencia">
           </div>
         </div>
         <div class="col-md-12">
@@ -75,9 +75,15 @@
         ba-panel
         ba-panel-title="Lista de viajes por vehiculo"
         ba-panel-class="with-scroll">
-
+        <div class="col-md-6">
+          <div class="form-group">
+                <input type="search" class="form-control input-sm"
+                        ng-model="q" placeholder="Origen,destino o estado">
+          </div>
+        </div>
+        <div class="col-md-12">
           <div class="feed-messages-container" track-width="smallContainerWidth" min-width="360">
-            <div class="feed-message" style="min-height: 95px;" ng-repeat="viaje in vehiculo.Viajes"
+            <div class="feed-message" style="min-height: 95px;" ng-repeat="viaje in vehiculo.Viajes | filter:q as results "
                  ng-click="verDetalles(viaje)">
             <!--  <div class="message-icon">
                 <img class="photo-icon" ng-src={{vehiculo.foto}}>
@@ -113,7 +119,7 @@
             </div>
           </div>
         </div>
-
+     </div>
     </div>
   </div>
 </div>
