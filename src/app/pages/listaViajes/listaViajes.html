@@ -4,13 +4,18 @@
         ba-panel
         ba-panel-title="Vehiculos"
         ba-panel-class="with-scroll">
-
-
+        <div class="col-md-6">
+          <div class="form-group">
+                <input type="search" class="form-control input-sm text-uppercase"
+                        ng-model="q" placeholder="Placa">
+          </div>
+        </div>
+        <div class="col-md-12">
           <div class="feed-messages-container" track-width="smallContainerWidth" min-width="360">
-            <div class="feed-message" style="min-height: 95px;" ng-repeat="vehiculo in vehiculos"
+            <div class="feed-message" style="min-height: 95px;" ng-repeat="vehiculo in vehiculos| filter:q as results "
                  ng-click="switchVehicle(vehiculo)">
               <div class="message-icon">
-                <img class="photo-icon" ng-src={{vehiculo.foto}}>
+                <img class="photo-icon" ng-src={{vehiculo.imagen}}>
               </div>
               <div class="text-block text-message">
                 <div class="message-header">
@@ -61,7 +66,7 @@
             </div>
           </div>
         </div>
-
+      </div>
     </div>
   </div>
 
@@ -71,10 +76,9 @@
         ba-panel-title="Lista de viajes por vehiculo"
         ba-panel-class="with-scroll">
 
-
           <div class="feed-messages-container" track-width="smallContainerWidth" min-width="360">
             <div class="feed-message" style="min-height: 95px;" ng-repeat="viaje in vehiculo.Viajes"
-                 ng-click="verDetalles(vehiculo)">
+                 ng-click="verDetalles(viaje)">
             <!--  <div class="message-icon">
                 <img class="photo-icon" ng-src={{vehiculo.foto}}>
               </div> -->
@@ -93,7 +97,7 @@
                 </div>
               </div>
 
-              <div class="preview" ng-show="vehiculo.expanded" >
+              <div class="preview" ng-show="viaje.expanded" >
                 <div class="message-header">
                   <span class="author">Acciones</span>
                 </div>
