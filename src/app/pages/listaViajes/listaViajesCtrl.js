@@ -7,7 +7,7 @@
   /** @ngInject */
   var openedToasts =[];
   function listarViajesCtrl($scope,$rootScope,ViajeService,toastr, toastrConfig,vehiculos) {
-
+    
     $scope.viaje = {};
     $scope.vehiculos = vehiculos;
     $scope.vehiculo = {};
