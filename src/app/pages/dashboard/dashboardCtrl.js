@@ -27,6 +27,10 @@
       stats: $scope.vehiculos.length,
       icon: 'person',
     }, {
+      description: 'Viajes realizados',
+      stats: viajesTotales,
+      icon: 'person',
+    }, {
       description: 'Vehiculo mas solicitado',
       //{{vehiculo.marca}} {{vehiculo.referencia}}
       stats: vehiculoModa.marca + "  " + vehiculoModa.referencia + " - " + vehiculoModa.placa,
@@ -34,10 +38,6 @@
     }, {
       description: 'Usuarios Activos',
       stats: $scope.usuarios.length,
-      icon: 'person',
-    }, {
-      description: 'Viajes Totales',
-      stats: viajesTotales,
       icon: 'person',
     }
     ];
