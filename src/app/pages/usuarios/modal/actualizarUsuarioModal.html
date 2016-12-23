@@ -35,7 +35,7 @@
             <div class="row form-group">
               <label>Fecha de nacimiento</label>
               <p class="input-group">
-                  <input type="text" class="form-control" datetime-picker="dd MMM yyyy" ng-model="usuario.fechaNacimiento"
+                  <input type="text" class="form-control" datetime-picker="dd MMM yyyy" enable-time="false" ng-model="usuario.fechaNacimiento"
                   is-open="fechaNacimiento"  />
                   <span class="input-group-btn">
                       <button type="button" class="btn btn-default" ng-click="openCalendar($event, 'fechaNacimiento')"><i class="fa fa-calendar"></i></button>
