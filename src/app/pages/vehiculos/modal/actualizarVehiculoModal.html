@@ -11,15 +11,21 @@
         <div class="row col-md-12">
           <div class="col-md-6">
             <div class="form-group">
-                  <label>Marca</label>
-                  <input type="text" class="form-control input-sm"
-                          ng-model="vehiculo.marca">
-             </div>
+                  <select id="marca" class="form-control selectpicker with-search"
+                  data-live-search="true" title="Marca" selectpicker
+                  placeholder="Marca"
+                  ng-model="vehiculo.marca" ng-change="switchMarca()"
+                  ng-options="marca.nombre as marca.nombre for marca in marcas">
+                  </select>
+            </div>
+
             <div class="form-group">
-                  <label>Referencia</label>
-                  <input type="text" class="form-control input-sm"
-                        ng-model="vehiculo.referencia">
-             </div>
+                  <select id="referencia" class="form-control selectpicker with-search"
+                  data-live-search="true" title="Referencia" selectpicker
+                  placeholder="Referencia"
+                  ng-model="vehiculo.referencia" ng-options="referencia.nombre as referencia.nombre for referencia in referencias">
+                  </select>
+            </div>
              <div class="form-group">
                    <label>Modelo</label>
                    <input type="text" class="form-control input-sm"

@@ -6,8 +6,19 @@
 
   /** @ngInject */
   var openedToasts =[];
-  function ActualizarVehiculoModalCtrl($scope,VehiculosService,$rootScope,vehiculo,uploadToAWS,toastr,toastrConfig) {
+  function ActualizarVehiculoModalCtrl($scope,marcas,VehiculosService,$rootScope,vehiculo,uploadToAWS,toastr,toastrConfig) {
     $scope.vehiculo = vehiculo;
+
+    $scope.marcas = marcas;
+    $scope.referencias = {}
+
+    $scope.switchMarca = function() {
+      for(var m in $scope.marcas){
+        if($scope.vehiculo.marca == $scope.marcas[m].nombre){
+          $scope.referencias =  $scope.marcas[m].Referencia
+        }
+      }
+    }
 
     $scope.actualizarVehiculo= function(vehiculo){
       //if (confirm("Desea guardar los cambios?") == true) {
