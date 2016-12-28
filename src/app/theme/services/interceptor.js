@@ -10,23 +10,23 @@
 
   /** @ngInject */
   function intercerptor($q,$rootScope) {
-   	
+
    	 var succesTemplate = '<div class="modal-content">  <div class="modal-header bg-success"> <i class="ion-checkmark modal-icon"></i><span> Success</span> </div>  <div class="modal-body text-center">Your information has been saved successfully</div>  <div class="modal-footer">    <button type="button" class="btn btn-success" ng-click="$dismiss()">OK</button>  </div></div>',
    	 errorTemplate = '<div class="modal-content"> <div class="modal-header bg-danger"> <i class="ion-flame modal-icon"></i><span> Error</span> </div>  <div class="modal-body text-center">{{text}}</div>  <div class="modal-footer">    <button type="button" class="btn btn-danger" ng-click="$dismiss()">OK</button>  </div></div>',
    	 warningTemplate ='<div class="modal-content">  <div class="modal-header bg-warning"> <i class="ion-android-warning modal-icon"></i><span> Aleta</span> </div> <div class="modal-body text-center">{{text}}</div> <div class="modal-footer">    <button type="button" class="btn btn-warning" ng-click="$dismiss()">OK</button>  </div></div>';
-      
+
       var intercerptor={};
 	  var dialog = waitingDialog;
 	  var showingLoading = false;
 	  var loadingStack = 0;
-	    
+
 	  var hideLoading = function(){
 	    if(loadingStack > 0 ){
 	        loadingStack--;
 	    }
 	    if(loadingStack==0){
 	    //$rootScope.closeLoadingModal();
-	    dialog.hide();	
+	    dialog.hide();
 	    console.log("Acabo")
 	      $('.modal-backdrop.fade.in').remove();
 	      showingLoading = false;
@@ -34,10 +34,10 @@
 	  }
 
 	  var showLoading = function(){
-	      if(loadingStack==0){   
-	         console.log("Cargando")    	      
-	        //$rootScope.openLoadingModal('app/pages/ui/modals/modalTemplates/loadingModal.html','md','','static'); 
-	         dialog.show("Cargando");                
+	      if(loadingStack==0){
+	         console.log("Cargando")
+	        //$rootScope.openLoadingModal('app/pages/ui/modals/modalTemplates/loadingModal.html','md','','static');
+	         dialog.show("Cargando");
 	      }
 	      loadingStack++;
 	  }
@@ -73,11 +73,12 @@
 	  }
 
 	  intercerptor.responseError = function(rejection){
-	  	   
+
 	    hideLoading();
 	    var status = rejection.status;
 	    switch(status){
 	    	case 403:
+          //$window.location.href = '#/auth';
 	    		$rootScope.openModal(errorTemplate,'md','Debes estar logueado')
 	    		break;
 	    	case 404:
@@ -88,11 +89,11 @@
 	    		break;
 	    	}
 
-	    }	    
+	    }
 	    return $q.reject(rejection);
 	  }
-	    
+
 	 return intercerptor;
    }
-   
+
 })();

@@ -14,14 +14,14 @@
                 <div class="col-md-6">
                   <label class="radio-inline custom-radio nowrap disabled">
                     <input type="radio" name="inlineRadioOptions"
-                           id="inlineRadio1" ng-value="true" checked="true">
+                           id="inlineRadio1" ng-value="false" disabled>
                     <span>Ida y regreso</span>
                   </label>
                 </div>
                 <div class="col-md-6">
                   <label class="radio-inline custom-radio nowrap disabled">
                     <input type="radio" name="inlineRadioOptions"
-                            id="inlineRadio2" ng-value="false" disabled>
+                            id="inlineRadio2" ng-value="true" checked="true">
                     <span>Ida</span>
                   </label>
                 </div>
@@ -273,7 +273,7 @@
         <div class="feed-messages-container" track-width="smallContainerWidth" min-width="360">
           <div class="feed-message" style="min-height: 95px;" ng-repeat="vehiculo in vehiculos" ng-click="openCrearViaje(viaje,vehiculo)">
             <div class="message-icon">
-              <img class="photo-icon" ng-src={{vehiculo.imagen}}>
+              <img class="photo-icon" ng-src="{{vehiculo | vehiculoImagen}}">
             </div>
             <div class="text-block text-message">
               <div class="message-header">

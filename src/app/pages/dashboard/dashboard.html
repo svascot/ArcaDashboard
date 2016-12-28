@@ -56,7 +56,7 @@
         min-width="360">
       <div class="feed-message" style="min-height: 95px;" ng-repeat="vehiculo in vehiculos">
           <div class="message-icon">
-            <img class="photo-icon" ng-src={{vehiculo.imagen}}>
+            <img class="photo-icon" ng-src="{{vehiculo | vehiculoImagen}}">
           </div>
           <div class="text-block text-message">
             <div class="message-header">

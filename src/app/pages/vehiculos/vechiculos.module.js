@@ -16,12 +16,16 @@
             icon: 'ion-android-car',
             order: 3,
           },
-          resolve: {            
+          resolve: {
             vehiculos:function(VehiculosService){
                return VehiculosService.listarVehiculos({}).then(function(vehiculos){
                        return vehiculos;
                })
-
+            },
+            marcas:function(VehiculosService){
+              return VehiculosService.marcaVehiculo().then(function(marcas){
+                      return marcas;
+              })
             }
            }
         })
