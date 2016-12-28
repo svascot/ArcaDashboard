@@ -48,6 +48,10 @@ uploadToAWS.getS3Credentials =function(file,uniqueID){
 	            				delete $http.defaults.headers.common.Authorization;// eliminar en produccion
 	            			}// eliminar en produccion
 	                         names.push({ endPoint:$rootScope.s3bucketURL+signed.name});
+	                         console.log("--------------")
+	                         console.log(signed.url);
+	                         console.log(signed.contentType);
+	                         console.log("--------------")
 	                         return $http.put(signed.url,signed.file,{headers: {'Content-Type':signed.contentType}})         
 	                })
 	            uploads.push(p);

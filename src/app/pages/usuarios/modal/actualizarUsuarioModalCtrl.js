@@ -20,7 +20,7 @@
     $scope.actualizarUsuario = function(usuario){
 
       if(usuario.nuevaImagen){
-         uploadToAWS.uploadFiles(new Array(usuario.imagen)).then(function(urls){
+         uploadToAWS.uploadFiles(new Array(usuario.nuevaImagen)).then(function(urls){
         usuario.foto= urls[0].endPoint
         UsuariosService.actualizarUsuario(usuario).then(function(response){
             openedToasts.push(toastr["success"]("Usuario actualizado", "Exito", $rootScope.toastDefautlOptions));     
