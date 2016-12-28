@@ -91,6 +91,9 @@
                   console.dir(conductores)
                 return conductores
             })
+          },
+          vehiculos:function(){
+            return vehiculos
           }
 
         }
