@@ -6,8 +6,10 @@
 
   /** @ngInject */
   var openedToasts =[];
-
-  function diagramaOcupacionCtrl($scope,ViajeService,toastr,DiagramaOcupacionService,toastrConfig,$rootScope,vehiculos) {
+  function diagramaOcupacionCtrl($scope,ViajeService,marcas,toastr,DiagramaOcupacionService,toastrConfig,$rootScope,vehiculos) {
+    $scope.marcas = marcas;
+    $scope.referencias = {}
+    $scope.vehiculo = {};
 
     var cargarDiagrama =(function cargar (vehiculos){
 
@@ -59,11 +61,24 @@
 
     }(vehiculos))
 
-    
 
+    $scope.switchMarca = function() {
+      for(var m in $scope.marcas){
+        if($scope.vehiculo.marca == $scope.marcas[m].nombre){
+          $scope.referencias =  $scope.marcas[m].Referencia
+        }
+      }
+    }
       $scope.filtrar = function(filtro){
         console.dir(filtro)
           DiagramaOcupacionService.listarVehiculos(filtro).then(function(response){
+          $scope.vehiculos = response;
+          cargarDiagrama(response)
+        })
+      }
+      $scope.traerTodos = function(){
+        $scope.vehiculo = {};
+          DiagramaOcupacionService.listarVehiculos({}).then(function(response){
           $scope.vehiculos = response;
           cargarDiagrama(response)
         })
