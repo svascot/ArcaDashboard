@@ -10,16 +10,16 @@
     $scope.vehiculo = vehiculo;
     $scope.eliminarVehiculo = function(vehiculo){
       VehiculosService.eliminarVehiculo(vehiculo).then(function(vehiculoActualizado){
-        $scope.removerVehiculoDeLaLista(vehiculo);
+        removerVehiculoDeLaLista(vehiculo);
         openedToasts.push(toastr["success"]("Vehiculo eliminado", "Exito", $rootScope.toastDefautlOptions));
       })
        $rootScope.currentOpenModal.close();
     }
 
-    $scope.removerVehiculoDeLaLista = function(vehiculo){
-      for (var i = $scope.vehiculos.length - 1; i >= 0; i--) {
-        if($scope.vehiculos[i].id == vehiculo.id){
-          $scope.vehiculos.splice(i,1);
+    var removerVehiculoDeLaLista = function(vehiculo){
+      for (var i = vehiculos.length - 1; i >= 0; i--) {
+        if(vehiculos[i].id == vehiculo.id){
+          vehiculos.splice(i,1);
           break;
         }
       }
