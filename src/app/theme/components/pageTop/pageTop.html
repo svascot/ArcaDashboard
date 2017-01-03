@@ -2,18 +2,19 @@
   <a href="#/dashboard" class="al-logo clearfix"><span>Arca</span>Admin</a>
   <a href class="collapse-menu-link ion-navicon" ba-sidebar-toggle-menu></a>
 
- 
+
 
   <div class="user-profile clearfix">
+        <a disable class="al-logo clearfix"><span>{{usuario.nombre}}</span></a>
     <div class="al-user-profile" uib-dropdown>
       <a uib-dropdown-toggle class="profile-toggle-link">
-        <img ng-src="{{getProfileImage()}}"> 
+        <img ng-src="{{getProfileImage()}}">
       </a>
       <ul  class="top-dropdown-menu profile-dropdown" uib-dropdown-menu>
         <li><i class="dropdown-arr"></i></li>
         <li><a href class="signout" ng-click="logout()"><i class="fa fa-power-off"></i>Salir</a></li>
       </ul>
     </div>
-    
+
   </div>
 </div>

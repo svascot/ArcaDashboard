@@ -10,9 +10,10 @@
 
   /** @ngInject */
   function PageTopCtrl($scope, $sce,$state,AuthService,toastr,$rootScope,UsuariosService) {
+    $scope.usuario = UsuariosService.getUsuario();
     var openedToasts =[];
     $scope.logout = function(){
-      
+
       AuthService.logout().then(function(data){
         localStorage.removeItem("user");
         $state.go('auth')
@@ -26,6 +27,6 @@
         return  "https://s3-us-west-2.amazonaws.com/arca/logos/"+userId+".jpg"
     }
 
-   
+
   }
 })();
