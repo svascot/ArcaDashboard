@@ -17,7 +17,7 @@
       listarViajesService.cancelarViaje(viajeUuid).then(function(response){
         console.dir(response)
         openedToasts.push(toastr["success"]("Viaje cancelado", "Exito", $rootScope.toastDefautlOptions));
-        $scope.viaje = {};
+        $scope.viaje.estado = "Cancelado"
       });
       $rootScope.currentOpenModal.close();
     }
