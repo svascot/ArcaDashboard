@@ -21,7 +21,7 @@ angular.module('BlurAdmin.theme.components.datetimepicker', ['ui.bootstrap.datep
                 text: 'Ahora'
             },
             today: {
-                show: true,
+                show: false,
                 text: 'Hoy'
             },
             clear: {
