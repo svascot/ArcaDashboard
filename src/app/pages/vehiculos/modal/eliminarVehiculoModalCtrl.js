@@ -6,7 +6,7 @@
 
   /** @ngInject */
   var openedToasts =[];
-  function EliminarVehiculoModalCtrl($scope,VehiculosService,$rootScope,vehiculo,vehiculos,uploadToAWS,toastr,toastrConfig) {
+  function EliminarVehiculoModalCtrl($scope,VehiculosService,$rootScope,uploadToAWS,toastr,toastrConfig,vehiculo,vehiculos) {
     $scope.vehiculo = vehiculo;
     $scope.eliminarVehiculo = function(vehiculo){
       VehiculosService.eliminarVehiculo(vehiculo).then(function(vehiculoActualizado){

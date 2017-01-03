@@ -10,8 +10,8 @@
   	var tabSelected = undefined;
   	var viajeRecurrente ={}
     $scope.destinos = destinos;
-    $scope.todosLosvehiculos = vehiculos;
-
+    $scope.todosLosvehiculos =  JSON.parse(JSON.stringify(vehiculos));
+    $scope.vehiculos = vehiculos;
     $scope.openCalendar = function(e,prop) {
         this[prop] =true
         e.preventDefault();
@@ -27,7 +27,7 @@
     $scope.viaje = {};
     $scope.filtro = {};
     //$scope.filtro.tipoViaje = true;
-    $scope.vehiculos = {};
+    
   
    
     $scope.expandFilter = function(){
@@ -58,6 +58,9 @@
           },
           vehiculo:function () {
             return vehiculo;
+          },
+          vehiculos:function(){
+            return vehiculos;
           }
         }
       )

@@ -28,6 +28,7 @@
           for (var i = vehiculo.Viajes.length - 1; i >= 0; i--) {
             var viaje = vehiculo.Viajes[i]
             //alert (new Date(viaje.fechaInicio))
+            if(viaje.estado == "Confirmado"){
             console.log(new Date(viaje.fechaFin).getTime()*1000)
               items.add({
                 id:  viaje.id,
@@ -37,6 +38,8 @@
                 end:viaje.fechaFin,
                 type: 'range'
               });
+            }
+
           }
         }
       }
