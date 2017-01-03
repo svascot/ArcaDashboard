@@ -9,7 +9,7 @@
 
   function vehiculoCtrl($scope,VehiculosService,toastr, marcas, toastrConfig,$rootScope,vehiculos,uploadToAWS,UsuariosService) {
     $scope.marcas = marcas
-    //$scope.vehiculos = vehiculos
+    $scope.vehiculos = vehiculos
     $scope.openModalDocumentos = function(vehiculo){
       $rootScope.openModalController('app/pages/documentos/documentos.html','DocumentosCtrl',
         {
