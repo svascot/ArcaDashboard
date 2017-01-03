@@ -9,6 +9,7 @@
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.theme.components', []);
+  angular.module('BlurAdmin.theme.components', [
+  	'BlurAdmin.theme.components.datetimepicker']);
 
 })();

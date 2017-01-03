@@ -34,7 +34,6 @@
     "angular-sanitize": "^1.5.7",
     "bootstrap-waitingfor": "^1.2.4",
     "angular-environment": "~1.0.3",
-    "bootstrap-ui-datetime-picker": "^2.4.3",
     "angular-ui-sortable": "~0.13.4",
     "angular-ui-router": "~0.2.16",
     "angular-toastr": "~1.7.0",

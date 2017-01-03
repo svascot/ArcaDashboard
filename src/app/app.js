@@ -3,7 +3,6 @@
 angular.module('BlurAdmin', [
   'environment',
   'ui.bootstrap',
-  'ui.bootstrap.datetimepicker',
   'ui.sortable',
   'ui.router',
   'toastr',
