@@ -10,6 +10,6 @@
   'use strict';
 
   angular.module('BlurAdmin.theme.components', [
-  	'BlurAdmin.theme.components.datetimepicker']);
+  	'BlurAdmin.theme.components.datetimepicker','BlurAdmin.theme.components.localeEsCo']);
 
 })();
