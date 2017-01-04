@@ -9,7 +9,6 @@
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.theme.components', [
-  	'BlurAdmin.theme.components.datetimepicker','BlurAdmin.theme.components.localeEsCo']);
+  angular.module('BlurAdmin.theme.components', ['arca.datetimepicker']);
 
 })();
