@@ -83,23 +83,28 @@
         </div>
         <div class="col-md-12">
           <div class="feed-messages-container" track-width="smallContainerWidth" min-width="360">
-            <div class="feed-message" style="min-height: 95px;" ng-repeat="viaje in vehiculo.Viajes | filter:q as results "
+            <div class="feed-message withoutSpace" style="min-height: 95px;" ng-repeat="viaje in vehiculo.Viajes | filter:q as results "
                  ng-click="verDetalles(viaje)">
-            <!--  <div class="message-icon">
-                <img class="photo-icon" ng-src={{vehiculo.foto}}>
-              </div> -->
-              <div class="text-block text-message viajePadding">
+              <div class="text-block-withoutSpace text-message">
                 <div class="message-header">
                   <span class="author">Origen: {{viaje.origen}}, Destino: {{viaje.destino}}</span>
                 </div>
                 <div class="message-content">
                   <div class="col-md-12">
                     <div class="info-label">
-                      Estado: <span class="{{viaje.estado}}"><b>{{viaje.estado}}</b></span><br>
-                      Fecha de salida: <b>{{viaje.fechaInicio |date:"dd/MM/yyyy '-' h:mma"}}</b><br>
-                      Fecha de regreso: <b>{{viaje.fechaFin |date:"dd/MM/yyyy '-' h:mma" }}</b>
+                      <div class="info-label">
+                        <i class="ion-stats-bars"></i>
+                        Estado: <span class="{{viaje.estado}}"><b>{{viaje.estado}}</b></span><br>
+                      </div>
+                      <div class="info-label">
+                        <i class="ion-android-calendar"></i>
+                        Fecha de salida: <b>{{viaje.fechaInicio |date:"dd/MM/yyyy '-' h:mma"}}</b><br>
+                      </div>
+                      <div class="info-label">
+                        <i class="ion-android-calendar"></i>
+                        Fecha de regreso: <b>{{viaje.fechaFin |date:"dd/MM/yyyy '-' h:mma" }}</b>
+                      </div>
                     </div>
-
                 </div>
               </div>
 
