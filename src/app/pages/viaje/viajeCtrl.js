@@ -11,7 +11,7 @@
   	var viajeRecurrente ={}
     $scope.destinos = destinos;
     $scope.todosLosvehiculos =  JSON.parse(JSON.stringify(vehiculos));
-    $scope.vehiculos = vehiculos;
+    //$scope.vehiculos = vehiculos;
     $scope.openCalendar = function(e,prop) {
         this[prop] =true
         e.preventDefault();
@@ -26,6 +26,7 @@
 
     $scope.viaje = {};
     $scope.filtro = {};
+    $scope.viajeRecurrente= {}
     //$scope.filtro.tipoViaje = true;
     
   
@@ -34,8 +35,7 @@
       $scope.opcionesAvanzadas= !$scope.opcionesAvanzadas;
     }
 
-    $scope.filtrar = function(filtro){
-      console.dir($scope.filtro)
+    $scope.filtrar = function(filtro){      
       if(filtro.fechaInicio != null && filtro.fechaFin != null){
         $scope.viaje.fechaInicio = filtro.fechaInicio;
         $scope.viaje.fechaFin = filtro.fechaFin;
@@ -60,7 +60,7 @@
             return vehiculo;
           },
           vehiculos:function(){
-            return vehiculos;
+            return $scope.vehiculos;
           }
         }
       )
@@ -68,7 +68,8 @@
     $scope.tabSelected= function(tab){
     	tabSelected = tab
     }
-    $scope.crearViajeRecurrente = function(viaje){
+    $scope.crearViajeRecurrente = function(){
+      var viaje = $scope.viajeRecurrente;
     	viaje.diasDeLaSemana = viajeRecurrente.diasDeLaSemana;
     	viaje.trabajaFestivos = viajeRecurrente.trabajaFestivos;
     	viaje.tiempoDeViaje = Math.trunc((viaje.horaFin.getTime() - viaje.horaInicio.getTime())/1000)
@@ -85,6 +86,7 @@
 
     	ViajeService.crearViajeRecurrente(viaje).then(function(result){
     		openedToasts.push(toastr["success"]("Viaje recurrente creado", "Exito", $rootScope.toastDefautlOptions));
+        $scope.viajeRecurrente= {}
     	})
     	
     	

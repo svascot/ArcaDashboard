@@ -250,7 +250,7 @@
 
           </div>
           <div class="row col-md-12">
-            <button ng-click="crearViajeRecurrente(viajeRecurrente)" class="btn btn-primary">Asignar viaje</button>
+            <button ng-click="crearViajeRecurrente()" class="btn btn-primary">Asignar viaje</button>
           </div>
         </form>
       </uib-tab>
@@ -268,7 +268,7 @@
 <div class="col-md-6">
     <div
         ba-panel
-        ba-panel-title="Lista de vehiculos"
+        ba-panel-title="Vehiculos"
         ba-panel-class="with-scroll">
         <div class="feed-messages-container" track-width="smallContainerWidth" min-width="360">
           <div class="feed-message" style="min-height: 95px;" ng-repeat="vehiculo in vehiculos" ng-click="openCrearViaje(viaje,vehiculo)">

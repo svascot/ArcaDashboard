@@ -49,8 +49,6 @@
 	  }
 
 	  intercerptor.requestError =  function(rejection) {
-	  	console.log("aaaaaaaaaa")
-	  	console.dir(rejection)
 	    hideLoading();
 	    if(!angular.isUndefined(rejection.data) && rejection.data != null && typeof rejection.data == "string"){
 	      var type = rejection.data.substring(0, 3);
@@ -78,11 +76,14 @@
 	    var status = rejection.status;
 	    switch(status){
 	    	case 403:
-          //$window.location.href = '#/auth';
+          		//$window.location.href = '#/auth';
 	    		$rootScope.openModal(errorTemplate,'md','Debes estar logueado')
 	    		break;
 	    	case 404:
 	    		$rootScope.openModal(warningTemplate,'md','Contenido no encontrado')
+	    		break;
+	    	case 412:
+	    		$rootScope.openModal(errorTemplate,'md',rejection.data)
 	    		break;
 	    	case 500:{
 	    		$rootScope.openModal(errorTemplate,'md','Error interno por favor contactarse con soporte tecnico')
