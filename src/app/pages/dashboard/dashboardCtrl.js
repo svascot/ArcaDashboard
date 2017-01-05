@@ -25,16 +25,16 @@
     $scope.charts = [{
       description: 'Vehiculos registrados',
       stats: $scope.vehiculos.length,
-      icon: 'person',
+      icon: 'garage',
     }, {
-      description: 'Viajes realizados',
+      description: 'Total viajes',
       stats: viajesTotales,
-      icon: 'person',
+      icon: 'calendar',
     }, {
       description: 'Vehiculo mas solicitado',
       //{{vehiculo.marca}} {{vehiculo.referencia}}
       stats: vehiculoModa.marca + "  " + vehiculoModa.referencia + " - " + vehiculoModa.placa,
-      icon: 'person',
+      icon: 'car',
     }, {
       description: 'Usuarios Activos',
       stats: $scope.usuarios.length,

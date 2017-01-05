@@ -1,6 +1,5 @@
 /*Colores de los estados de los viajes
 ====================================*/
-
 .Confirmado{
 	color: green;
 }
@@ -17,6 +16,46 @@
 	color: blue;
 }
 
-.viajePadding{
+/*Elimina el espacio en blanco en la lista de viajes realizados ListarViajes
+copie todo el original y solo cambie el 80 por 0 en el margin
+*/
+.text-block-withoutSpace {
+	cursor: pointer;
+	position: relative;
+	border-radius: 5px;
+	margin: 0 0 0 0px;
 	padding: 5px 20px;
+	color: $default-text;
+	width: 280px;
+	height: 70px;
+
+	&.text-message {
+		font-size: 12px;
+		width: inherit;
+		max-width: calc(100% - 80px);
+		height: inherit;
+		min-height: 60px;
+		&:before {
+			display: block;
+		}
+		.message-content {
+			font-size: 12px;
+			line-height: 15px;
+			font-weight: $font-light;
+		}
+	}
+	&.small-message {
+		width: 155px;
+		height: 145px;
+		.preview {
+			bottom: 0;
+			top: initial;
+			height: 87px;
+			img {
+				width: 155px;
+				height: 87px;
+				border-radius: 0 0 5px 5px;
+			}
+		}
+	}
 }
