@@ -13,7 +13,8 @@
   }
   @media screen and (min-width: 1325px) {
     .pie-chart-item-container {
-      width: 25%;
+      //25% creo que por eso se partia en 4
+      width: 50%;
     }
   }
   @media screen and (min-width: 700px) and (max-width: 1325px)  {
