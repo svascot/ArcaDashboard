@@ -7,13 +7,22 @@
     <h4 class="modal-title">Asignar viaje</h4>
   </div>
   <div class="modal-body">
-    Esta seguro que desea crear el viaje con las siguientes caracteristicas?<br>
-    Vehiculo: <b>{{vehiculo.placa}}</b> <br>
-    Capaidad de pasajeros: <b>{{vehiculo.capacidad}}</b> <br>
-    Origen: <b>{{viaje.origen}}</b> <br>
-    Destino: <b>{{viaje.destino}}</b> <br>
-    Fecha de salida: <b>{{viaje.fechaInicio |date:"dd/MM/yyyy '-' h:mma"}}</b> <br>
-    Fecha de regreso: <b>{{viaje.fechaFin |date:"dd/MM/yyyy '-' h:mma" }}</b>
+    <div class="col-md-6">
+      Esta seguro que desea crear el viaje con las siguientes caracteristicas? <br><br>
+      Vehiculo: <b>{{vehiculo.placa}}</b> <br>
+      Capaidad de pasajeros: <b>{{vehiculo.capacidad}}</b> <br>
+      Origen: <b>{{viaje.origen}}</b> <br>
+      Destino: <b>{{viaje.destino}}</b> <br>
+      Fecha de salida: <b>{{viaje.fechaInicio |date:"dd/MM/yyyy '-' h:mma"}}</b> <br>
+      Fecha de regreso: <b>{{viaje.fechaFin |date:"dd/MM/yyyy '-' h:mma" }}</b>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Descipcion del viaje</label>
+        <textarea class="form-control" ng-model="viaje.descripcion" rows="5"></textarea>
+      {{viaje.descripcion}}
+      </div>
+    </div>
   </div>
   <div class="modal-footer">
     <button class="btn btn-primary" ng-click="asignarViaje()">Asignar viaje</button>
