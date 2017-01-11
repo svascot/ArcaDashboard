@@ -9,81 +9,68 @@
     .controller('ProfilePageCtrl', ProfilePageCtrl);
 
   /** @ngInject */
-  function ProfilePageCtrl($scope, fileReader, $filter, $uibModal) {
-    $scope.picture = $filter('profilePicture')('Nasta');
+  var openedToasts =[];
+  function ProfilePageCtrl($scope, $rootScope, fileReader, $filter, $uibModal,
+                      UsuariosService, uploadToAWS, toastr, toastrConfig) {
 
+    $scope.usuario = UsuariosService.getUsuario();
+    $scope.passStatus = "";
+    $scope.usuario.fechaNacimiento = new Date($scope.usuario.fechaNacimiento);
+    $scope.usuario.cedula = Number($scope.usuario.cedula)
+
+    $scope.openCalendar = function(e,prop) {
+        this[prop] =true
+        e.preventDefault();
+        e.stopPropagation();
+
+    };
+
+    $scope.actualizarUsuario = function(usuario){
+
+      if(usuario.password == usuario.confPass){
+
+        if(usuario.nuevaImagen){
+           uploadToAWS.uploadFiles(new Array(usuario.nuevaImagen)).then(function(urls){
+          usuario.foto= urls[0].endPoint
+          UsuariosService.actualizarUsuario(usuario).then(function(response){
+              openedToasts.push(toastr["success"]("Usuario actualizado", "Exito", $rootScope.toastDefautlOptions));
+              },function(err){
+                console.dir(err);
+                  if(err.status == 412){
+                    openedToasts.push(toastr["error"](err.message, "No tienens permiso para actualizar ese tipo de usuario", $rootScope.toastDefautlOptions));
+
+                  }
+              })
+          })
+        }
+        else{
+          UsuariosService.actualizarUsuario(usuario).then(function(response){
+            openedToasts.push(toastr["success"]("Usuario actualizado", "Exito", $rootScope.toastDefautlOptions));
+          },function(err){
+                console.dir(err);
+                  if(err.status == 412){
+                    openedToasts.push(toastr["error"](err.message, "No tienens permiso para actualizar ese tipo de usuario", $rootScope.toastDefautlOptions));
+
+                  }
+              })
+        }
+        $scope.passStatus = ""
+      }else{
+          $scope.passStatus = "La contraseña debe coincidir"
+      }
+
+    }
+
+    /* DEJO ESTE CODIGO PORQUE ME PARECE INTERESANTE
     $scope.removePicture = function () {
       $scope.picture = $filter('appImage')('theme/no-photo.png');
       $scope.noPicture = true;
     };
 
-    $scope.uploadPicture = function () {
-      var fileInput = document.getElementById('uploadFile');
-      fileInput.click();
+    */
 
-    };
 
-    $scope.socialProfiles = [
-      {
-        name: 'Facebook',
-        href: 'https://www.facebook.com/akveo/',
-        icon: 'socicon-facebook'
-      },
-      {
-        name: 'Twitter',
-        href: 'https://twitter.com/akveo_inc',
-        icon: 'socicon-twitter'
-      },
-      {
-        name: 'Google',
-        icon: 'socicon-google'
-      },
-      {
-        name: 'LinkedIn',
-        href: 'https://www.linkedin.com/company/akveo',
-        icon: 'socicon-linkedin'
-      },
-      {
-        name: 'GitHub',
-        href: 'https://github.com/akveo',
-        icon: 'socicon-github'
-      },
-      {
-        name: 'StackOverflow',
-        icon: 'socicon-stackoverflow'
-      },
-      {
-        name: 'Dribbble',
-        icon: 'socicon-dribble'
-      },
-      {
-        name: 'Behance',
-        icon: 'socicon-behace'
-      }
-    ];
 
-    $scope.unconnect = function (item) {
-      item.href = undefined;
-    };
-
-    $scope.showModal = function (item) {
-      $uibModal.open({
-        animation: false,
-        controller: 'ProfileModalCtrl',
-        templateUrl: 'app/pages/profile/profileModal.html'
-      }).result.then(function (link) {
-          item.href = link;
-        });
-    };
-
-    $scope.getFile = function () {
-      fileReader.readAsDataUrl($scope.file, $scope)
-          .then(function (result) {
-            $scope.picture = result;
-          });
-    };
-
-    $scope.switches = [true, true, false, true, true, false];
   }
 
 })();
