@@ -68,11 +68,30 @@
     $scope.tabSelected= function(tab){
     	tabSelected = tab
     }
+    var formatDate =function(viaje){
+      viaje.fechaFin = new Date(viaje.fechaFin);
+      viaje.fechaInicio=new Date(viaje.fechaInicio);
+      viaje.horaFin=new Date(viaje.horaFin);
+      viaje.horaInicio=new Date(viaje.horaInicio);
+      return viaje;
+    }
     $scope.crearViajeRecurrente = function(){
-      var viaje = $scope.viajeRecurrente;
-    	viaje.diasDeLaSemana = viajeRecurrente.diasDeLaSemana;
-    	viaje.trabajaFestivos = viajeRecurrente.trabajaFestivos;
-    	viaje.tiempoDeViaje = Math.trunc((viaje.horaFin.getTime() - viaje.horaInicio.getTime())/1000)
+    if (!$scope.viajeRecurrente.fechaFin || typeof $scope.viajeRecurrente.fechaFin  == 'string' ||  
+    	!$scope.viajeRecurrente.fechaInicio || typeof $scope.viajeRecurrente.fechaInicio  == 'string' || 
+    	!$scope.viajeRecurrente.horaFin || typeof $scope.viajeRecurrente.horaFin  == 'string' || 
+    	!$scope.viajeRecurrente.horaInicio || typeof $scope.viajeRecurrente.horaInicio  == 'string')
+    {
+    	$rootScope.openModal($rootScope.warningTemplate,'md','Por favor usa los controles para definir las fechas')    	
+    	return;
+    }
+
+      var viaje = JSON.parse(JSON.stringify($scope.viajeRecurrente));
+
+      viaje.diasDeLaSemana = viajeRecurrente.diasDeLaSemana;
+      viaje.trabajaFestivos = viajeRecurrente.trabajaFestivos;
+      viaje = formatDate(viaje);
+     
+      viaje.tiempoDeViaje = Math.trunc((viaje.horaFin.getTime() - viaje.horaInicio.getTime())/1000)
       //aca seteo la hora de inicio del viaje//
       var horaInicio = viaje.horaInicio.getHours();
       var minutosInicio = viaje.horaInicio.getMinutes();
@@ -86,7 +105,6 @@
 
     	ViajeService.crearViajeRecurrente(viaje).then(function(result){
     		openedToasts.push(toastr["success"]("Viaje recurrente creado", "Exito", $rootScope.toastDefautlOptions));
-        $scope.viajeRecurrente= {}
     	})
     	
     	

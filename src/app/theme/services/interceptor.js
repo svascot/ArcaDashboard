@@ -11,9 +11,9 @@
   /** @ngInject */
   function intercerptor($q,$rootScope) {
 
-   	 var succesTemplate = '<div class="modal-content">  <div class="modal-header bg-success"> <i class="ion-checkmark modal-icon"></i><span> Success</span> </div>  <div class="modal-body text-center">Your information has been saved successfully</div>  <div class="modal-footer">    <button type="button" class="btn btn-success" ng-click="$dismiss()">OK</button>  </div></div>',
-   	 errorTemplate = '<div class="modal-content"> <div class="modal-header bg-danger"> <i class="ion-flame modal-icon"></i><span> Error</span> </div>  <div class="modal-body text-center">{{text}}</div>  <div class="modal-footer">    <button type="button" class="btn btn-danger" ng-click="$dismiss()">OK</button>  </div></div>',
-   	 warningTemplate ='<div class="modal-content">  <div class="modal-header bg-warning"> <i class="ion-android-warning modal-icon"></i><span> Aleta</span> </div> <div class="modal-body text-center">{{text}}</div> <div class="modal-footer">    <button type="button" class="btn btn-warning" ng-click="$dismiss()">OK</button>  </div></div>';
+   	 $rootScope.succesTemplate = '<div class="modal-content">  <div class="modal-header bg-success"> <i class="ion-checkmark modal-icon"></i><span> Success</span> </div>  <div class="modal-body text-center">Your information has been saved successfully</div>  <div class="modal-footer">    <button type="button" class="btn btn-success" ng-click="$dismiss()">OK</button>  </div></div>',
+   	 $rootScope.errorTemplate = '<div class="modal-content"> <div class="modal-header bg-danger"> <i class="ion-flame modal-icon"></i><span> Error</span> </div>  <div class="modal-body text-center">{{text}}</div>  <div class="modal-footer">    <button type="button" class="btn btn-danger" ng-click="$dismiss()">OK</button>  </div></div>',
+   	 $rootScope.warningTemplate ='<div class="modal-content">  <div class="modal-header bg-warning"> <i class="ion-android-warning modal-icon"></i><span> Aleta</span> </div> <div class="modal-body text-center">{{text}}</div> <div class="modal-footer">    <button type="button" class="btn btn-warning" ng-click="$dismiss()">OK</button>  </div></div>';
 
       var intercerptor={};
 	  var dialog = waitingDialog;
@@ -77,16 +77,16 @@
 	    switch(status){
 	    	case 403:
           		//$window.location.href = '#/auth';
-	    		$rootScope.openModal(errorTemplate,'md','Debes estar logueado')
+	    		$rootScope.openModal($rootScope.errorTemplate,'md','Debes estar logueado')
 	    		break;
 	    	case 404:
-	    		$rootScope.openModal(warningTemplate,'md','Contenido no encontrado')
+	    		$rootScope.openModal($rootScope.warningTemplate,'md','Contenido no encontrado')
 	    		break;
 	    	case 412:
-	    		$rootScope.openModal(errorTemplate,'md',rejection.data)
+	    		$rootScope.openModal($rootScope.errorTemplate,'md',rejection.data)
 	    		break;
 	    	case 500:{
-	    		$rootScope.openModal(errorTemplate,'md','Error interno por favor contactarse con soporte tecnico')
+	    		$rootScope.openModal($rootScope.errorTemplate,'md','Error interno por favor contactarse con soporte tecnico')
 	    		break;
 	    	}
 
