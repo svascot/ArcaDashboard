@@ -69,7 +69,8 @@
     	tabSelected = tab
     }
     $scope.crearViajeRecurrente = function(){
-      var viaje = $scope.viajeRecurrente;
+       
+      var viaje = JSON.parse(JSON.stringify($scope.viajeRecurrente));
     	viaje.diasDeLaSemana = viajeRecurrente.diasDeLaSemana;
     	viaje.trabajaFestivos = viajeRecurrente.trabajaFestivos;
     	viaje.tiempoDeViaje = Math.trunc((viaje.horaFin.getTime() - viaje.horaInicio.getTime())/1000)
@@ -86,7 +87,6 @@
 
     	ViajeService.crearViajeRecurrente(viaje).then(function(result){
     		openedToasts.push(toastr["success"]("Viaje recurrente creado", "Exito", $rootScope.toastDefautlOptions));
-        $scope.viajeRecurrente= {}
     	})
     	
     	
