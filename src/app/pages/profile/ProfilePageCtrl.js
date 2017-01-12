@@ -56,7 +56,7 @@
         }
         $scope.passStatus = ""
       }else{
-          $scope.passStatus = "La contraseña debe coincidir"
+          $scope.passStatus = "La contraseña no coincide..."
       }
 
     }

@@ -21,10 +21,8 @@
             </a>
               <input type="file" ng-show="false" id="uploadFile" ng-file-select="onFileSelect($files)"
                      ng-model="usuario.nuevaImagen" ngf-multiple="false" ngf-max-size="2MB">
-
-
-
             </div>
+            <p class="help-block">{{usuario.nuevaImagen.name}}</p>
           </div>
         </div>
       </div>
@@ -73,14 +71,13 @@
         </div>
       </div>
       <div class="col-md-6">
-        <div class="form-group row clearfix">
+        <div class="form-group row">
           <label for="inputConfirmPassword" class="col-sm-3 control-label">Confirmar</label>
-
           <div class="col-sm-9">
             <input type="password" class="form-control" id="inputConfirmPassword" ng-model="usuario.confPass">
+            <p ng-show=passStatus class="text-danger">{{passStatus}}</p>
           </div>
         </div>
-        {{passStatus}}
       </div>
     </div>
 
