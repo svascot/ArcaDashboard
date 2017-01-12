@@ -18,12 +18,10 @@
     }
 
     $scope.verDetalles= function(item){
-      if(item.estado != "Cancelado"){
-        if(!item.expanded){
-          item.expanded = false;
-        }
-          item.expanded = !item.expanded;
+      if(!item.expanded){
+        item.expanded = false;
       }
+      item.expanded = !item.expanded;
     }
 
     $scope.openCancelarViaje = function(viaje){

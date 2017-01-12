@@ -109,16 +109,27 @@
               </div>
 
               <div class="preview" ng-show="viaje.expanded" >
-                <div class="message-header">
-                  <span class="author">Acciones</span>
+                <div ng-show="viaje.descripcion">
+                  <div class="message-header">
+                    <br>
+                    <span class="author">Descripcion</span>
+                  </div>
+
+                  <div class="message-content">
+                    {{viaje.descripcion}}
+                  </div>
                 </div>
+                  <div ng-show="viaje.estado != 'Cancelado'">
+                  <div class="message-header">
+                    <br>
+                    <span class="author">Acciones</span>
+                  </div>
 
-
-              <div class="row col-md-12">
-                <button type="button" class="btn btn-danger btn-sm"
-                    ng-click="openCancelarViaje(viaje)">Eliminar
-                </button>
-              </div>
+                  <div class="row col-md-12">
+                    <button type="button" class="btn btn-danger btn-sm"
+                        ng-click="openCancelarViaje(viaje)">Cancelar viaje
+                    </button>
+                  </div>
             </div>
 
             </div>
