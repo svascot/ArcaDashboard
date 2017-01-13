@@ -15,9 +15,17 @@
 
     $scope.switchVehicle = function (vehicle) {
       $scope.viajes = [];
+      var id = "";
       for(var v in vehicle.Viajes){
-        if($scope.viajes)
-        $scope.viajes.push(vehicle.Viajes[v])
+        if(!vehicle.Viajes[v].recurrenteId){
+          $scope.viajes.push(vehicle.Viajes[v])
+        }
+        if(vehicle.Viajes[v].recurrenteId && vehicle.Viajes[v].recurrenteId != id){
+          vehicle.Viajes[v].fechaInicio = vehicle.Viajes[v].recurreteFechaInicio;
+          vehicle.Viajes[v].fechaFin = vehicle.Viajes[v].recurreteFechaFin;
+          $scope.viajes.push(vehicle.Viajes[v])
+          id = vehicle.Viajes[v].recurrenteId;
+        }
       }
       $scope.viaje.placa = vehicle.placa;
     }
