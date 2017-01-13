@@ -5,7 +5,7 @@
         ba-panel-title="Detalles del viaje"
         ba-panel-class="with-scroll">
 <uib-tabset active="$tabSetStatus.activeTab">
-    <uib-tab select="tabSelected('unico')" heading="Unico">
+    <uib-tab select="tabSelected('unico')" heading="Único">
 
         <form name="form" ng-submit="filtrar(filtro)">
           <div class="row">
@@ -100,8 +100,8 @@
 
             <div class="col-md-6">
                 <div class="form-group">
-                
-                      
+
+
                <ui-select ng-model="viaje.origen" style="width: 200px"
                class="btn-group bootstrap-select"
                ng-disabled="false"
@@ -113,7 +113,7 @@
                 <ui-select-choices repeat="destino.nombre as destino in destinos | filter: $select.search" >
                   <span ng-bind-html="destino.nombre"></span>
                 </ui-select-choices>
-              </ui-select>              
+              </ui-select>
                 </div>
                 <div class="form-group">
                   <ui-select ng-model="viaje.destino" style="width: 200px"
@@ -127,7 +127,7 @@
                     <ui-select-choices repeat="destino.nombre as destino in destinos | filter: $select.search" >
                       <span ng-bind-html="destino.nombre"></span>
                     </ui-select-choices>
-                  </ui-select>   
+                  </ui-select>
                 </div>
             </div>
 
@@ -159,7 +159,7 @@
 
           </div>
           <div class="row col-md-12">
-            <button type="submit" class="btn btn-primary">Buscar vehiculos</button>
+            <button type="submit" class="btn btn-primary">Buscar vehículos</button>
           </div>
         </form>
       </uib-tab>
@@ -205,11 +205,11 @@
                   </p>
                 </div>
                 <div class="form-group">
-                  <label>Descripcion</label>
+                  <label>Descripción</label>
                   <input type="text" required class="form-control" ng-model="viajeRecurrente.descripcion" >
                 </div>
                  <div class="form-group">
-                 <label>Vehiculo</label>
+                 <label>Vehículo</label>
                   <select class="form-control selectpicker with-search"
                     data-live-search="true" required  selectpicker
                     ng-model="viajeRecurrente.vehiculoId"
