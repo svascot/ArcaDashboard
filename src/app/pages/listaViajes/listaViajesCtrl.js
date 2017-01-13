@@ -9,11 +9,16 @@
   function listarViajesCtrl($scope,$rootScope,ViajeService,toastr, toastrConfig,vehiculos) {
 
     $scope.viaje = {};
+
     $scope.vehiculos = vehiculos;
     $scope.vehiculo = {};
 
     $scope.switchVehicle = function (vehicle) {
-      $scope.vehiculo = vehicle;
+      $scope.viajes = [];
+      for(var v in vehicle.Viajes){
+        if($scope.viajes)
+        $scope.viajes.push(vehicle.Viajes[v])
+      }
       $scope.viaje.placa = vehicle.placa;
     }
 
