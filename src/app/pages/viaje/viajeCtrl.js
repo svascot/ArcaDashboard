@@ -29,7 +29,9 @@
     $scope.viajeRecurrente= {}
     //$scope.filtro.tipoViaje = true;
     
-  
+    $scope.queSera = function(){
+      alert($scope.viaje.origen)
+    }
    
     $scope.expandFilter = function(){
       $scope.opcionesAvanzadas= !$scope.opcionesAvanzadas;
