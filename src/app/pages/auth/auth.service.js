@@ -20,6 +20,7 @@
             console.dir(resultado.data);
             localStorage.setItem("user", JSON.stringify(resultado.data.user));
             localStorage.setItem("arcaToken", resultado.data.token);
+            $rootScope.setAuthorizationToken();
             return resultado.data.user
           }
         )
@@ -29,7 +30,8 @@
         return $http.post(query).then(
           function(resultado ){  
           localStorage.removeItem("user");
-          localStorage.removeItem("arcaToken");     
+          localStorage.removeItem("arcaToken");  
+          delete $http.defaults.headers.common.Authorization;   
             return resultado.data
           }
         )
