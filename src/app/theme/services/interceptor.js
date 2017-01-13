@@ -9,7 +9,7 @@
     .factory('intercerptor', intercerptor);
 
   /** @ngInject */
-  function intercerptor($q,$rootScope) {
+  function intercerptor($q,$rootScope,$window) {
 
    	 $rootScope.succesTemplate = '<div class="modal-content">  <div class="modal-header bg-success"> <i class="ion-checkmark modal-icon"></i><span> Success</span> </div>  <div class="modal-body text-center">Your information has been saved successfully</div>  <div class="modal-footer">    <button type="button" class="btn btn-success" ng-click="$dismiss()">OK</button>  </div></div>',
    	 $rootScope.errorTemplate = '<div class="modal-content"> <div class="modal-header bg-danger"> <i class="ion-flame modal-icon"></i><span> Error</span> </div>  <div class="modal-body text-center">{{text}}</div>  <div class="modal-footer">    <button type="button" class="btn btn-danger" ng-click="$dismiss()">OK</button>  </div></div>',
@@ -75,9 +75,9 @@
 	    hideLoading();
 	    var status = rejection.status;
 	    switch(status){
-	    	case 403:
-          		//$window.location.href = '#/auth';
+	    	case 403:          		
 	    		$rootScope.openModal($rootScope.errorTemplate,'md','Debes estar logueado')
+	    		$window.location.href = '#/auth';
 	    		break;
 	    	case 404:
 	    		$rootScope.openModal($rootScope.warningTemplate,'md','Contenido no encontrado')
