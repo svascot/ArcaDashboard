@@ -88,7 +88,7 @@
               <div class="text-block-withoutSpace text-message">
                 <div class="message-header">
                   <span ng-show="!viaje.recurrenteId" class="author">Origen: {{viaje.origen}}, Destino: {{viaje.destino}}</span>
-                  <span ng-show="viaje.recurrenteId" class="author">Descripción: {{viaje.descripcion}}</span>
+                  <span ng-show="viaje.recurrenteId" class="author">Días: {{viaje.destino}}</span>
                 </div>
                 <div class="message-content">
                   <div class="col-md-12">
@@ -97,14 +97,26 @@
                         <i class="ion-stats-bars"></i>
                         Estado: <span class="{{viaje.estado}}"><b>{{viaje.estado}}</b></span><br>
                       </div>
-                      <div class="info-label">
-                        <i class="ion-android-calendar"></i>
-                        Fecha de salida: <b>{{viaje.fechaInicio |date:"dd/MM/yyyy '-' h:mma"}}</b><br>
-                      </div>
-                      <div class="info-label">
-                        <i class="ion-android-calendar"></i>
-                        Fecha de regreso: <b>{{viaje.fechaFin |date:"dd/MM/yyyy '-' h:mma" }}</b>
-                      </div>
+                        <div ng-show="!viaje.recurrenteId" >
+                          <div class="info-label">
+                            <i class="ion-android-calendar"></i>
+                            Fecha de salida: <b>{{viaje.fechaInicio |date:"dd/MM/yyyy '-' h:mma"}}</b><br>
+                          </div>
+                          <div class="info-label">
+                            <i class="ion-android-calendar"></i>
+                            Fecha de regreso: <b>{{viaje.fechaFin |date:"dd/MM/yyyy '-' h:mma" }}</b>
+                          </div>
+                        </div>
+                        <div ng-show="viaje.recurrenteId" >
+                          <div class="info-label">
+                            <i class="ion-android-calendar"></i>
+                            Fecha de inicio: <b>{{viaje.recurreteFechaInicio |date:"dd/MM/yyyy '-' h:mma"}}</b><br>
+                          </div>
+                          <div class="info-label">
+                            <i class="ion-android-calendar"></i>
+                            Fecha de fin: <b>{{viaje.recurreteFechaFin |date:"dd/MM/yyyy '-' h:mma" }}</b>
+                          </div>
+                        </div>
                     </div>
                 </div>
               </div>

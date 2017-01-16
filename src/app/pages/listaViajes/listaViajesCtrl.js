@@ -21,8 +21,7 @@
           $scope.viajes.push(vehicle.Viajes[v])
         }
         if(vehicle.Viajes[v].recurrenteId && vehicle.Viajes[v].recurrenteId != id){
-          vehicle.Viajes[v].fechaInicio = vehicle.Viajes[v].recurreteFechaInicio;
-          vehicle.Viajes[v].fechaFin = vehicle.Viajes[v].recurreteFechaFin;
+          vehicle.Viajes[v].destino = dias(vehicle.Viajes[v].destino);
           $scope.viajes.push(vehicle.Viajes[v])
           id = vehicle.Viajes[v].recurrenteId;
         }
@@ -35,6 +34,39 @@
         item.expanded = false;
       }
       item.expanded = !item.expanded;
+    }
+
+    function dias(dias){
+      var dia = "";
+      for (var d in dias){
+        switch (dias[d]) {
+          case ",":
+              dia = dia + ", ";
+              break;
+          case "1":
+              dia = dia + "Lunes";
+              break;
+          case "2":
+              dia = dia + "Martes";
+              break;
+          case "3":
+              dia = dia + "Miercoles";
+              break;
+          case "4":
+              dia = dia + "Jueves";
+              break;
+          case "5":
+              dia = dia + "Viernes";
+              break;
+          case "6":
+              dia = dia + "Sabado";
+              break;
+          case "7":
+              dia = dia + "Domingo";
+
+        }
+      }
+      return dia;
     }
 
     $scope.openCancelarViaje = function(viaje){
