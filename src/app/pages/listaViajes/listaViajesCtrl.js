@@ -43,6 +43,9 @@
           case ",":
               dia = dia + ", ";
               break;
+          case "0":
+              dia = dia + "Domingo";
+              break;
           case "1":
               dia = dia + "Lunes";
               break;
@@ -61,9 +64,6 @@
           case "6":
               dia = dia + "Sabado";
               break;
-          case "7":
-              dia = dia + "Domingo";
-
         }
       }
       return dia;
