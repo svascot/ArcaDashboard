@@ -21,7 +21,7 @@
           $scope.viajes.push(vehicle.Viajes[v])
         }
         if(vehicle.Viajes[v].recurrenteId && vehicle.Viajes[v].recurrenteId != id){
-          vehicle.Viajes[v].destino = dias(vehicle.Viajes[v].destino);
+          vehicle.Viajes[v].dias = dias(vehicle.Viajes[v].destino);
           $scope.viajes.push(vehicle.Viajes[v])
           id = vehicle.Viajes[v].recurrenteId;
         }
