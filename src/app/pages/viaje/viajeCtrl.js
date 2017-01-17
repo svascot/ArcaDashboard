@@ -28,16 +28,16 @@
     $scope.filtro = {};
     $scope.viajeRecurrente= {}
     //$scope.filtro.tipoViaje = true;
-    
+
     $scope.queSera = function(){
       alert($scope.viaje.origen)
     }
-   
+
     $scope.expandFilter = function(){
       $scope.opcionesAvanzadas= !$scope.opcionesAvanzadas;
     }
 
-    $scope.filtrar = function(filtro){      
+    $scope.filtrar = function(filtro){
       if(filtro.fechaInicio != null && filtro.fechaFin != null){
         $scope.viaje.fechaInicio = filtro.fechaInicio;
         $scope.viaje.fechaFin = filtro.fechaFin;
@@ -78,12 +78,12 @@
       return viaje;
     }
     $scope.crearViajeRecurrente = function(){
-    if (!$scope.viajeRecurrente.fechaFin || typeof $scope.viajeRecurrente.fechaFin  == 'string' ||  
-    	!$scope.viajeRecurrente.fechaInicio || typeof $scope.viajeRecurrente.fechaInicio  == 'string' || 
-    	!$scope.viajeRecurrente.horaFin || typeof $scope.viajeRecurrente.horaFin  == 'string' || 
+    if (!$scope.viajeRecurrente.fechaFin || typeof $scope.viajeRecurrente.fechaFin  == 'string' ||
+    	!$scope.viajeRecurrente.fechaInicio || typeof $scope.viajeRecurrente.fechaInicio  == 'string' ||
+    	!$scope.viajeRecurrente.horaFin || typeof $scope.viajeRecurrente.horaFin  == 'string' ||
     	!$scope.viajeRecurrente.horaInicio || typeof $scope.viajeRecurrente.horaInicio  == 'string')
     {
-    	$rootScope.openModal($rootScope.warningTemplate,'md','Por favor usa los controles para definir las fechas')    	
+    	$rootScope.openModal($rootScope.warningTemplate,'md','Por favor usa los controles para definir las fechas')
     	return;
     }
 
@@ -92,7 +92,7 @@
       viaje.diasDeLaSemana = viajeRecurrente.diasDeLaSemana;
       viaje.trabajaFestivos = viajeRecurrente.trabajaFestivos;
       viaje = formatDate(viaje);
-     
+
       viaje.tiempoDeViaje = Math.trunc((viaje.horaFin.getTime() - viaje.horaInicio.getTime())/1000)
       //aca seteo la hora de inicio del viaje//
       var horaInicio = viaje.horaInicio.getHours();
@@ -103,14 +103,15 @@
 
       viaje.fechaFin.setHours(viaje.fechaFin.getHours()+horaInicio);
       viaje.fechaFin.setMinutes(viaje.fechaFin.getMinutes()+minutosInicio)
+
       ////////////////////////////////////////////////////////////////////
 
     	ViajeService.crearViajeRecurrente(viaje).then(function(result){
     		openedToasts.push(toastr["success"]("Viaje recurrente creado", "Exito", $rootScope.toastDefautlOptions));
     	})
-    	
-    	
-    } 	
+
+
+    }
     $scope.procesarDia =function(dia){
     	if(viajeRecurrente.diasDeLaSemana){
     		var index = viajeRecurrente.diasDeLaSemana.indexOf(dia)
@@ -124,7 +125,7 @@
     		viajeRecurrente.diasDeLaSemana = []
     		viajeRecurrente.diasDeLaSemana.push(dia)
     	}
-    	
+
     }
     $scope.procesarTrabajaFestivos= function(trabajaFestivos){
     	if(viajeRecurrente.trabajaFestivos){
@@ -143,6 +144,6 @@
     	{text:"Sabado",color:'#0e8174',id:6},
     	{text:"Domingo",color:'#b9f2a1',id:0}
     ]
- 	
+
   }
 })();

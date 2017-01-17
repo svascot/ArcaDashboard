@@ -8,10 +8,10 @@
         <a disable class="al-logo clearfix">{{usuario.nombre}}</a>
     <div class="al-user-profile" uib-dropdown>
       <a uib-dropdown-toggle class="profile-toggle-link">
-        <img ng-src="{{getProfileImage()}}">
+        <img ng-src="{{usuario.foto}}">
       </a>
       <ul  class="top-dropdown-menu profile-dropdown" uib-dropdown-menu>
-        <li><a href="#/profile"><i class="fa fa-user"></i>Profile</a></li>
+        <li><a href="#/profile"><i class="fa fa-user"></i>Perfil</a></li>
         <li><i class="dropdown-arr"></i></li>
         <li><a href class="signout" ng-click="logout()"><i class="fa fa-power-off"></i>Salir</a></li>
       </ul>

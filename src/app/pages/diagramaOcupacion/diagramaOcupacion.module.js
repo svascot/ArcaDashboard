@@ -10,7 +10,7 @@
         .state('diagramaOcupacion', {
           url: '/diagramaOcupacion',
           templateUrl: 'app/pages/diagramaOcupacion/diagramaOcupacion.html',
-          title: 'Diagrama de ocupacion',
+          title: 'Disponibilidad',
           controller:'diagramaOcupacionCtrl',
           sidebarMeta: {
             icon: 'ion-clock',
