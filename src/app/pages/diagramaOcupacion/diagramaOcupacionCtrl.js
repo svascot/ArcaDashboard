@@ -6,6 +6,35 @@
 
   /** @ngInject */
   var openedToasts =[];
+  var formatDiasDeLaSemana = function(diasDeLaSemana){
+    var dias= ""
+    if(!diasDeLaSemana){
+      return dias;
+    }
+    if(diasDeLaSemana.includes(0)){
+      dias += "Dom"
+    }
+    if(diasDeLaSemana.includes(1)){
+       dias += " Lun"
+    }
+    if(diasDeLaSemana.includes(2)){
+       dias += " Mar"
+    }
+    if(diasDeLaSemana.includes(3)){
+       dias += " Mie"
+    }
+    if(diasDeLaSemana.includes(4)){
+       dias += " Jue"
+    }
+    if(diasDeLaSemana.includes(5)){
+       dias += " Vie"
+    }
+    if(diasDeLaSemana.includes(6)){
+       dias += " Sab"
+    }
+
+    return dias;
+  }
   function diagramaOcupacionCtrl($scope,ViajeService,marcas,toastr,DiagramaOcupacionService,toastrConfig,$rootScope,vehiculos) {
     $scope.marcas = marcas;
     $scope.referencias = {}
@@ -16,24 +45,31 @@
       var now = moment().minutes(0).seconds(0).milliseconds(0);
       var groups = new vis.DataSet();
       var items = new vis.DataSet();
+      var content;
+      var viaje;
+      var vehiculo;
       // create a data set with groups
 
       for (var j = vehiculos.length - 1; j >= 0; j--) {
-         var vehiculo = vehiculos[j];
+         vehiculo = vehiculos[j];
 
 
         groups.add({id:j,content:vehiculo.placa})
 
         if(vehiculo.Viajes){
           for (var i = vehiculo.Viajes.length - 1; i >= 0; i--) {
-            var viaje = vehiculo.Viajes[i]
+            viaje = vehiculo.Viajes[i]
             //alert (new Date(viaje.fechaInicio))
             if(viaje.estado == "Confirmado"){
-            console.log(new Date(viaje.fechaFin).getTime()*1000)
+              content =  viaje.destino || formatDiasDeLaSemana(viaje.recurreteDiasDeLaSemana);
+              
+                 
+             
+              
               items.add({
                 id:  viaje.id,
                 group:(j),
-                content: ' <span>(' + viaje.destino + ')</span>',
+                content: "<b>"+viaje.descripcion+" </b><span>" +content + '</span>',
                 start: viaje.fechaInicio,
                 end:viaje.fechaFin,
                 type: 'range'
@@ -48,7 +84,7 @@
       var container = document.getElementById('visualization');
       container.innerHTML = "";
       var options = {
-        groupOrder: 'content',  // groupOrder can be a property name or a sorting function
+        groupOrder: 'group',  // groupOrder can be a property name or a sorting function
         locale: 'es',
          orientation:{
             axis:'both'
