@@ -64,7 +64,7 @@
               content =  viaje.destino || formatDiasDeLaSemana(viaje.recurreteDiasDeLaSemana);
               
                  
-             
+              viaje.descripcion = viaje.descripcion || "";
               
               items.add({
                 id:  viaje.id,
