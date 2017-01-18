@@ -9,7 +9,7 @@
     var documentoSeleccionado = undefined;
 
     return{
-      
+
       getDocumentoSeleccionado: function(){
         return documentoSeleccionado;
       },
@@ -46,7 +46,18 @@
             return resultado.data
           }
         )
+      },
+      documentoPorVencer :function(){
+        var query = $rootScope.serviceURL+"documento/documentosProximosAVencer";
+        window.console.log(query);
+        return $http.get(query,{}).then(
+          function(resultado){
+            console.dir(resultado.data);
+            return resultado.data
+          }
+        )
       }
+
 
 
 

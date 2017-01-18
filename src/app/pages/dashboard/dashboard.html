@@ -15,6 +15,50 @@
 
 <div class="col-xlg-3 col-lg-6 col-md-6 col-sm-12 col-xs-12"
      ba-panel
+     ba-panel-title="Vehículos con documentos por vencer"
+     ba-panel-class="xmedium-panel with-scroll feed-panel">
+
+  <div class="row">
+    <div class="feed-messages-container" track-width="smallContainerWidth"
+        min-width="360">
+      <div class="feed-message" style="min-height: 95px;" ng-repeat="vehiculo in documentos"
+          ng-click="verDetalles(vehiculo)">
+          <div class="message-icon">
+            <img class="photo-icon" ng-src="{{vehiculo | vehiculoImagen}}">
+          </div>
+          <div class="text-block text-message">
+            <div class="message-header">
+              <span class="author">{{vehiculo.marca}} {{vehiculo.referencia}} {{vehiculo.modelo}}</span>
+            </div>
+            <div class="message-content">
+            <div class="col-md-12">
+              <div class="info-label">
+                <i class="ion-person"></i>
+                 Conductor: <b>{{vehiculo.Usuario.nombre}}</b>
+              </div>
+              <div class="info-label">
+                <i class="ion-android-car"></i>
+                 Placa: <b>{{vehiculo.placa}}</b>
+              </div>
+              </div>
+              <div class="preview" ng-show="vehiculo.expanded" >
+                <div class="message-header">
+                  <span class="author">Documentos por vencer</span>
+                </div>
+                <div class="info-label" ng-repeat="doc in vehiculo.Documentos">
+                  <i class="ion-document"></i>
+                  <b>{{doc.nombre}}</b>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-xlg-3 col-lg-6 col-md-6 col-sm-12 col-xs-12"
+     ba-panel
      ba-panel-title="Lista de usuarios"
      ba-panel-class="xmedium-panel with-scroll feed-panel">
 
@@ -48,7 +92,7 @@
 
 <div class="col-xlg-3 col-lg-6 col-md-6 col-sm-12 col-xs-12"
      ba-panel
-     ba-panel-title="Lista de vehiculos"
+     ba-panel-title="Lista de vehículos"
      ba-panel-class="xmedium-panel with-scroll feed-panel">
 
   <div class="row">
@@ -102,4 +146,5 @@
         </div>
       </div>
     </div>
+  </div>
 </div>

@@ -8,10 +8,15 @@
   var openedToasts =[];
 
   function dashboardCtrl($scope,VehiculosService,toastr, toastrConfig,$rootScope,
-    usuarios, vehiculos,uploadToAWS,UsuariosService) {
+    usuarios, vehiculos,uploadToAWS,UsuariosService, documentos) {
 
     $scope.vehiculos = vehiculos;
     $scope.usuarios = usuarios;
+    $scope.documentos = documentos;
+
+    console.log("Docuentos");
+    console.log($scope.documentos);
+    console.log("Docuentos");
 
     var vehiculoModa = $scope.vehiculos[0];
     var viajesTotales = 0;
@@ -20,6 +25,13 @@
       if($scope.vehiculos[v].Viajes.length >= vehiculoModa.Viajes.length){
         vehiculoModa = $scope.vehiculos[v];
       }
+    }
+
+    $scope.verDetalles= function(vehiculo){
+      if(!vehiculo.expanded){
+        vehiculo.expanded = false;
+      }
+        vehiculo.expanded = !vehiculo.expanded;
     }
 
     $scope.charts = [{
@@ -32,7 +44,6 @@
       icon: 'calendar',
     }, {
       description: 'Vehiculo mas solicitado',
-      //{{vehiculo.marca}} {{vehiculo.referencia}}
       stats: vehiculoModa.marca + "  " + vehiculoModa.referencia + " - " + vehiculoModa.placa,
       icon: 'car',
     }, {

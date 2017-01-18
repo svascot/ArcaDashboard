@@ -22,6 +22,11 @@
                       return vehiculos;
                   })
              },
+             documentos:function(DocumentoService){
+                  return DocumentoService.documentoPorVencer().then(function(documentos){
+                      return documentos;
+                  })
+             },
              usuarios:function(UsuariosService){
                 return UsuariosService.listar().then(function(usuarios){
                         return usuarios;
