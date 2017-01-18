@@ -47,7 +47,7 @@
                 </div>
                 <div class="info-label" ng-repeat="doc in vehiculo.Documentos">
                   <i class="ion-document-text"></i>
-                  {{doc.nombre}}
+                  {{doc.nombre}}: {{doc.fechaExpiracion  | date:"dd/MM/yyyy"}}
                 </div>
             </div>
           </div>
