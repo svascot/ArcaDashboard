@@ -18,6 +18,7 @@
     };
 
     $scope.actualizarUsuario = function(usuario){
+       var oldUser = JSON.parse(JSON.stringify(usuario))
 
       if(usuario.nuevaImagen){
          uploadToAWS.uploadFiles(new Array(usuario.nuevaImagen)).then(function(urls){
@@ -28,7 +29,7 @@
               console.dir(err);
                 if(err.status == 412){
                   openedToasts.push(toastr["error"](err.message, "No tienens permiso para actualizar ese tipo de usuario", $rootScope.toastDefautlOptions));
-                  
+                   usuario = oldUser;
                 }
             })
         })
@@ -40,7 +41,7 @@
               console.dir(err);
                 if(err.status == 412){
                   openedToasts.push(toastr["error"](err.message, "No tienens permiso para actualizar ese tipo de usuario", $rootScope.toastDefautlOptions));
-                  
+                   usuario = oldUser;
                 }
             })        
       }
