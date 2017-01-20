@@ -86,7 +86,7 @@
             return vehiculo;
           },
           conductores:function () {
-            return UsuariosService.listar('conductor').then(function(conductores){
+            return UsuariosService.listar('Conductor').then(function(conductores){
                  //lert("conductores cargados")
                   console.dir(conductores)
                 return conductores

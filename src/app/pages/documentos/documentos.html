@@ -30,7 +30,7 @@
       <div class="form-group">
   			<label>Fecha de expiracion</label>
   			<p class="input-group">
-        <input type="text" class="form-control" datetime-picker="dd MMM yyyy HH:mm" ng-model="documento.fechaExpiracion"
+        <input type="text" class="form-control" datetime-picker="dd MMM yyyy HH:mm" enable-time="false" ng-model="documento.fechaExpiracion"
         is-open="fechaExpiracionOpen"  />
         <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="openCalendar($event,'fechaExpiracionOpen')"><i class="fa fa-calendar"></i></button>
