@@ -48,6 +48,11 @@
           },
           marcas:function (){
             return marcas;
+          },
+          propietarios:function (){
+            return UsuariosService.listCoductoresYAfiliados().then(function(coductoresYAfiliados){
+                return coductoresYAfiliados
+            });
           }
         }
       )
@@ -86,11 +91,9 @@
             return vehiculo;
           },
           conductores:function () {
-            return UsuariosService.listar('Conductor').then(function(conductores){
-                 //lert("conductores cargados")
-                  console.dir(conductores)
-                return conductores
-            })
+            return UsuariosService.listCoductoresYAfiliados().then(function(coductoresYAfiliados){
+                return coductoresYAfiliados
+            });
           },
           vehiculos:function(){
             return vehiculos

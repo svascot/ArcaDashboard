@@ -6,8 +6,8 @@
 
   /** @ngInject */
   var openedToasts =[];
-  function CrearVehiculoModalCtrl($scope, marcas, VehiculosService,$rootScope,vehiculos,uploadToAWS,toastr,toastrConfig) {
-
+  function CrearVehiculoModalCtrl($scope, marcas, VehiculosService,$rootScope,vehiculos,uploadToAWS,toastr,toastrConfig,propietarios) {
+    $scope.propietarios = propietarios;
     $scope.marcas = marcas;
     $scope.referencias = {}
 
@@ -28,7 +28,7 @@
               vehiculos.push(response)
           })
 
-       $rootScope.currentOpenModal.close();
+       //$rootScope.currentOpenModal.close();
     }
   }
 
