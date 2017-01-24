@@ -36,6 +36,51 @@
                     <input type="text" class="form-control input-sm"
                           ng-model="vehiculo.capacidad">
               </div>
+
+
+              <div class="row form-group">
+               <label>Relacion </label>
+                <select class="form-control selectpicker with-search" data-live-search="true" title="Rol"    selectpicker
+                 ng-model="vehiculo.relacion">
+                  <option value="Propio">Propio</option>
+                  <option value="Afiliado">Afiliado</option>
+                  <option value="Tercero">Tercero</option>
+                </select>
+              </div>
+              <div class="row form-group">
+                 <label>Tipo </label>
+                <select class="form-control selectpicker with-search" data-live-search="true" title="Rol"    selectpicker
+                 ng-model="vehiculo.tipo">
+                  <option value="Bus">Bus</option>
+                  <option value="Buseta">Buseta</option>
+                  <option value="Cliente">Cliente</option>
+                  <option value="Camioneta">Camioneta</option>
+                  <option value="Campero">Campero</option>
+                  <option value="Microbus">Microbus</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Numero interno </label>
+                <input type="text" class="form-control input-sm text-uppercase"
+                       placeholder="Numero Interno" ng-model="vehiculo.numeroInterno">
+              </div>
+              <div class="form-group" ng-if="vehiculo.relacion == 'Afiliado'">
+                <label>Propietario </label>
+                  <select id="referencia" class="form-control selectpicker with-search"
+                    data-live-search="true" title="Propietario" selectpicker
+                    placeholder="Propietario"
+                    ng-model="vehiculo.PropietarioId" ng-options="propietario.id as propietario.nombre for propietario in propietarios">
+                  </select>
+              </div>
+
+
+
+
+
+
+
+
+
             </div>
             <div class="col-md-6">
               <div class="form-group">

@@ -1,3 +1,15 @@
+.modal-dialog{
+    overflow-y: initial !important
+}
+.modal-body{
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+}
+
+
+
+
+
 /*Colores de los estados de los viajes
 ====================================*/
 .Confirmado{
@@ -15,6 +27,7 @@
 .Finalizado{
 	color: blue;
 }
+
 
 /*Elimina el espacio en blanco en la lista de viajes realizados ListarViajes
 copie todo el original y solo cambie el 80 por 0 en el margin

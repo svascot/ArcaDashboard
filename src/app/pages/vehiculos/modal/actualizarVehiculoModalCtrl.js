@@ -6,9 +6,9 @@
 
   /** @ngInject */
   var openedToasts =[];
-  function ActualizarVehiculoModalCtrl($scope,marcas,VehiculosService,$rootScope,vehiculo,uploadToAWS,toastr,toastrConfig) {
+  function ActualizarVehiculoModalCtrl($scope,marcas,VehiculosService,$rootScope,vehiculo,uploadToAWS,toastr,toastrConfig,propietarios) {
     $scope.vehiculo = vehiculo;
-
+    $scope.propietarios = propietarios;
     $scope.marcas = marcas;
     $scope.referencias = {}
 

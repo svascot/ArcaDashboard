@@ -66,6 +66,11 @@
           },
           marcas:function (){
             return marcas;
+          },
+          propietarios:function (){
+            return UsuariosService.listCoductoresYAfiliados().then(function(coductoresYAfiliados){
+                return coductoresYAfiliados
+            });
           }
         }
       )
