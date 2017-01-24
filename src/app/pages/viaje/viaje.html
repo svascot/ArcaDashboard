@@ -5,7 +5,7 @@
         ba-panel-title="Detalles del viaje"
         ba-panel-class="with-scroll">
 <uib-tabset active="$tabSetStatus.activeTab">
-    <uib-tab select="tabSelected('unico')" heading="Único">
+    <uib-tab select="tabSelected('unico')" heading="Evento">
 
         <form name="form" ng-submit="filtrar(filtro)">
           <div class="row">
@@ -49,8 +49,19 @@
 
               <div class="form-group">
                 <label>Capacidad de pasajeros</label>
-                <input type="text" required class="form-control input-sm" id="input1"
-                        placeholder="Maximo 41 pasajeros" ng-model="filtro.capacidad">
+                  <div>
+                    <input type="text" required class="form-control col-md-6 input-sm"
+                            placeholder="Minimo 1 pasajeros" ng-model="filtro.capacidad">
+                    <input type="text" class="form-control col-md-6 input-sm"
+                            placeholder="Maximo 41 pasajeros" ng-model="filtro.capacidadMax">
+                </div>
+              </div>
+
+
+              <div class="form-group">
+                <label>Modelo</label>
+                <input type="text" class="form-control input-sm" id="input5"
+                        placeholder="Modelo" ng-model="filtro.modelo">
               </div>
 
               <label>Cualidades</label>
@@ -147,10 +158,6 @@
                           placeholder="Marca" ng-model="filtro.marca">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control input-sm" id="input4"
-                          placeholder="Modelo" ng-model="filtro.modelo">
-                </div>
-                <div class="form-group">
                   <input type="text" class="form-control input-sm" id="input5"
                           placeholder="Referencia" ng-model="filtro.referencia">
                 </div>
@@ -165,7 +172,7 @@
         </form>
       </uib-tab>
       <!--  ////////////////////////////////////////////////////////////////////////////////////////////////////////////  -->
-      <uib-tab  select="tabSelected('recurrente')" heading="Recurrente">
+      <uib-tab  select="tabSelected('recurrente')" heading="Contrato fijo">
         <form name="form" >
           <div class="row">
             <div class="col-md-6">
