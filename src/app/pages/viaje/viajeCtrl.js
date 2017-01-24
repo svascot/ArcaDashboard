@@ -27,6 +27,7 @@
     $scope.viaje = {};
     $scope.filtro = {};
     $scope.viajeRecurrente= {}
+    $scope.messageError = "";
     //$scope.filtro.tipoViaje = true;
 
     $scope.queSera = function(){
@@ -38,6 +39,12 @@
     }
 
     $scope.filtrar = function(filtro){
+      if(filtro.capacidad>filtro.capacidadMax){
+        $scope.messageError = "La capacidad máxima debe ser mayor a la capacidad mínima.";
+      }else{
+        $scope.messageError = "";
+      }
+
       if(filtro.fechaInicio != null && filtro.fechaFin != null){
         $scope.viaje.fechaInicio = filtro.fechaInicio;
         $scope.viaje.fechaFin = filtro.fechaFin;
