@@ -28,6 +28,17 @@
         )
 
       },
+      
+      listCoductoresYAfiliados :function(){
+        var query = $rootScope.serviceURL+"usuario/listCoductoresYAfiliados";
+        window.console.log(query);
+        return $http.get(query).then(
+          function(resultado){
+            console.dir(resultado.data);
+            return resultado.data
+          }
+        )
+      },
       getUsuario:function(){
           return JSON.parse(localStorage.getItem('user'));
       },
