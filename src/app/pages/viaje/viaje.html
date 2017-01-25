@@ -48,19 +48,16 @@
         				</div>
               <div class="form-group">
                 <label>Capacidad de pasajeros</label>
+                  <div class="input-group">
                     <input type="number" required class="form-control input-sm"
                             placeholder="Min. 1" min=1 ng-model="filtro.capacidad">
+                    <span class="input-group-btn Hide"></span>
                     <input type="number" class="form-control input-sm"
                             placeholder="Max. 41" max="41" ng-model="filtro.capacidadMax">
+                  </div>
                   <div class="col-md-12">
                     <p ng-show=messageError class="text-danger">{{messageError}}</p>
                   </div>
-              </div>
-
-              <div class="form-group">
-                <label>Modelo</label>
-                <input type="text" class="form-control input-sm" id="input5"
-                        placeholder="Modelo" ng-model="filtro.modelo">
               </div>
 
               <label>Cualidades</label>
@@ -110,20 +107,20 @@
 
             <div class="col-md-6">
                 <div class="form-group">
-<label>Origen</label>
+                    <label>Origen</label>
 
-               <ui-select ng-model="viaje.origen" style="width: 200px"
-               class="btn-group bootstrap-select"
-               ng-disabled="false"
-               append-to-body="true"
-               search-enabled="true">
-                <ui-select-match placeholder="Origen">
-                  <span> {{$select.selected.nombre}}</span>
-                </ui-select-match>
-                <ui-select-choices repeat="destino.nombre as destino in destinos | filter: $select.search" >
-                  <span ng-bind-html="destino.nombre"></span>
-                </ui-select-choices>
-              </ui-select>
+                     <ui-select ng-model="viaje.origen" style="width: 200px"
+                     class="btn-group bootstrap-select"
+                     ng-disabled="false"
+                     append-to-body="true"
+                     search-enabled="true">
+                      <ui-select-match placeholder="Origen">
+                        <span> {{$select.selected.nombre}}</span>
+                      </ui-select-match>
+                      <ui-select-choices repeat="destino.nombre as destino in destinos | filter: $select.search" >
+                        <span ng-bind-html="destino.nombre"></span>
+                      </ui-select-choices>
+                    </ui-select>
                 </div>
                 <div class="form-group">
                   <label>Destino</label>
@@ -140,6 +137,13 @@
                     </ui-select-choices>
                   </ui-select>
                 </div>
+
+                <div class="form-group">
+                  <label>Modelo</label>
+                  <input type="text" class="form-control input-sm"
+                          placeholder="Modelo" ng-model="filtro.modelo">
+                </div>
+
             </div>
 
             <div class="col-md-6">

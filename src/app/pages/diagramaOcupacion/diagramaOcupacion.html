@@ -7,70 +7,42 @@
          ba-panel-class="with-scroll">
 
          <form class="row form-inline">
-
-           <div class="col-md-12">
-             <div class="checkbox">
-                 <label class="checkbox-inline custom-checkbox nowrap">
-                   <input type="checkbox"  ng-model="vehiculo.wifi">
-                   <span>WiFi</span>
-                 </label>
-             </div>
-               <div class="checkbox">
-                   <label class="checkbox-inline custom-checkbox nowrap">
-                     <input type="checkbox"  ng-model="vehiculo.audio">
-                     <span>Audio</span>
-                   </label>
-               </div>
-               <div class="checkbox">
-                   <label class="checkbox-inline custom-checkbox nowrap">
-                     <input type="checkbox"  ng-model="vehiculo.video">
-                     <span>Video</span>
-                   </label>
-               </div>
-               <div class="checkbox">
-                 <label class="checkbox-inline custom-checkbox nowrap">
-                     <input type="checkbox"   ng-model="vehiculo.aire">
-                     <span>Aire</span>
-                   </label>
-               </div>
-               <div class="checkbox">
-                 <label class="checkbox-inline custom-checkbox nowrap">
-                     <input type="checkbox"  ng-model="vehiculo.bano">
-                     <span>Baño</span>
-                   </label>
-               </div>
-              <div class="checkbox">
-                 <label class="checkbox-inline custom-checkbox nowrap">
-                     <input type="checkbox" ng-model="vehiculo.reclinable">
-                     <span>Sillas reclinables</span>
-                   </label>
-               </div>
-             </div>
              <div class="col-md-12">
                <div class="form-group">
-                     <select id="marca" class="form-control selectpicker with-search"
+                 <label>Marca y referencia</label>
+                  <div class="input-group">
+                     <select id="marca" class="form-control input-sm selectpicker with-search"
                      data-live-search="true" title="Marca" selectpicker
                      placeholder="Marca"
                      ng-model="vehiculo.marca" ng-change="switchMarca()"
                      ng-options="marca.nombre as marca.nombre for marca in marcas">
                      </select>
-               </div>
-
-               <div class="form-group">
-                     <select id="referencia" class="form-control selectpicker with-search"
+                     <span class="input-group-btn Hide"></span>
+                     <select id="referencia" class="form-control input-sm selectpicker with-search"
                      data-live-search="true" title="Referencia" selectpicker
                      placeholder="Referencia"
                      ng-model="vehiculo.referencia" ng-options="referencia.nombre as referencia.nombre for referencia in referencias">
                      </select>
+                  </div>
                </div>
+
                <div class="form-group">
-                 <input type="text" class="form-control input-sm"
-                         placeholder="Cupo maximo de pasajeros" ng-model="vehiculo.capacidad">
+                 <label>Capacidad de pasajeros</label>
+                   <div class="input-group">
+                     <input type="number" class="form-control input-sm"
+                             placeholder="Min. 1" min=1 ng-model="filtro.capacidad">
+                     <span class="input-group-btn Hide"></span>
+                     <input type="number" class="form-control input-sm"
+                             placeholder="Max. 41" max="41" ng-model="filtro.capacidadMax">
+                   </div>
+                   <div class="col-md-12">
+                     <p ng-show=messageError class="text-danger">{{messageError}}</p>
+                   </div>
                </div>
-               <button type="submit" ng-click="filtrar(vehiculo)" class="btn btn-primary btn-sm">Filtrar vehiculos</button>
-               <button type="submit" ng-click="traerTodos()" class="btn btn-primary btn-sm">Mostrar todos</button>
              </div>
 
+            <button type="submit" ng-click="filtrar(vehiculo)" class="btn btn-primary btn-sm">Filtrar vehiculos</button>
+            <button type="submit" ng-click="traerTodos()" class="btn btn-primary btn-sm">Mostrar todos</button>
          </form>
 
     </div>
