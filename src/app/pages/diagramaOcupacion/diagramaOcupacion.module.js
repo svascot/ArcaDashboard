@@ -24,6 +24,7 @@
                        return vehiculos;
                })
             },
+            
             marcas:function(VehiculosService){
               return VehiculosService.marcaVehiculo().then(function(marcas){
                       return marcas;

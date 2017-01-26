@@ -35,12 +35,21 @@
     }
 
     $scope.filtrar = function(filtro){
-      if(filtro.capacidad>filtro.capacidadMax){
-        $scope.messageError = "La capacidad máxima debe ser mayor a la capacidad mínima.";
-      }else{
-        $scope.messageError = "";
+      if(filtro.capacidad){
+        if(filtro.capacidad>filtro.capacidadMax){
+          $scope.messageError = "La capacidad máxima debe ser mayor a la capacidad mínima.";
+          return;
+        }else{
+          $scope.messageError = "";
+        }
       }
-
+      if(!filtro.placa && (!filtro.capacidad || filtro.capacidadMax)){
+        $scope.messageError = "Por favor establece un rango de capadidad.";
+         return;
+      }
+      else{
+          $scope.messageError = "";
+        }
       if(filtro.fechaInicio != null && filtro.fechaFin != null){
         $scope.viaje.fechaInicio = filtro.fechaInicio;
         $scope.viaje.fechaFin = filtro.fechaFin;
