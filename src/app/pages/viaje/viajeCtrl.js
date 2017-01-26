@@ -47,7 +47,7 @@
           $scope.messageError = "";
         }
       }
-      if(!filtro.placa && (!filtro.capacidad || filtro.capacidadMax)){
+      if(!filtro.placa && (!filtro.capacidad || !filtro.capacidadMax)){
         $scope.messageError = "Por favor establece un rango de capadidad.";
          return;
       }
