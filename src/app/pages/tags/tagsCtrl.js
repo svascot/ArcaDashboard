@@ -34,7 +34,20 @@
     $scope.eliminarTag = function(tag){
       var r = confirm("Seguro que desea eliminar el tag?");
       if (r){
-        TagsService.eliminar(tag);
+        TagsService.eliminar(tag).then(function(){
+          removerDeLaLista(tag);
+          openedToasts.push(toastr["success"]("Vehiculo eliminado", "Exito", $rootScope.toastDefautlOptions));
+
+        })
+      }
+    }
+
+    var removerDeLaLista = function(tag){
+      for (var i = tags.length - 1; i >= 0; i--) {
+        if(tags[i].id == tag.id){
+          tags.splice(i,1);
+          break;
+        }
       }
     }
 
