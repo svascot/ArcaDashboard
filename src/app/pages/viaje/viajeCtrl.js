@@ -28,13 +28,27 @@
     $scope.filtro = {};
     $scope.viajeRecurrente= {}
     $scope.messageError = "";
+    $scope.messageErrorFecha = "";
     //$scope.filtro.tipoViaje = true;
 
     $scope.expandFilter = function(){
       $scope.opcionesAvanzadas= !$scope.opcionesAvanzadas;
     }
 
+    $scope.validateDate = function(filtro){
+      var result = true;
+      if(filtro.fechaInicio >= filtro.fechaFin){
+        $scope.messageErrorFecha = "La fecha y hora fin deben ser mayor a la" +
+          "fecha y hora de inicio.";
+        result = true;
+      }
+      return result;
+    }
+
     $scope.filtrar = function(filtro){
+      if($scope.validateDate(filtro)){
+        return
+      }
       if(filtro.capacidad){
         if(filtro.capacidad>filtro.capacidadMax){
           $scope.messageError = "La capacidad máxima debe ser mayor a la capacidad mínima.";
@@ -58,6 +72,8 @@
         filtro.fechaFin = filtro.fechaFin;
 
       }
+      $scope.messageErrorFecha = "";
+      $scope.messageError = "";
       ViajeService.listarVehiculos(filtro).then(function(response){
         $scope.vehiculos = response;
       })
