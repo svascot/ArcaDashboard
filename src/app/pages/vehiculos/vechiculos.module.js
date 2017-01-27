@@ -22,6 +22,11 @@
                        return vehiculos;
                })
             },
+            destinos:function(ViajeService){
+                 return ViajeService.listarDestinos().then(function(destinos){
+                     return destinos
+                 })
+            },
             marcas:function(VehiculosService){
               return VehiculosService.marcaVehiculo().then(function(marcas){
                       return marcas;

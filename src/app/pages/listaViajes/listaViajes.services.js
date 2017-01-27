@@ -18,6 +18,15 @@
             return resultado.data
           }
         )
+      },
+      actualizarViaje :function(viaje){
+        var query = $rootScope.serviceURL+"viaje";
+        return $http.patch(query,{viaje:viaje}).then(
+          function(resultado){
+            console.dir(resultado.data);
+            return resultado.data
+          }
+        )
       }
 
     }

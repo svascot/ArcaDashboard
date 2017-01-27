@@ -6,14 +6,16 @@
 
   /** @ngInject */
   var openedToasts =[];
-  function listarViajesCtrl($scope,$rootScope,ViajeService,toastr, toastrConfig,vehiculos) {
+  function listarViajesCtrl($scope,$rootScope,ViajeService,toastr,destinos,
+    toastrConfig,vehiculos) {
 
     $scope.viaje = {};
-
+    $scope.destinos = destinos;
     $scope.vehiculos = vehiculos;
     $scope.vehiculo = {};
 
     $scope.switchVehicle = function (vehicle) {
+      $scope.vehiculo = vehicle;
       $scope.viajes = [];
       var id = "";
       for(var v in vehicle.Viajes){
@@ -74,6 +76,21 @@
         {
           viaje:function () {
             return viaje;
+          }
+        }
+      )
+    }
+    $scope.openEditarViaje = function(viaje, vehiculo){
+      $rootScope.openModalController('app/pages/listaViajes/modal/editarViajeModal.html','EditarViajeModalCtrl',
+        {
+          viaje:function () {
+            return viaje;
+          },
+          vehiculo:function () {
+            return vehiculo;
+          },
+          destinos:function(){
+            return destinos;
           }
         }
       )
