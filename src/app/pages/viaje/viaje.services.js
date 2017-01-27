@@ -28,7 +28,7 @@
         )
       },
       listarDestinos :function(){
-        var q = $q.defer();   
+        var q = $q.defer();
         if(destinos){
           q.resolve(destinos)
         }

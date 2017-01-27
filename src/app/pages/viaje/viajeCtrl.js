@@ -6,7 +6,7 @@
 
   /** @ngInject */
   var openedToasts =[];
-  function ViajeCtrl($scope,$rootScope,ViajeService,toastr, toastrConfig,destinos,vehiculos) {
+  function ViajeCtrl($scope,$rootScope,ViajeService,toastr,destinos,toastrConfig,vehiculos) {
   	var tabSelected = undefined;
   	var viajeRecurrente ={}
     $scope.destinos = destinos;
@@ -43,7 +43,7 @@
           $scope.messageError = "";
         }
       }
-      if(!filtro.placa && (!filtro.capacidad || filtro.capacidadMax)){
+      if(!filtro.placa && (!filtro.capacidad || !filtro.capacidadMax)){
         $scope.messageError = "Por favor establece un rango de capadidad.";
          return;
       }

@@ -6,10 +6,11 @@
 
   /** @ngInject */
   var openedToasts =[];
-  function listarViajesCtrl($scope,$rootScope,ViajeService,toastr, toastrConfig,vehiculos) {
+  function listarViajesCtrl($scope,$rootScope,ViajeService,toastr,destinos,
+    toastrConfig,vehiculos) {
 
     $scope.viaje = {};
-
+    $scope.destinos = destinos;
     $scope.vehiculos = vehiculos;
     $scope.vehiculo = {};
 
@@ -87,6 +88,9 @@
           },
           vehiculo:function () {
             return vehiculo;
+          },
+          destinos:function(){
+            return destinos;
           }
         }
       )

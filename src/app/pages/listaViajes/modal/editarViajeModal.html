@@ -7,19 +7,25 @@
     <h4 class="modal-title">Información del viaje</h4>
   </div>
   <div class="modal-body">
+    <div class="row">
     <div class="col-md-6">
-      Editar informacion del viaje con las siguientes características <br><br>
-      Vehículo: <b>{{vehiculo.placa}}</b> <br>
-      Capacidad de pasajeros: <b>{{vehiculo.capacidad}}</b> <br>
-      Fecha de salida: <b>{{viaje.fechaInicio |date:"dd/MM/yyyy '-' h:mma"}}</b> <br>
-      Fecha de regreso: <b>{{viaje.fechaFin |date:"dd/MM/yyyy '-' h:mma" }}</b>
       <div class="form-group">
-          <label>Origen</label>
+        Editar informacion del viaje con las siguientes características <br><br><br>
+        Vehículo: <b>{{vehiculo.placa}}</b> <br><br>
+        Capacidad de pasajeros: <b>{{vehiculo.capacidad}}</b> <br><br>
+        Fecha de salida: <b>{{viaje.fechaInicio |date:"dd/MM/yyyy '-' h:mma"}}</b> <br><br>
+        Fecha de regreso: <b>{{viaje.fechaFin |date:"dd/MM/yyyy '-' h:mma" }}</b><br>
+      </div>
+
+    </div>
+      <div class="col-md-6">
+      <div class="form-group">
+          <label class="Block">Origen</label>
 
            <ui-select ng-model="viaje.origen" style="width: 200px"
            class="btn-group bootstrap-select"
            ng-disabled="false"
-           append-to-body="true"
+           append-to-body="false"
            search-enabled="true">
             <ui-select-match placeholder="Origen">
               <span> {{$select.selected.nombre}}</span>
@@ -30,11 +36,11 @@
           </ui-select>
       </div>
       <div class="form-group">
-        <label>Destino</label>
+        <label class="Block">Destino</label>
         <ui-select ng-model="viaje.destino" style="width: 200px"
          class="btn-group bootstrap-select"
          ng-disabled="false"
-         append-to-body="true"
+         append-to-body="false"
          search-enabled="true">
           <ui-select-match placeholder="Destino">
             <span> {{$select.selected.nombre}}</span>
@@ -44,13 +50,13 @@
           </ui-select-choices>
         </ui-select>
       </div>
-    </div>
-    <div class="col-md-6">
+
       <div class="form-group">
         <label>Descripción del viaje</label>
         <textarea class="form-control" ng-model="viaje.descripcion" rows="5"></textarea>
       </div>
     </div>
+  </div>
   </div>
   <div class="modal-footer">
     <button class="btn btn-primary" ng-click="editarViaje(viaje)">Guardar</button>

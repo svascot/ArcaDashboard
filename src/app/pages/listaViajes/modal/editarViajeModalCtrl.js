@@ -7,20 +7,17 @@
   /** @ngInject */
   var openedToasts =[];
   function EditarViajeModalCtrl($scope,$rootScope,listarViajesService,toastr,
-        toastrConfig,viaje, vehiculo) {
+        toastrConfig,viaje, destinos,vehiculo) {
 
     $scope.viaje = viaje;
     $scope.vehiculo = vehiculo;
+    $scope.destinos = destinos;
 
     $scope.editarViaje = function(viaje){
-    /*  var viajeUuid = {
-        'uuid': viaje.uuid
-      }
-      listarViajesService.cancelarViaje(viajeUuid).then(function(response){
-        console.dir(response)
-        openedToasts.push(toastr["success"]("Viaje cancelado", "Exito", $rootScope.toastDefautlOptions));
-        $scope.viaje.estado = "Cancelado";
-      });*/
+      listarViajesService.actualizarViaje(viaje).then(function(viajeActualizado){
+      viaje = viajeActualizado;
+      openedToasts.push(toastr["success"]("Viaje actualizado", "Exito", $rootScope.toastDefautlOptions));
+      })
       $rootScope.currentOpenModal.close();
     }
 
