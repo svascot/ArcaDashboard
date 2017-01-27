@@ -23,7 +23,7 @@
           $scope.viajes.push(vehicle.Viajes[v])
         }
         if(vehicle.Viajes[v].recurrenteId && vehicle.Viajes[v].recurrenteId != id){
-          vehicle.Viajes[v].dias = dias(vehicle.Viajes[v].destino);
+          vehicle.Viajes[v].dias = dias(vehicle.Viajes[v].recurreteDiasDeLaSemana);
           $scope.viajes.push(vehicle.Viajes[v])
           id = vehicle.Viajes[v].recurrenteId;
         }
@@ -42,29 +42,26 @@
       var dia = "";
       for (var d in dias){
         switch (dias[d]) {
-          case ",":
-              dia = dia + ", ";
+          case 0:
+              dia = dia + "Domingo ";
               break;
-          case "0":
-              dia = dia + "Domingo";
+          case 1:
+              dia = dia + "Lunes ";
               break;
-          case "1":
-              dia = dia + "Lunes";
+          case 2:
+              dia = dia + "Martes ";
               break;
-          case "2":
-              dia = dia + "Martes";
+          case 3:
+              dia = dia + "Miercoles ";
               break;
-          case "3":
-              dia = dia + "Miercoles";
+          case 4:
+              dia = dia + "Jueves ";
               break;
-          case "4":
-              dia = dia + "Jueves";
+          case 5:
+              dia = dia + "Viernes ";
               break;
-          case "5":
-              dia = dia + "Viernes";
-              break;
-          case "6":
-              dia = dia + "Sabado";
+          case 6:
+              dia = dia + "Sabado ";
               break;
         }
       }
