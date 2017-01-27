@@ -36,7 +36,7 @@
     }
 
     $scope.validateDate = function(filtro){
-      var result = true;
+      var result = false;
       if(filtro.fechaInicio >= filtro.fechaFin){
         $scope.messageErrorFecha = "La fecha y hora fin deben ser mayor a la" +
           "fecha y hora de inicio.";
@@ -47,11 +47,16 @@
 
     $scope.filtrar = function(filtro){
       if($scope.validateDate(filtro)){
-        return
+        $scope.vehiculos = "";
+        return;
+      }else{
+        $scope.messageErrorFecha = "";
       }
+
       if(filtro.capacidad){
         if(filtro.capacidad>filtro.capacidadMax){
           $scope.messageError = "La capacidad máxima debe ser mayor a la capacidad mínima.";
+          $scope.vehiculos = "";
           return;
         }else{
           $scope.messageError = "";
@@ -59,6 +64,7 @@
       }
       if(!filtro.placa && (!filtro.capacidad || !filtro.capacidadMax)){
         $scope.messageError = "Por favor establece un rango de capadidad.";
+        $scope.vehiculos = "";
          return;
       }
       else{
@@ -72,8 +78,7 @@
         filtro.fechaFin = filtro.fechaFin;
 
       }
-      $scope.messageErrorFecha = "";
-      $scope.messageError = "";
+
       ViajeService.listarVehiculos(filtro).then(function(response){
         $scope.vehiculos = response;
       })
