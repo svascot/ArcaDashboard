@@ -7,7 +7,7 @@
   /** @ngInject */
   var openedToasts =[];
 
-  function vehiculoCtrl($scope,VehiculosService,toastr, marcas, toastrConfig,$rootScope,vehiculos,uploadToAWS,UsuariosService) {
+  function vehiculoCtrl($scope,VehiculosService,toastr, marcas, toastrConfig,$rootScope,vehiculos,uploadToAWS,UsuariosService,TagsService) {
     $scope.marcas = marcas
     $scope.vehiculos = vehiculos
     $scope.openModalDocumentos = function(vehiculo){
@@ -66,6 +66,11 @@
           },
           marcas:function (){
             return marcas;
+          },
+          tags:function (TagsService){
+            return TagsService.listar().then(function(tags){
+                return tags
+            });
           },
           propietarios:function (){
             return UsuariosService.listCoductoresYAfiliados().then(function(coductoresYAfiliados){
