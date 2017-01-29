@@ -26,6 +26,11 @@
                   return VehiculosService.listarVehiculos().then(function(vehiculos){
                       return vehiculos
                   })
+             },
+             etiquetas:function(TagsService){
+                  return TagsService.listar().then(function(etiquetas){
+                      return etiquetas
+                  })
              }
           }
         });

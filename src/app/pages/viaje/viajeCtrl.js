@@ -6,9 +6,10 @@
 
   /** @ngInject */
   var openedToasts =[];
-  function ViajeCtrl($scope,$rootScope,ViajeService,toastr,destinos,toastrConfig,vehiculos) {
+  function ViajeCtrl($scope,$rootScope,ViajeService,toastr,destinos,toastrConfig,vehiculos,etiquetas) {
   	var tabSelected = undefined;
   	var viajeRecurrente ={}
+    $scope.etiquetas = etiquetas;
     $scope.destinos = destinos;
     $scope.todosLosvehiculos =  JSON.parse(JSON.stringify(vehiculos));
     //$scope.vehiculos = vehiculos;

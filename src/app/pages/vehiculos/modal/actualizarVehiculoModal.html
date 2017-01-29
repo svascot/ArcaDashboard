@@ -124,6 +124,7 @@
                     </label>
                 </div>
                   <div class="form-group">
+                          <label>Etiquetas </label>
                         <ui-select multiple tagging="tagTransform" ng-model="vehiculo.Tags" theme="bootstrap" ng-disabled="disabled" style="width: 800px;" title="Selecciona las etiquetas">
                         <ui-select-match placeholder="Selecciona las etiquetas">{{$item.nombre}}</ui-select-match>
                         <ui-select-choices repeat="etiqueta as etiqueta in etiquetas">
@@ -131,7 +132,7 @@
                           <div ng-if="!etiqueta.isTag" ng-bind-html="etiqueta.nombre + etiqueta.isTag| highlight: $select.search"></div>                          
                         </ui-select-choices>
                       </ui-select>
-                      <p>Selected: {{vehiculo.Tags}}</p>
+                      
                   </div>
              </div>
            </div>

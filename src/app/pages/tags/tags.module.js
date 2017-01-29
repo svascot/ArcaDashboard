@@ -11,7 +11,7 @@
           url: '/tags',
           templateUrl: 'app/pages/tags/tags.html',
           controller: 'TagsCtrl',
-          title: 'Tags',
+          title: 'Etiquetas',
           sidebarMeta: {
             icon: 'ion-pricetag',
             order: 8,
