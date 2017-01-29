@@ -17,14 +17,19 @@
             order: 1,
           },
           resolve:{
-             destinos:function(ViajeService){
-                  return ViajeService.listarDestinos().then(function(destinos){
-                      return destinos
-                  })
-             },
+            destinos:function(ViajeService){
+                 return ViajeService.listarDestinos().then(function(destinos){
+                     return destinos
+                 })
+            },
              vehiculos:function(VehiculosService){
                   return VehiculosService.listarVehiculos().then(function(vehiculos){
                       return vehiculos
+                  })
+             },
+             etiquetas:function(TagsService){
+                  return TagsService.listar().then(function(etiquetas){
+                      return etiquetas
                   })
              }
           }

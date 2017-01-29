@@ -131,14 +131,17 @@
                     {{viaje.descripcion}}
                   </div>
                 </div>
-                  <div ng-show="viaje.estado != 'Cancelado'">
+                  <div ng-show="viaje.estado != 'Cancelado' && !viaje.recurrenteId">
                   <div class="message-header">
                     <br>
                     <span class="author">Acciones</span>
                   </div>
 
                   <div class="row col-md-12">
-                    <button type="button" class="btn btn-danger btn-sm"
+                    <button type="button" class="btn btn-primary btn-xs"
+                        ng-click="openEditarViaje(viaje,vehiculo)">Editar viaje
+                    </button>
+                    <button type="button" class="btn btn-danger btn-xs"
                         ng-click="openCancelarViaje(viaje)">Cancelar viaje
                     </button>
                   </div>

@@ -6,12 +6,29 @@
 
   /** @ngInject */
   var openedToasts =[];
-  function ActualizarVehiculoModalCtrl($scope,marcas,VehiculosService,$rootScope,vehiculo,uploadToAWS,toastr,toastrConfig,propietarios) {
+  function ActualizarVehiculoModalCtrl($scope,marcas,VehiculosService,$rootScope,vehiculo,uploadToAWS,toastr,toastrConfig,propietarios,tags) {
+    $scope.etiquetas = tags;
     $scope.vehiculo = vehiculo;
     $scope.propietarios = propietarios;
     $scope.marcas = marcas;
     $scope.referencias = {}
 
+    $scope.ver=function(){
+      console.dir(vehiculo.newTags);
+    }
+    
+
+    $scope.addTag=function(tag){
+      console.log(tag)
+      var index = tags.indexOf(tag);
+      if(index>=0){
+          tags.splice(index,1)
+      }else{
+          tags.push(tag)
+      }
+      vehiculo.tags = tags;
+    }
+    
     $scope.switchMarca = function() {
       for(var m in $scope.marcas){
         if($scope.vehiculo.marca == $scope.marcas[m].nombre){

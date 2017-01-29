@@ -20,6 +20,7 @@
     'BlurAdmin.pages.editDocumento',
     'BlurAdmin.pages.modals',
     'BlurAdmin.pages.listarViajes',
+    'BlurAdmin.pages.tags',
 
   ])
       .config(routeConfig);
