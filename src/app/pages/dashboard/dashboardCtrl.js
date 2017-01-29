@@ -21,9 +21,11 @@
     var vehiculoModa = $scope.vehiculos[0];
     var viajesTotales = 0;
     for(var v in $scope.vehiculos){
-      viajesTotales += $scope.vehiculos[v].Viajes.length
-      if($scope.vehiculos[v].Viajes.length >= vehiculoModa.Viajes.length){
-        vehiculoModa = $scope.vehiculos[v];
+      if($scope.vehiculos[v].Viajes){
+        viajesTotales += $scope.vehiculos[v].Viajes.length
+        if($scope.vehiculos[v].Viajes.length >= vehiculoModa.Viajes.length){
+          vehiculoModa = $scope.vehiculos[v];
+        }
       }
     }
 
