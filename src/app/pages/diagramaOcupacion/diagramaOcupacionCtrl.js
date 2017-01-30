@@ -42,7 +42,7 @@
     $scope.marcas = marcas;
     $scope.referencias = {}
     $scope.vehiculo = {};
-    $scope.vehiculos = {}
+    $scope.vehiculos = {};
 
     var cargarDiagrama = (function cargar (vehiculos){
 
