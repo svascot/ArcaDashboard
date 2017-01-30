@@ -61,21 +61,19 @@
     $scope.openModalActualizarVehiculo = function(vehiculo){
       $rootScope.openModalController('app/pages/vehiculos/modal/actualizarVehiculoModal.html','ActualizarVehiculoModalCtrl',
         {
-          vehiculo:function () {
-            return vehiculo;
-          },
-          marcas:function (){
-            return marcas;
-          },
-          tags:function (TagsService){
-            return TagsService.listar().then(function(tags){
-                return tags
-            });
-          },
-          propietarios:function (){
-            return UsuariosService.listCoductoresYAfiliados().then(function(coductoresYAfiliados){
-                return coductoresYAfiliados
-            });
+          params:function () {
+          	var params = {}
+          	return TagsService.listar().then(function(tags){
+          		return UsuariosService.listCoductoresYAfiliados().then(function(coductoresYAfiliados){
+          			params.vehiculo = vehiculo;
+	                params.marcas=marcas;
+	            	params.tags = tags;
+	            	params.propietarios = coductoresYAfiliados
+	            	return params
+        			})
+          	})
+	          	
+
           }
         }
       )

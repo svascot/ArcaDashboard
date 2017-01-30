@@ -6,11 +6,11 @@
 
   /** @ngInject */
   var openedToasts =[];
-  function ActualizarVehiculoModalCtrl($scope,marcas,VehiculosService,$rootScope,vehiculo,uploadToAWS,toastr,toastrConfig,propietarios,tags) {
-    $scope.etiquetas = tags;
-    $scope.vehiculo = vehiculo;
-    $scope.propietarios = propietarios;
-    $scope.marcas = marcas;
+  function ActualizarVehiculoModalCtrl($scope,VehiculosService,$rootScope,toastr,toastrConfig,params) {
+    $scope.etiquetas = params.tags;
+    $scope.vehiculo = params.vehiculo;
+    $scope.propietarios = params.propietarios;
+    $scope.marcas = params.marcas;
     $scope.referencias = {}
 
     $scope.ver=function(){
