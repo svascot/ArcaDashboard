@@ -35,12 +35,16 @@
 
     return dias;
   }
-  function diagramaOcupacionCtrl($scope,ViajeService,marcas,toastr,DiagramaOcupacionService,toastrConfig,$rootScope,vehiculos) {
+
+  function diagramaOcupacionCtrl($scope,ViajeService,marcas,toastr,
+    DiagramaOcupacionService,toastrConfig,$rootScope,vehiculos,etiquetas) {
+    $scope.etiquetas = etiquetas;
     $scope.marcas = marcas;
     $scope.referencias = {}
     $scope.vehiculo = {};
+    $scope.vehiculos = {}
 
-    var cargarDiagrama =(function cargar (vehiculos){
+    var cargarDiagrama = (function cargar (vehiculos){
 
       var now = moment().minutes(0).seconds(0).milliseconds(0);
       var groups = new vis.DataSet();
@@ -48,8 +52,8 @@
       var content;
       var viaje;
       var vehiculo;
-      // create a data set with groups
 
+      // create a data set with groups
       for (var j = vehiculos.length - 1; j >= 0; j--) {
          vehiculo = vehiculos[j];
 
@@ -62,10 +66,10 @@
             //alert (new Date(viaje.fechaInicio))
             if(viaje.estado == "Confirmado"){
               content =  viaje.destino || formatDiasDeLaSemana(viaje.recurreteDiasDeLaSemana);
-              
-                 
+
+
               viaje.descripcion = viaje.descripcion || "";
-              
+
               items.add({
                 id:  viaje.id,
                 group:(j),
@@ -98,8 +102,7 @@
 
       return  cargar;
 
-    }(vehiculos))
-
+    }($scope.vehiculos))
 
     $scope.switchMarca = function() {
       for(var m in $scope.marcas){

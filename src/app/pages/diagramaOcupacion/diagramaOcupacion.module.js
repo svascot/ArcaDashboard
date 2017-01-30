@@ -24,11 +24,15 @@
                        return vehiculos;
                })
             },
-            
             marcas:function(VehiculosService){
               return VehiculosService.marcaVehiculo().then(function(marcas){
                       return marcas;
               })
+            },
+            etiquetas:function(TagsService){
+                 return TagsService.listar().then(function(etiquetas){
+                     return etiquetas
+                 })
             }
            }
         })

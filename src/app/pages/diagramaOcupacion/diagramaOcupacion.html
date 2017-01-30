@@ -9,6 +9,13 @@
          <form class="row form-inline">
              <div class="col-md-12">
                <div class="form-group">
+                  <label>Placa</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control input-sm" id="input2"
+                         placeholder="Placa" ng-model="filtro.placa">
+                  </div>
+               </div>
+               <div class="form-group">
                  <label>Marca y referencia</label>
                   <div class="input-group">
                      <select id="marca" class="form-control input-sm selectpicker with-search"
@@ -33,12 +40,24 @@
                              placeholder="Min. 1" min=1 ng-model="filtro.capacidad">
                      <span class="input-group-btn Hide"></span>
                      <input type="number" class="form-control input-sm"
-                             placeholder="Max. 41" max="41" ng-model="filtro.capacidadMax">
+                             placeholder="Max. 45" max="45" ng-model="filtro.capacidadMax">
                    </div>
                    <div class="col-md-12">
                      <p ng-show=messageError class="text-danger">{{messageError}}</p>
                    </div>
                </div>
+               <div class="form-group">
+                   <label>Etiquetas </label>
+                    <div class="input-group">
+                       <ui-select multiple tagging="tagTransform" ng-model="filtro.tags" theme="bootstrap" ng-disabled="disabled" style="width: 200px;" title="Selecciona las etiquetas">
+                       <ui-select-match placeholder="Selecciona las etiquetas">{{$item.nombre}}</ui-select-match>
+                       <ui-select-choices repeat="etiqueta as etiqueta in etiquetas">
+                         <div ng-if="etiqueta.isTag" ng-bind-html="etiqueta.nombre +' <small>(new)</small>'| highlight: $select.search"></div>
+                         <div ng-if="!etiqueta.isTag" ng-bind-html="etiqueta.nombre + etiqueta.isTag| highlight: $select.search"></div>
+                       </ui-select-choices>
+                     </ui-select>
+                  </div>   
+                 </div>
              </div>
 
             <button type="submit" ng-click="filtrar(vehiculo)" class="btn btn-primary btn-sm">Filtrar vehiculos</button>
