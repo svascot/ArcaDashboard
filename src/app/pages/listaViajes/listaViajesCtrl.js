@@ -68,6 +68,19 @@
       return dia;
     }
 
+    $scope.openRecurrenteViaje = function(viaje, vehiculo){
+      $rootScope.openModalController('app/pages/listaViajes/modal/recurrenteModal.html','RecurrenteModalCtrl',
+        {
+          viaje:function () {
+            return viaje;
+          },
+          vehiculo:function () {
+            return vehiculo;
+          }
+        }
+      )
+    }
+
     $scope.openCancelarViaje = function(viaje){
       $rootScope.openModalController('app/pages/listaViajes/modal/cancelarViajeModal.html','CancelarViajeModalCtrl',
         {
