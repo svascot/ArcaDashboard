@@ -63,14 +63,6 @@
           $scope.messageError = "";
         }
       }
-      if(!filtro.placa && (!filtro.capacidad || !filtro.capacidadMax)){
-        $scope.messageError = "Por favor establece un rango de capadidad.";
-        $scope.vehiculos = "";
-         return;
-      }
-      else{
-          $scope.messageError = "";
-        }
       if(filtro.fechaInicio != null && filtro.fechaFin != null){
         $scope.viaje.fechaInicio = filtro.fechaInicio;
         $scope.viaje.fechaFin = filtro.fechaFin;
