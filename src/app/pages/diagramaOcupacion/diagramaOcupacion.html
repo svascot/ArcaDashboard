@@ -54,16 +54,16 @@
                 <div class="form-group">
                    <label>Placa</label>
                      <div class="input-group">
-                          <ui-select ng-model="vehiculo.placa" style="width: 200px"
+                          <ui-select ng-model="placa" style="width: 200px"
                           class="btn-group bootstrap-select"
                           ng-disabled="false"
                           append-to-body="true"
                           search-enabled="true">
                            <ui-select-match placeholder="Escribe una placa...">
-                             <span> {{$select.selected.placa}}</span>
+                             <span> {{$select.selected}}</span>
                            </ui-select-match>
-                           <ui-select-choices repeat="vehiculo.placa as vehiculo in vehiculosPorPlaca | filter: $select.search" >
-                             <span ng-bind-html="vehiculo.placa"></span>
+                           <ui-select-choices repeat="placa in placas | filter: $select.search" >
+                             <span ng-bind-html="placa"></span>
                            </ui-select-choices>
                          </ui-select>
                    </div>

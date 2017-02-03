@@ -17,12 +17,10 @@
             order: 2,
           },
           resolve: {
-            ViajeService:'ViajeService',
-            vehiculos:function(ViajeService){
-               return ViajeService.listarVehiculos({}).then(function(vehiculos){
-                console.dir(vehiculos);
-                       return vehiculos;
-               })
+            placas:function(VehiculosService){
+              return VehiculosService.placas().then(function(placas){
+                      return placas;
+              })
             },
             marcas:function(VehiculosService){
               return VehiculosService.marcaVehiculo().then(function(marcas){

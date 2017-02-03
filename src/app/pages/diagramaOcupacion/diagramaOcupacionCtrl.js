@@ -36,15 +36,15 @@
     return dias;
   }
 
-  function diagramaOcupacionCtrl($scope,ViajeService,marcas,toastr,
+  function diagramaOcupacionCtrl($scope,ViajeService,marcas,toastr,placas,
     DiagramaOcupacionService,toastrConfig,$rootScope,vehiculos,etiquetas) {
     $scope.etiquetas = etiquetas;
     $scope.marcas = marcas;
     $scope.referencias = {}
     $scope.vehiculo = {};
     $scope.vehiculos = {};
-    $scope.vehiculosPorPlaca = vehiculos;
-    
+    $scope.placas = placas;
+
     var cargarDiagrama = (function cargar (vehiculos){
 
       var now = moment().minutes(0).seconds(0).milliseconds(0);
