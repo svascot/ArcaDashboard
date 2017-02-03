@@ -68,10 +68,12 @@
         )
       },
       placas:function(){
+        console.dir("Placas vehiculos arriba");
         var query = $rootScope.serviceURL+"vehiculo/placas";
         window.console.log(query);
         return $http.get(query,{}).then(
           function(resultado){
+            console.dir("Placas vehiculos abajo");
             console.dir(resultado.data);
             return resultado.data
           }

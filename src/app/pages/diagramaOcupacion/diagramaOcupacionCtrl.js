@@ -37,7 +37,7 @@
   }
 
   function diagramaOcupacionCtrl($scope,ViajeService,marcas,toastr,placas,
-    DiagramaOcupacionService,toastrConfig,$rootScope,vehiculos,etiquetas) {
+    DiagramaOcupacionService,toastrConfig,$rootScope,etiquetas) {
     $scope.etiquetas = etiquetas;
     $scope.marcas = marcas;
     $scope.referencias = {}
@@ -113,19 +113,45 @@
       }
     }
       $scope.filtrar = function(filtro){
-        console.dir(filtro)
-          DiagramaOcupacionService.listarVehiculos(filtro).then(function(response){
+        if($scope.validateDate(filtro)){
+          $scope.vehiculos = "";
+          return;
+        }else{
+          $scope.messageErrorFecha = "";
+        }
+          DiagramaOcupacionService.obtenerconViajesEnRangoDeFechas(filtro).then(function(response){
           $scope.vehiculos = response;
           cargarDiagrama(response)
         })
       }
       $scope.traerTodos = function(){
         $scope.vehiculo = {};
-          DiagramaOcupacionService.listarVehiculos({}).then(function(response){
+          DiagramaOcupacionService.obtenerconViajesEnRangoDeFechas({}).then(function(response){
           $scope.vehiculos = response;
           cargarDiagrama(response)
         })
       }
 
+      $scope.openCalendar = function(e,prop) {
+          this[prop] =true
+          e.preventDefault();
+          e.stopPropagation();
+
+      };
+      $scope.abrirCalendarioViaje = function(e,vehiculo,prop){
+        vehiculo[prop] = true
+        e.preventDefault();
+        e.stopPropagation();
+      };
+
+      $scope.validateDate = function(filtro){
+        var result = false;
+        if(filtro.fechaInicio >= filtro.fechaFin){
+          $scope.messageErrorFecha = "La fecha y hora fin deben ser mayor a la" +
+            "fecha y hora de inicio.";
+          result = true;
+        }
+        return result;
+      }
   }
 })();

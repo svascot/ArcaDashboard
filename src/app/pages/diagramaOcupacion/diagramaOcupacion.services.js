@@ -8,8 +8,8 @@
   function DiagramaOcupacionService($http,$rootScope,$q) {
 
     return{
-      listarVehiculos :function(vehiculo){
-        var query = $rootScope.serviceURL+"vehiculo/filtrar";
+      obtenerconViajesEnRangoDeFechas :function(vehiculo){
+        var query = $rootScope.serviceURL+"vehiculo/obtenerconViajesEnRangoDeFechas";
         window.console.log(query);
         return $http.post(query,{filtro:vehiculo}).then(
           function(resultado){

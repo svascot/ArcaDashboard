@@ -19,6 +19,8 @@
           resolve: {
             placas:function(VehiculosService){
               return VehiculosService.placas().then(function(placas){
+                console.log("placas");
+                console.log(placas);
                       return placas;
               })
             },

@@ -6,8 +6,27 @@
          ba-panel-title="Busqueda avanzada"
          ba-panel-class="with-scroll">
 
-         <form class="row form-inline">
-             <div class="col-md-12">
+         <form>
+             <div class="col-md-3">
+               <div class="form-group">
+                 <label>Día y hora inicio</label>
+                 <p class="input-group">
+                     <input type="text"  class="form-control" datetime-picker="dd MMM yyyy HH:mm" ng-model="vehiculo.fechaInicio" is-open="fechainicioOpen"  />
+                     <span class="input-group-btn">
+                         <button type="button" class="btn btn-default" ng-click="openCalendar($event,'fechainicioOpen')"><i class="fa fa-calendar"></i></button>
+                     </span>
+                 </p>
+               </div>
+               <div class="form-group">
+                 <label>Día y hora fin</label>
+                 <p class="input-group">
+                     <input type="text"  class="form-control" datetime-picker="dd MMM yyyy HH:mm" data-language='es' ng-model="vehiculo.fechaFin" is-open="fechafinOpen"  />
+                     <span class="input-group-btn">
+                         <button type="button" class="btn btn-default" ng-click="openCalendar($event, 'fechafinOpen')"><i class="fa fa-calendar"></i></button>
+                     </span>
+                 </p>
+               </div>
+
                <div class="form-group">
                  <label>Marca y referencia</label>
                   <div class="input-group">
@@ -25,7 +44,8 @@
                      </select>
                   </div>
                </div>
-
+            </div>
+            <div class="col-md-3">
                <div class="form-group">
                  <label>Capacidad de pasajeros</label>
                    <div class="input-group">
@@ -42,7 +62,8 @@
                <div class="form-group">
                    <label>Etiquetas </label>
                     <div class="input-group">
-                       <ui-select multiple tagging="tagTransform" ng-model="vehiculo.tags" theme="bootstrap" ng-disabled="disabled" style="width: 200px;" title="Selecciona las etiquetas">
+                       <ui-select multiple tagging="tagTransform" ng-model="vehiculo.tags" theme="bootstrap"
+                                  ng-disabled="disabled" style="width: 320px;" title="Selecciona las etiquetas">
                        <ui-select-match placeholder="Selecciona las etiquetas">{{$item.nombre}}</ui-select-match>
                        <ui-select-choices repeat="etiqueta as etiqueta in etiquetas">
                          <div ng-if="etiqueta.isTag" ng-bind-html="etiqueta.nombre +' <small>(new)</small>'| highlight: $select.search"></div>
@@ -54,24 +75,25 @@
                 <div class="form-group">
                    <label>Placa</label>
                      <div class="input-group">
-                          <ui-select ng-model="placa" style="width: 200px"
-                          class="btn-group bootstrap-select"
+                          <ui-select ng-model="vehiculo.placa" style="width: 320px"
+                          class="btn-group bootstrap-select" theme="bootstrap"
                           ng-disabled="false"
                           append-to-body="true"
                           search-enabled="true">
                            <ui-select-match placeholder="Escribe una placa...">
-                             <span> {{$select.selected}}</span>
+                             <span> {{$select.selected.placa}}</span>
                            </ui-select-match>
                            <ui-select-choices repeat="placa in placas | filter: $select.search" >
-                             <span ng-bind-html="placa"></span>
+                             <span ng-bind-html="placa.placa"></span>
                            </ui-select-choices>
                          </ui-select>
                    </div>
                 </div>
              </div>
-
-            <button type="submit" ng-click="filtrar(vehiculo)" class="btn btn-primary btn-sm">Filtrar vehiculos</button>
-            <button type="submit" ng-click="traerTodos()" class="btn btn-primary btn-sm">Mostrar todos</button>
+             <div class="col-md-12">
+               <button type="submit" ng-click="filtrar(vehiculo)" class="btn btn-primary btn-sm">Filtrar vehiculos</button>
+               <button type="submit" ng-click="traerTodos()" class="btn btn-primary btn-sm">Mostrar todos</button>
+             </div>
          </form>
 
     </div>
