@@ -42,8 +42,9 @@
     $scope.marcas = marcas;
     $scope.referencias = {}
     $scope.vehiculo = {};
-    $scope.vehiculos = {}
-
+    $scope.vehiculos = {};
+    $scope.vehiculosPorPlaca = vehiculos;
+    
     var cargarDiagrama = (function cargar (vehiculos){
 
       var now = moment().minutes(0).seconds(0).milliseconds(0);

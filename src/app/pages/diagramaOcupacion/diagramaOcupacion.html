@@ -9,13 +9,6 @@
          <form class="row form-inline">
              <div class="col-md-12">
                <div class="form-group">
-                  <label>Placa</label>
-                  <div class="input-group">
-                    <input type="text" class="form-control input-sm" id="input2"
-                         placeholder="Placa" ng-model="filtro.placa">
-                  </div>
-               </div>
-               <div class="form-group">
                  <label>Marca y referencia</label>
                   <div class="input-group">
                      <select id="marca" class="form-control input-sm selectpicker with-search"
@@ -37,10 +30,10 @@
                  <label>Capacidad de pasajeros</label>
                    <div class="input-group">
                      <input type="number" class="form-control input-sm"
-                             placeholder="Min. 1" min=1 ng-model="filtro.capacidad">
+                             placeholder="Min. 1" min=1 ng-model="vehiculo.capacidad">
                      <span class="input-group-btn Hide"></span>
                      <input type="number" class="form-control input-sm"
-                             placeholder="Max. 45" max="45" ng-model="filtro.capacidadMax">
+                             placeholder="Max. 45" max="45" ng-model="vehiculo.capacidadMax">
                    </div>
                    <div class="col-md-12">
                      <p ng-show=messageError class="text-danger">{{messageError}}</p>
@@ -49,15 +42,32 @@
                <div class="form-group">
                    <label>Etiquetas </label>
                     <div class="input-group">
-                       <ui-select multiple tagging="tagTransform" ng-model="filtro.tags" theme="bootstrap" ng-disabled="disabled" style="width: 200px;" title="Selecciona las etiquetas">
+                       <ui-select multiple tagging="tagTransform" ng-model="vehiculo.tags" theme="bootstrap" ng-disabled="disabled" style="width: 200px;" title="Selecciona las etiquetas">
                        <ui-select-match placeholder="Selecciona las etiquetas">{{$item.nombre}}</ui-select-match>
                        <ui-select-choices repeat="etiqueta as etiqueta in etiquetas">
                          <div ng-if="etiqueta.isTag" ng-bind-html="etiqueta.nombre +' <small>(new)</small>'| highlight: $select.search"></div>
                          <div ng-if="!etiqueta.isTag" ng-bind-html="etiqueta.nombre + etiqueta.isTag| highlight: $select.search"></div>
                        </ui-select-choices>
                      </ui-select>
-                  </div>   
-                 </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                   <label>Placa</label>
+                     <div class="input-group">
+                          <ui-select ng-model="vehiculo.placa" style="width: 200px"
+                          class="btn-group bootstrap-select"
+                          ng-disabled="false"
+                          append-to-body="true"
+                          search-enabled="true">
+                           <ui-select-match placeholder="Escribe una placa...">
+                             <span> {{$select.selected.placa}}</span>
+                           </ui-select-match>
+                           <ui-select-choices repeat="vehiculo.placa as vehiculo in vehiculosPorPlaca | filter: $select.search" >
+                             <span ng-bind-html="vehiculo.placa"></span>
+                           </ui-select-choices>
+                         </ui-select>
+                   </div>
+                </div>
              </div>
 
             <button type="submit" ng-click="filtrar(vehiculo)" class="btn btn-primary btn-sm">Filtrar vehiculos</button>
