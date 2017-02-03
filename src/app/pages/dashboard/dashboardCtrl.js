@@ -7,52 +7,31 @@
   /** @ngInject */
   var openedToasts =[];
 
-  function dashboardCtrl($scope,VehiculosService,toastr, toastrConfig,$rootScope,
-    usuarios, vehiculos,uploadToAWS,UsuariosService, documentos) {
+  function dashboardCtrl($scope,VehiculosService,toastr, toastrConfig,$rootScope
+    ,dashboard, uploadToAWS,UsuariosService) {
 
-    $scope.vehiculos = vehiculos;
-    $scope.usuarios = usuarios;
-    $scope.documentos = documentos;
-
-    console.log("Docuentos");
-    console.log($scope.documentos);
-    console.log("Docuentos");
-
-    var vehiculoModa = $scope.vehiculos[0];
-    var viajesTotales = 0;
-    for(var v in $scope.vehiculos){
-      if($scope.vehiculos[v].Viajes){
-        viajesTotales += $scope.vehiculos[v].Viajes.length
-        if($scope.vehiculos[v].Viajes.length >= vehiculoModa.Viajes.length){
-          vehiculoModa = $scope.vehiculos[v];
-        }
-      }
-    }
-
-    $scope.verDetalles= function(vehiculo){
-      if(!vehiculo.expanded){
-        vehiculo.expanded = false;
-      }
-        vehiculo.expanded = !vehiculo.expanded;
-    }
+    $scope.dashboard = dashboard;
 
     $scope.charts = [{
       description: 'Vehiculos registrados',
-      stats: $scope.vehiculos.length,
+      stats: $scope.dashboard[0].count,
       icon: 'garage',
     }, {
       description: 'Total viajes',
-      stats: viajesTotales,
+      stats: $scope.dashboard[1].totalViajesAgendandados,
       icon: 'calendar',
     }, {
       description: 'Vehiculo mas solicitado',
-      stats: vehiculoModa.marca + "  " + vehiculoModa.referencia + " - " + vehiculoModa.placa,
+      stats: $scope.dashboard[1].vehiculoMasSolicitado.marca + "  " +
+             $scope.dashboard[1].vehiculoMasSolicitado.referencia + " - " +
+             $scope.dashboard[1].vehiculoMasSolicitado.placa,
       icon: 'car',
-    }, {
+    }
+    /*, {
       description: 'Usuarios Activos',
       stats: $scope.usuarios.length,
       icon: 'person',
-    }
+    }*/
     ];
 
   }

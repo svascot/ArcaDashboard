@@ -59,6 +59,16 @@
           }
         )
       },
+      dashboard:function(){
+        var query = $rootScope.serviceURL+"vehiculo/dashboard";
+        window.console.log(query);
+        return $http.get(query,{}).then(
+          function(resultado){
+            console.dir(resultado.data);
+            return resultado.data
+          }
+        )
+      },
       marcaVehiculo:function(){
         var query = $rootScope.serviceURL+"marca";
         window.console.log(query);

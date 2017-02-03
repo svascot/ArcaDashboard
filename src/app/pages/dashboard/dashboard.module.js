@@ -17,20 +17,12 @@
             order: 0,
           },
           resolve:{
-             vehiculos:function(VehiculosService){
-                  return VehiculosService.listarVehiculos().then(function(vehiculos){
-                      return vehiculos;
+             dashboard:function(VehiculosService){
+                  return VehiculosService.dashboard().then(function(dashboard){
+                    console.log("dashboard");
+                    console.log(dashboard);
+                      return dashboard;
                   })
-             },
-             documentos:function(DocumentoService){
-                  return DocumentoService.documentoPorVencer().then(function(documentos){
-                      return documentos;
-                  })
-             },
-             usuarios:function(UsuariosService){
-                return UsuariosService.listar().then(function(usuarios){
-                        return usuarios;
-                })
              }
           }
         });
