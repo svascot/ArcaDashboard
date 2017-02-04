@@ -9,11 +9,14 @@
 
     return{
       cancelarRecurrentes :function(viaje){
-        console.dir("ViajeUuid");
+        console.dir("cancelara este viaje en el sservice:");
         console.dir(viaje);
         var query = $rootScope.serviceURL+"viaje/cancelarRecurrentes";
+        console.dir("cancelara este viaje en el sservice:");
+        console.dir(viaje);
         return $http.post(query,viaje).then(
           function(resultado){
+            console.dir("cancelo este viaje:");
             console.dir(resultado.data);
             return resultado.data
           }

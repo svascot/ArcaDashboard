@@ -14,19 +14,11 @@
       var viajeUuid = {
         'uuid': viaje.uuid
       }
-      if(viaje.cancelarTodosLosViajes){
-        listarViajesService.cancelarRecurrentes(viajeUuid).then(function(response){
-          console.dir(response)
-          openedToasts.push(toastr["success"]("Viaje cancelado", "Exito", $rootScope.toastDefautlOptions));
-          $scope.viaje.estado = "Cancelado"
-        });
-      }else{
-        listarViajesService.cancelarViaje(viajeUuid).then(function(response){
-          console.dir(response)
-          openedToasts.push(toastr["success"]("Viaje cancelado", "Exito", $rootScope.toastDefautlOptions));
-          $scope.viaje.estado = "Cancelado"
-        });
-      }
+      listarViajesService.cancelarViaje(viajeUuid).then(function(response){
+        console.dir(response)
+        openedToasts.push(toastr["success"]("Viaje cancelado", "Exito", $rootScope.toastDefautlOptions));
+        $scope.viaje.estado = "Cancelado"
+      });
       $rootScope.currentOpenModal.close();
     }
 

@@ -27,15 +27,24 @@
     }
 
     $scope.cancelarViaje = function(viaje){
-      //editarViaje(viaje);
       var viajeUuid = {
         'uuid': viaje.uuid
       }
-      listarViajesService.cancelarViaje(viajeUuid).then(function(response){
-        console.dir(response)
-        openedToasts.push(toastr["success"]("Viaje cancelado", "Exito", $rootScope.toastDefautlOptions));
-        $scope.viaje.estado = "Cancelado"
-      });
+      if(viaje.cancelarTodosLosViajes){
+        listarViajesService.cancelarRecurrentes(viajeUuid).then(function(response){
+          console.dir("Cancelo todos los viajes")
+          console.dir(response)
+          openedToasts.push(toastr["success"]("Viaje cancelado", "Exito", $rootScope.toastDefautlOptions));
+          $scope.viaje.estado = "Cancelado"
+        });
+      }else{
+        listarViajesService.cancelarViaje(viajeUuid).then(function(response){
+          console.dir("Cancelo este viaje en el controller")
+          console.dir(response)
+          openedToasts.push(toastr["success"]("Viaje cancelado", "Exito", $rootScope.toastDefautlOptions));
+          $scope.viaje.estado = "Cancelado"
+        });
+      }
       $rootScope.currentOpenModal.close();
     }
 
