@@ -46,7 +46,7 @@
     $scope.placas = placas;
 
     var cargarDiagrama = (function cargar (vehiculos){
-      
+
 
       var now = moment().minutes(0).seconds(0).milliseconds(0);
       var groups = new vis.DataSet();
@@ -54,24 +54,24 @@
       var content;
       var viaje;
       var vehiculo;
+      var hayViajes;
 
       // create a data set with groups
       for (var j = vehiculos.length - 1; j >= 0; j--) {
          vehiculo = vehiculos[j];
 
-
         groups.add({id:j,content:vehiculo.placa})
 
         if(vehiculo.Viajes){
+
           for (var i = vehiculo.Viajes.length - 1; i >= 0; i--) {
             viaje = vehiculo.Viajes[i]
+
             //alert (new Date(viaje.fechaInicio))
             if(viaje.estado == "Confirmado"){
+              hayViajes = true;
               content =  viaje.destino || formatDiasDeLaSemana(viaje.recurreteDiasDeLaSemana);
-
-
               viaje.descripcion = viaje.descripcion || "";
-
               items.add({
                 id:  viaje.id,
                 group:(j),
@@ -101,6 +101,12 @@
       timeline.setOptions(options);
       timeline.setGroups(groups);
       timeline.setItems(items);
+
+      if(vehiculos && !hayViajes){
+        $scope.message = "No se encontraron viajes";
+      }else{
+        $scope.message = "";
+      }
 
       return  cargar;
 

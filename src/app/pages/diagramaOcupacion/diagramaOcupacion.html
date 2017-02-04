@@ -35,7 +35,7 @@
                    <div class="input-group">
                      <input type="number" class="form-control input-sm"
                              placeholder="Min. 1" min=1 ng-model="vehiculo.capacidad">
-                     
+
                    </div>
                    <div class="col-md-12">
                      <p ng-show=messageError class="text-danger">{{messageError}}</p>
@@ -75,7 +75,7 @@
              <div class="col-md-12">
                <button type="submit" ng-click="filtrar(vehiculo)" class="btn btn-primary btn-sm">Filtrar vehiculos</button>
                <button type="submit" ng-click="traerTodos()" class="btn btn-success btn-sm">Mostrar todos</button>
-               <button  ng-click="vehiculo = {}" class="btn btn-warning btn-sm">Limpiar</button>
+               <button  ng-click="vehiculo = {}" class="btn btn-warning btn-sm">Limpiar datos</button>
              </div>
          </form>
 
@@ -84,7 +84,8 @@
 
 
   <div class="row">
-
-      <div class="visualization" id="visualization" style=" box-sizing: border-box;width: 95%;height: 300px;"></div>
-
+    <div class="col-md-12">
+      <p ng-show=message class="text-danger">{{message}}</p>
+      <div class="visualization" id="visualization" style=" box-sizing: border-box;width: 100%;height: 300px;"></div>
+    </div>
   </div>
