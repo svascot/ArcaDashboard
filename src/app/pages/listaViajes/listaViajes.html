@@ -6,9 +6,17 @@
         <div class="col-md-6">
           <div class="form-group">
                 <input type="search" class="form-control input-sm"
-                        ng-model="q" placeholder="Placa, Marca o Referencia">
+                        ng-model="q" placeholder=" busca por placa, Marca o Referencia">
+
           </div>
         </div>
+        <div class="col-md-6">
+          <div class="btn-group">
+                <a href="http://arkap.co/Excel?agenciaId=usuario.Agencium" class="btn btn-primary btn-sm">
+                    Generar informe
+                </a>
+            </div>
+      </div>
         <div class="col-md-12">
           <div class="feed-messages-container" track-width="smallContainerWidth" min-width="360">
             <div class="feed-message" style="min-height: 95px;" ng-repeat="vehiculo in vehiculos| filter:q as results "

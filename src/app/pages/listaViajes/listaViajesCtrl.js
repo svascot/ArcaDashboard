@@ -6,8 +6,8 @@
 
   /** @ngInject */
   var openedToasts =[];
-  function listarViajesCtrl($scope,$rootScope,ViajeService,toastr,destinos,
-    toastrConfig,vehiculos) {
+  function listarViajesCtrl($scope,$rootScope,ViajeService,listarViajesService,
+    toastr,destinos,toastrConfig,vehiculos) {
 
     $scope.viaje = {};
     $scope.destinos = destinos;
