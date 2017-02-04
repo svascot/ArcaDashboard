@@ -1,4 +1,3 @@
-
 <div class="modal-content">
   <div class="modal-header">
     <button type="button" class="close" ng-click="$dismiss()" aria-label="Close">
@@ -6,140 +5,131 @@
     </button>
     <h4 class="modal-title">Actualizar vehículo</h4>
   </div>
-    <form class="form-horizontal">
-      <div class="modal-body">
-        <div class="row col-md-12">
-          <div class="col-md-6">
-            <div class="form-group">
-                  <select id="marca" class="form-control selectpicker with-search"
-                  data-live-search="true" title="Marca" selectpicker
-                  placeholder="Marca"
-                  ng-model="vehiculo.marca" ng-change="switchMarca()"
-                  ng-options="marca.nombre as marca.nombre for marca in marcas">
-                  </select>
-            </div>
-
-            <div class="form-group">
-                  <select id="referencia" class="form-control selectpicker with-search"
-                  data-live-search="true" title="Referencia" selectpicker
-                  placeholder="Referencia"
-                  ng-model="vehiculo.referencia" ng-options="referencia.nombre as referencia.nombre for referencia in referencias">
-                  </select>
-            </div>
-             <div class="form-group">
-                   <label>Modelo</label>
-                   <input type="text" class="form-control input-sm"
-                        ng-model="vehiculo.modelo">
-             </div>
-             <div class="form-group">
-                    <label>Capacidad</label>
-                    <input type="text" class="form-control input-sm"
-                          ng-model="vehiculo.capacidad">
-              </div>
-
-
-              <div class="row form-group">
-               <label>Relacion </label>
-                <select class="form-control selectpicker with-search" data-live-search="true" title="Rol"    selectpicker
-                 ng-model="vehiculo.relacion">
-                  <option value="Propio">Propio</option>
-                  <option value="Afiliado">Afiliado</option>
-                  <option value="Tercero">Tercero</option>
-                </select>
-              </div>
-              <div class="row form-group">
-                 <label>Tipo </label>
-                <select class="form-control selectpicker with-search" data-live-search="true" title="Rol"    selectpicker
-                 ng-model="vehiculo.tipo">
-                  <option value="Bus">Bus</option>
-                  <option value="Buseta">Buseta</option>
-                  <option value="Cliente">Cliente</option>
-                  <option value="Camioneta">Camioneta</option>
-                  <option value="Campero">Campero</option>
-                  <option value="Microbus">Microbus</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label>Numero interno </label>
-                <input type="text" class="form-control input-sm text-uppercase"
-                       placeholder="Numero Interno" ng-model="vehiculo.numeroInterno">
-              </div>
-              <div class="form-group" ng-if="vehiculo.relacion == 'Afiliado'">
-                <label>Propietario </label>
-                  <select id="referencia" class="form-control selectpicker with-search"
-                    data-live-search="true" title="Propietario" selectpicker
-                    placeholder="Propietario"
-                    ng-model="vehiculo.PropietarioId" ng-options="propietario.id as propietario.nombre for propietario in propietarios">
-                  </select>
-              </div>
-
-
-
-
-
-
-
-
-
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                   <switch color="primary" ng-model="vehiculo.reclinable" ></switch>
-                   <span>Sillas reclinables</span>
-              </div>
-              <div class="checkbox">
-                  <label class="checkbox-inline custom-checkbox nowrap">
-                    <input type="checkbox"  ng-model="vehiculo.wifi">
-                    <span>WiFi</span>
-                  </label>
-              </div>
-                <div class="checkbox">
-                    <label class="checkbox-inline custom-checkbox nowrap">
-                      <input type="checkbox"  ng-model="vehiculo.audio">
-                      <span>Audio</span>
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label class="checkbox-inline custom-checkbox nowrap">
-                      <input type="checkbox"  ng-model="vehiculo.video">
-                      <span>Video</span>
-                    </label>
-                </div>
-                <div class="checkbox">
-                  <label class="checkbox-inline custom-checkbox nowrap">
-                      <input type="checkbox"   ng-model="vehiculo.aire">
-                      <span>Aire</span>
-                    </label>
-                </div>
-                <div class="checkbox">
-                  <label class="checkbox-inline custom-checkbox nowrap">
-                      <input type="checkbox"  ng-model="vehiculo.bano">
-                      <span>Baño</span>
-                    </label>
-                </div>
-               <div class="checkbox">
-                  <label class="checkbox-inline custom-checkbox nowrap">
-                      <input type="checkbox" ng-model="vehiculo.reclinable">
-                      <span>Sillas reclinables</span>
-                    </label>
-                </div>
-                  <div class="form-group">
-                          <label>Etiquetas </label>
-                        <ui-select multiple tagging="tagTransform" ng-model="vehiculo.Tags" theme="bootstrap" ng-disabled="disabled" style="width: 800px;" title="Selecciona las etiquetas">
-                        <ui-select-match placeholder="Selecciona las etiquetas">{{$item.nombre}}</ui-select-match>
-                        <ui-select-choices repeat="etiqueta as etiqueta in etiquetas">
-                          <div ng-if="etiqueta.isTag" ng-bind-html="etiqueta.nombre +' <small>(new)</small>'| highlight: $select.search"></div>
-                          <div ng-if="!etiqueta.isTag" ng-bind-html="etiqueta.nombre + etiqueta.isTag| highlight: $select.search"></div>                          
-                        </ui-select-choices>
-                      </ui-select>
-                      
-                  </div>
-             </div>
-           </div>
+  <div class="modal-body">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Marca</label>
+        <select id="marca" class="form-control input-sm selectpicker with-search"
+        data-live-search="true" title="Marca" selectpicker
+        placeholder="Marca"
+        ng-model="vehiculo.marca" ng-change="switchMarca()"
+        ng-options="marca.nombre as marca.nombre for marca in marcas">
+        </select>
       </div>
-    <div class="modal-footer">
-      <button class="btn btn-primary" ng-click="actualizarVehiculo(vehiculo)">Actualizar</button>
-      <button class="btn btn-primary" ng-click="$dismiss()">Cancelar</button>  
+
+      <div class="form-group">
+        <label>Referencia</label>
+        <select id="referencia" class="form-control input-sm selectpicker with-search"
+        data-live-search="true" title="Referencia" selectpicker
+        placeholder="Referencia"
+        ng-model="vehiculo.referencia" ng-options="referencia.nombre as referencia.nombre for referencia in referencias">
+        </select>
+      </div>
+       <div class="form-group">
+         <label>Modelo</label>
+         <input type="text" class="form-control input-sm"
+              ng-model="vehiculo.modelo" placeholder="Modelo">
+       </div>
+       <div class="form-group">
+          <label>Capacidad</label>
+          <input type="text" class="form-control input-sm"
+                placeholder="Capacidad"  ng-model="vehiculo.capacidad">
+        </div>
+        <div class="form-group">
+         <label>Relacion </label>
+          <select class="form-control input-sm selectpicker with-search" data-live-search="true"
+          title="Rol" placeholder="Relacion" selectpicker
+           ng-model="vehiculo.relacion">
+            <option value="Propio">Propio</option>
+            <option value="Afiliado">Afiliado</option>
+            <option value="Tercero">Tercero</option>
+          </select>
+        </div>
+        <div class="form-group">
+           <label>Tipo </label>
+          <select class="form-control input-sm selectpicker with-search" data-live-search="true" title="Rol"    selectpicker
+           ng-model="vehiculo.tipo">
+            <option value="Bus">Bus</option>
+            <option value="Buseta">Buseta</option>
+            <option value="Cliente">Cliente</option>
+            <option value="Camioneta">Camioneta</option>
+            <option value="Campero">Campero</option>
+            <option value="Microbus">Microbus</option>
+          </select>
+        </div>
+
     </div>
-    </form>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Numero interno </label>
+        <input type="text" class="form-control input-sm text-uppercase"
+               placeholder="Numero Interno" ng-model="vehiculo.numeroInterno">
+      </div>
+      <div class="form-group" ng-if="vehiculo.relacion == 'Afiliado'">
+        <label>Propietario </label>
+          <select id="referencia" class="form-control input-sm selectpicker with-search"
+            data-live-search="true" title="Propietario" selectpicker
+            placeholder="Propietario"
+            ng-model="vehiculo.PropietarioId" ng-options="propietario.id as propietario.nombre for propietario in propietarios">
+          </select>
+      </div>
+
+      <div class="form-group">
+           <switch color="primary" ng-model="vehiculo.reclinable" ></switch>
+           <span>Sillas reclinables</span>
+      </div>
+      <div class="checkbox">
+          <label class="checkbox-inline custom-checkbox nowrap">
+            <input type="checkbox"  ng-model="vehiculo.wifi">
+            <span>WiFi</span>
+          </label>
+      </div>
+        <div class="checkbox">
+            <label class="checkbox-inline custom-checkbox nowrap">
+              <input type="checkbox"  ng-model="vehiculo.audio">
+              <span>Audio</span>
+            </label>
+        </div>
+        <div class="checkbox">
+            <label class="checkbox-inline custom-checkbox nowrap">
+              <input type="checkbox"  ng-model="vehiculo.video">
+              <span>Video</span>
+            </label>
+        </div>
+        <div class="checkbox">
+          <label class="checkbox-inline custom-checkbox nowrap">
+              <input type="checkbox"   ng-model="vehiculo.aire">
+              <span>Aire</span>
+            </label>
+        </div>
+        <div class="checkbox">
+          <label class="checkbox-inline custom-checkbox nowrap">
+              <input type="checkbox"  ng-model="vehiculo.bano">
+              <span>Baño</span>
+            </label>
+        </div>
+       <div class="checkbox">
+          <label class="checkbox-inline custom-checkbox nowrap">
+              <input type="checkbox" ng-model="vehiculo.reclinable">
+              <span>Sillas reclinables</span>
+            </label>
+        </div>
+          <div class="form-group">
+                  <label>Etiquetas </label>
+                <ui-select multiple tagging="tagTransform" ng-model="vehiculo.Tags" theme="bootstrap" ng-disabled="disabled" style="width: 200px;" title="Selecciona las etiquetas">
+                <ui-select-match placeholder="Selecciona las etiquetas">{{$item.nombre}}</ui-select-match>
+                <ui-select-choices repeat="etiqueta as etiqueta in etiquetas">
+                  <div ng-if="etiqueta.isTag" ng-bind-html="etiqueta.nombre +' <small>(new)</small>'| highlight: $select.search"></div>
+                  <div ng-if="!etiqueta.isTag" ng-bind-html="etiqueta.nombre + etiqueta.isTag| highlight: $select.search"></div>
+                </ui-select-choices>
+              </ui-select>
+
+          </div>
+
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" ng-click="actualizarVehiculo(vehiculo)">Actualizar</button>
+    <button class="btn btn-primary" ng-click="$dismiss()">Cancelar</button>
+  </div>
 </div>
