@@ -46,6 +46,7 @@
     $scope.placas = placas;
 
     var cargarDiagrama = (function cargar (vehiculos){
+      
 
       var now = moment().minutes(0).seconds(0).milliseconds(0);
       var groups = new vis.DataSet();
@@ -114,11 +115,12 @@
     }
       $scope.filtrar = function(filtro){
         if($scope.validateDate(filtro)){
-          $scope.vehiculos = "";
+          $scope.vehiculos = [];
           return;
         }else{
           $scope.messageErrorFecha = "";
         }
+
           DiagramaOcupacionService.obtenerconViajesEnRangoDeFechas(filtro).then(function(response){
           $scope.vehiculos = response;
           cargarDiagrama(response)

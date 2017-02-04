@@ -27,23 +27,7 @@
                  </p>
                </div>
 
-               <div class="form-group">
-                 <label>Marca y referencia</label>
-                  <div class="input-group">
-                     <select id="marca" class="form-control input-sm selectpicker with-search"
-                     data-live-search="true" title="Marca" selectpicker
-                     placeholder="Marca"
-                     ng-model="vehiculo.marca" ng-change="switchMarca()"
-                     ng-options="marca.nombre as marca.nombre for marca in marcas">
-                     </select>
-                     <span class="input-group-btn Hide"></span>
-                     <select id="referencia" class="form-control input-sm selectpicker with-search"
-                     data-live-search="true" title="Referencia" selectpicker
-                     placeholder="Referencia"
-                     ng-model="vehiculo.referencia" ng-options="referencia.nombre as referencia.nombre for referencia in referencias">
-                     </select>
-                  </div>
-               </div>
+
             </div>
             <div class="col-md-3">
                <div class="form-group">
@@ -51,9 +35,7 @@
                    <div class="input-group">
                      <input type="number" class="form-control input-sm"
                              placeholder="Min. 1" min=1 ng-model="vehiculo.capacidad">
-                     <span class="input-group-btn Hide"></span>
-                     <input type="number" class="form-control input-sm"
-                             placeholder="Max. 45" max="45" ng-model="vehiculo.capacidadMax">
+                     
                    </div>
                    <div class="col-md-12">
                      <p ng-show=messageError class="text-danger">{{messageError}}</p>
@@ -83,7 +65,7 @@
                            <ui-select-match placeholder="Escribe una placa...">
                              <span> {{$select.selected.placa}}</span>
                            </ui-select-match>
-                           <ui-select-choices repeat="placa in placas | filter: $select.search" >
+                           <ui-select-choices repeat="placa.placa as placa in placas | filter: $select.search" >
                              <span ng-bind-html="placa.placa"></span>
                            </ui-select-choices>
                          </ui-select>
@@ -92,7 +74,8 @@
              </div>
              <div class="col-md-12">
                <button type="submit" ng-click="filtrar(vehiculo)" class="btn btn-primary btn-sm">Filtrar vehiculos</button>
-               <button type="submit" ng-click="traerTodos()" class="btn btn-primary btn-sm">Mostrar todos</button>
+               <button type="submit" ng-click="traerTodos()" class="btn btn-success btn-sm">Mostrar todos</button>
+               <button  ng-click="vehiculo = {}" class="btn btn-warning btn-sm">Limpiar</button>
              </div>
          </form>
 
