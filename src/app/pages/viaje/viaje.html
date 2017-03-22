@@ -318,6 +318,7 @@
         ba-panel-title="Vehiculos"
         ba-panel-class="with-scroll">
         <div class="feed-messages-container" track-width="smallContainerWidth" min-width="360">
+          <p ng-show=message class="text-danger">{{message}}</p>
           <div class="feed-message" style="min-height: 95px;" ng-repeat="vehiculo in vehiculos" ng-click="openCrearViaje(viaje,vehiculo)">
             <div class="message-icon">
               <img class="photo-icon" ng-src="{{vehiculo | vehiculoImagen}}" err-src="{{vehiculo.marca}}">

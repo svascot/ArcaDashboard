@@ -47,6 +47,8 @@
     }
 
     $scope.filtrar = function(filtro){
+      $scope.message = "";
+      alert($scope.message)
       if($scope.validateDate(filtro)){
         $scope.vehiculos = "";
         return;
@@ -74,7 +76,17 @@
 
       ViajeService.listarVehiculos(filtro).then(function(response){
         $scope.vehiculos = response;
+
+        if($scope.vehiculos.length == 0){
+          $scope.message = "No se encontraron vehiculos disponibles";
+        }else{
+          $scope.message = "";
+        }
+        
       })
+
+
+
     }
 
 
