@@ -21,6 +21,8 @@
     'BlurAdmin.pages.modals',
     'BlurAdmin.pages.listarViajes',
     'BlurAdmin.pages.tags',
+    'BlurAdmin.pages.destinos',
+    
 
   ])
       .config(routeConfig);

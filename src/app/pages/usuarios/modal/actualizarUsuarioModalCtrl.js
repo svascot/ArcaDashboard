@@ -5,7 +5,7 @@
       .controller('actualizarUsuarioModalCtrl', actualizarUsuarioModalCtrl);
 
   /** @ngInject */
-  var openedToasts =[];
+  var openedToasts =[]; 
   function actualizarUsuarioModalCtrl($scope,UsuariosService,$rootScope,usuario,uploadToAWS,toastr,toastrConfig) {
     usuario.fechaNacimiento = new Date(usuario.fechaNacimiento);
     usuario.cedula = Number(usuario.cedula)
@@ -16,7 +16,7 @@
         e.stopPropagation();
 
     };
-
+ 
     $scope.actualizarUsuario = function(usuario){
        var oldUser = JSON.parse(JSON.stringify(usuario))
 

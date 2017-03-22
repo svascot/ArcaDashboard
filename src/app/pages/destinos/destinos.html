@@ -1,0 +1,46 @@
+
+  <div class="row">
+    <div class="col-md-12">
+      <div
+          ba-panel
+          ba-panel-title="Destinos Disponibles"
+          ba-panel-class="with-scroll">
+
+        
+          <div class="col-md-6">
+            <button type="button" class="btn btn-primary btn-sm"
+                ng-click="openCrearDestino()">+ Crear nuevo destino
+            </button>
+          </div>
+          <div class="col-md-12">
+            <div class="feed-messages-container" track-width="smallContainerWidth"
+                min-width="360">
+              <div class="feed-message" style="min-height: 95px;" ng-repeat="destino in destinos | orderBy:'nombre' "
+                  ng-click="verDetalles(destino)">
+                  
+                  <div class="text-block text-message">
+                    <div class="message-header">
+                      <span class="author">{{destino.nombre}}</span>
+                    </div>
+
+                
+
+
+                    <div class="row col-md-12">
+                      <button type="button" class="btn btn-primary btn-sm"
+                          ng-click="openModalDetallesDestino(destino)">Detalles
+                      </button>
+                      
+                      <button type="button" class="btn btn-danger btn-sm"
+                          ng-click="openModalEliminarDestino(destino)">Eliminar
+                      </button>
+                    </div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+
+  </div>
