@@ -10,7 +10,7 @@
     return{
 
       listarDestinos:function(){
-        var query = $rootScope.serviceURL+"destinos";
+        var query = $rootScope.serviceURL+"destino";
         return $http.get(query).then(
           function(resultado){
             return resultado.data
@@ -19,15 +19,15 @@
       },
       
       crearDestino :function(destino){
-        var query = $rootScope.serviceURL+"destinos";
-        return $http.post(query,{destinos:destinos}).then(
+        var query = $rootScope.serviceURL+"destino";
+        return $http.post(query,{destino:destino}).then(
           function(resultado){
             return resultado.data
           }
         )
       },
       eliminarDestino:function(destino){
-        var query = $rootScope.serviceURL+"destinos/"+destino.uuid;
+        var query = $rootScope.serviceURL+"destino/"+destino.uuid;
         return $http.delete(query).then(
           function(resultado){
             return resultado.data
@@ -35,7 +35,7 @@
         )
       },
       actualizarDestino:function(destino){
-        var query = $rootScope.serviceURL+"destinos";
+        var query = $rootScope.serviceURL+"destino";
         return $http.patch(query,{destino:destino}).then(
           function(resultado){
             return resultado.data

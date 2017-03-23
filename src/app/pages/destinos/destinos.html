@@ -17,7 +17,9 @@
                 min-width="360">
               <div class="feed-message" style="min-height: 95px;" ng-repeat="destino in destinos | orderBy:'nombre' "
                   ng-click="verDetalles(destino)">
-                  
+                   <div class="message-icon">
+                    <img class="photo-icon" ng-src="{{destino.imagenes[0]}}" >
+                  </div>
                   <div class="text-block text-message">
                     <div class="message-header">
                       <span class="author">{{destino.nombre}}</span>

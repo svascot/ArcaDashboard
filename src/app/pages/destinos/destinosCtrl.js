@@ -10,7 +10,7 @@
   function destinosCtrl($scope,toastr,toastrConfig,$rootScope,uploadToAWS,destinos) {
     
     $scope.destinos = destinos
-    
+     
    
 
     $scope.openCrearDestino = function(){
