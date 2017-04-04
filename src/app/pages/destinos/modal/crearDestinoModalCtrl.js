@@ -22,7 +22,7 @@
 
     $scope.crearDestino = function(destino){
       destino.imagenes = destino.imagenes || [];
-      if($scope.nuevasImagenes.length){
+      if($scope.nuevasImagenes && $scope.nuevasImagenes.length){
         uploadToAWS.uploadFiles($scope.nuevasImagenes).then(function(urls){
           for (var i = urls.length - 1; i >= 0; i--) {
             destino.imagenes.push(urls[i].endPoint);

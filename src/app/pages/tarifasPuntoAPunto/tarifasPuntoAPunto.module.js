@@ -22,6 +22,11 @@
                return TarifasPuntoAPuntoService.listarTarifasPuntoAPunto().then(function(tarifas){
                        return tarifas
                })
+            },
+            destinos:function(ViajeService){
+                 return ViajeService.listarDestinos().then(function(destinos){
+                     return destinos
+                 })
             }
           }
         })

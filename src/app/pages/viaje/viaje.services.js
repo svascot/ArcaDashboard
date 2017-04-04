@@ -29,16 +29,13 @@
       },
       listarDestinos :function(){
         var q = $q.defer();
-        if(destinos){
-          q.resolve(destinos)
-        }
-        else{
+        
         var query = $rootScope.serviceURL+"destino/";
         $http.get(query).then(function(resultado){
             destinos = resultado.data;
             q.resolve(resultado.data)
           }
-        )}
+        )
         return q.promise;
       },
       listarVehiculos :function(vehiculo){
