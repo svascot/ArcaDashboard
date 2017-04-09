@@ -6,30 +6,43 @@
     ba-panel-title="Tarifas punto a punto"
     ba-panel-class="with-scroll">
     <div class="col-md-12">
-          <label>Origen </label>
-          <select id="origen" class="form-control input-sm selectpicker with-search"
-            data-live-search="true" title="Origen" selectpicker
-            placeholder="Origen"
-            ng-model="nuevaTarifaPuntoAPunto.OrigenId" ng-options="destino.id as destino.nombre for destino in destinos">
-          </select>
-          <label>Destino </label>
-          <select id="destino" class="form-control input-sm selectpicker with-search"
-            data-live-search="true" title="Destino" selectpicker
-            placeholder="Destino"
-            ng-model="nuevaTarifaPuntoAPunto.DestinoId" ng-options="destino.id as destino.nombre for destino in destinos">
-          </select>
-          <input type="text" class="form-control" id="capacidad" ng-model="nuevaTarifaPuntoAPunto.numeroDePasajeros" placeholder="Capacidad">
-          <input type="number" class="form-control" id="input01" ng-model="nuevaTarifaPuntoAPunto.valor" placeholder="Valor">
-          <button  class="btn btn-primary" ng-click="crearTarifasPuntoAPunto(nuevaTarifaPuntoAPunto)">Crear tarifa</button>
-      
-      <hr>
+        <div class="row">
+          <div class="col-md-6">
+            <label>Origen </label>
+            <select id="origen" class="form-control input-sm selectpicker with-search"
+              data-live-search="true" title="Origen" selectpicker
+              placeholder="Origen"
+              ng-model="nuevaTarifaPuntoAPunto.OrigenId" ng-options="destino.id as destino.nombre for destino in destinos">
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label>Destino </label>
+            <select id="destino" class="form-control input-sm selectpicker with-search"
+              data-live-search="true" title="Destino" selectpicker
+              placeholder="Destino"
+              ng-model="nuevaTarifaPuntoAPunto.DestinoId" ng-options="destino.id as destino.nombre for destino in destinos">
+            </select>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+           <div class="col-md-6">
+              <input type="text" class="form-control" id="capacidad" ng-model="nuevaTarifaPuntoAPunto.numeroDePasajeros" placeholder="Capacidad">
+            </div>
+            <div class="col-md-6">
+              <input  class="form-control" id="input01" ng-model="nuevaTarifaPuntoAPunto.valor" placeholder="Valor" ui-money-mask="0">
+            </div>
+        </div>
+      <br>
+        <button  class="btn btn-primary" ng-click="crearTarifasPuntoAPunto(nuevaTarifaPuntoAPunto)">Crear tarifa</button>
       <br>
       <br>
      
           <div class="feed-messages-container" track-width="smallContainerWidth"
           min-width="360">
             <div  ng-repeat="tarifa in tarifas">
-                {{tarifa.Origen.nombre}} - {{tarifa.Destino.nombre}} - {{tarifa.numeroDePasajeros}} - {{tarifa.valor}}
+                {{tarifa.Origen.nombre}} - {{tarifa.Destino.nombre}} - {{tarifa.numeroDePasajeros}} - {{tarifa.valor | currency:'$':0}}
+                
             </div>
           </div>
       </div>

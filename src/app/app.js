@@ -15,5 +15,6 @@ angular.module('BlurAdmin', [
   'angular-progress-button-styles',
   'BlurAdmin.theme',
   'BlurAdmin.pages',
-  'ngFileUpload'
+  'ngFileUpload',
+  'ui.utils.masks'
 ]);
