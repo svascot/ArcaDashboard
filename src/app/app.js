@@ -16,5 +16,6 @@ angular.module('BlurAdmin', [
   'BlurAdmin.theme',
   'BlurAdmin.pages',
   'ngFileUpload',
-  'ui.utils.masks'
+  'ui.utils.masks',
+  'mwl.confirm'
 ]);

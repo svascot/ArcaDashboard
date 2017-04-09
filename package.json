@@ -46,5 +46,6 @@
     "postinstall": "bower install"
   },
   "dependencies": {
+    "angular-bootstrap-confirm": "^2.5.0"
   }
 }

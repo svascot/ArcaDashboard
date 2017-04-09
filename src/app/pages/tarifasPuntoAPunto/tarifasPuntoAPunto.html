@@ -38,13 +38,27 @@
       <br>
       <br>
      
-          <div class="feed-messages-container" track-width="smallContainerWidth"
-          min-width="360">
-            <div  ng-repeat="tarifa in tarifas">
-                {{tarifa.Origen.nombre}} - {{tarifa.Destino.nombre}} - {{tarifa.numeroDePasajeros}} - {{tarifa.valor | currency:'$':0}}
+          
+
+
+          <table class="table table-hover">
+              <thead>
+                <tr class="black-muted-bg">
+                <th class="align-left">Origen</th>
+                <th class="align-left">Destino</th>
+                <th class="align-left">Pasajeros</th>
+                <th class="align-right">Valor</th>
+              </thead>
+              <tbody ng-repeat="tarifa in tarifas | orderBy:'Origen.nombre+Destino.nombre'">
+                <tr class="no-top-border" ng-click="verDetalleTarifa(tarifa)" style="cursor:pointer">
+                  <td>{{tarifa.Origen.nombre}}</td>
+                  <td>{{tarifa.Destino.nombre}}</td>
+                  <td>{{tarifa.numeroDePasajeros}}</td>
+                  <td class="align-right">{{tarifa.valor | currency:'$':0}}</td>
+                </tr>
                 
-            </div>
-          </div>
+              </tbody>
+            </table>
       </div>
     </div>
   </div>

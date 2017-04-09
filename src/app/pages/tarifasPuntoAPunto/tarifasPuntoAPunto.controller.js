@@ -18,13 +18,22 @@
 
       })  
   	}
-    $scope.eliminarTarifasPuntoAPunto = function(tarifa){        
+    
+    $scope.verDetalleTarifa = function(tarifa){
+      $rootScope.openModalController('app/pages/tarifasPuntoAPunto/modal/tarifaPuntoAPuntoModal.html','tarifaPuntoAPuntoModalCtrl',
+        {
+          destinos:function () {
+            return destinos;
+          },
+          tarifa:function(){
+            return tarifa
+          },
+          tarifasActuales:function(){
+            return tarifas
+          }
 
-        
-    }
-    $scope.actualizarTarifasPuntoAPunto = function(tarifa){        
-
-        
+        }
+      )
     }
 
     

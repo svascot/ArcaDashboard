@@ -1,0 +1,54 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" ng-click="$dismiss()" aria-label="Close">
+      <em class="ion-ios-close-empty sn-link-close"></em>
+    </button>
+    <h4 class="modal-title">Editar tarifa</h4>
+  </div>
+   
+      <div class="modal-body">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-3">
+              <label>Origen </label>
+              <select id="origen" class="form-control input-sm selectpicker with-search"
+                data-live-search="true" title="Origen" selectpicker
+                placeholder="Origen"
+                ng-model="tarifa.OrigenId" ng-init="tarifa.OrigenId" ng-options="destino.id as destino.nombre for destino in destinos">
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label>Destino </label>
+              <select id="destino" class="form-control input-sm selectpicker with-search"
+                data-live-search="true" title="Destino" selectpicker
+                placeholder="Destino"
+                ng-model="tarifa.DestinoId" ng-init="tarifa.DestinoId" ng-options="destino.id as destino.nombre for destino in destinos">
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label>Pasajeros </label>
+              <input class="form-control" ng-model="tarifa.numeroDePasajeros">
+            </div>
+            <div class="col-md-3">
+              <label>Valor </label>
+                <input  class="form-control"  ng-model="tarifa.valor" placeholder="Valor" ui-money-mask="0">
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="actualizarTarifa(tarifa)">Actualizar</button>        
+        <button class="btn btn-warning" ng-click="$dismiss()">Cancelar</button>
+        <button class="btn btn-danger" mwl-confirm  
+          on-confirm="eliminarTarifa(tarifa)" title="¿Estás seguro?"
+          message="¿En realidad deseas eliminar esta tarifa?"
+          confirm-text="Si"
+          cancel-text="No"
+          confirm-button-type="danger"
+          cancel-button-type="default">Eliminar tarifa
+        </button>
+      </div>
+      </form>
+</div>
