@@ -12,35 +12,29 @@
                 ng-click="openCrearDestino()">+ Crear nuevo destino
             </button>
           </div>
-          <div class="col-md-12">
-            <div class="feed-messages-container" track-width="smallContainerWidth"
-                min-width="360">
-              <div class="feed-message" style="min-height: 95px;" ng-repeat="destino in destinos | orderBy:'nombre' "
-                  ng-click="verDetalles(destino)">
-                   <div class="message-icon">
-                    <img class="photo-icon" ng-src="{{destino.imagenes[0]}}" >
-                  </div>
-                  <div class="text-block text-message">
-                    <div class="message-header">
-                      <span class="author">{{destino.nombre}}</span>
-                    </div>
-
-                
+          <div class="col-md-12">     
 
 
-                    <div class="row col-md-12">
-                      <button type="button" class="btn btn-primary btn-sm"
-                          ng-click="openModalDetallesDestino(destino)">Detalles
-                      </button>
-                      
-                      <button type="button" class="btn btn-danger btn-sm"
-                          ng-click="openModalEliminarDestino(destino)">Eliminar
-                      </button>
-                    </div>
-                  
-                </div>
-              </div>
-            </div>
+              <table class="table table-hover">
+	              <thead>
+	                <tr class="black-muted-bg">
+	                <th class="align-left"></th>
+	                <th class="align-left">Destino</th>
+	          
+	              </thead>
+	              <tbody ng-repeat="destino in destinos | orderBy:'nombre' ">
+	                <tr class="no-top-border" ng-click="verDetalleDestino(destino)" style="cursor:pointer">
+	                  <td class="align-right"><img style="width: 100px;height: 100px" ng-src="{{destino.imagenes[0]}}" ></td>
+	                  <td>{{destino.nombre}}</td>                  
+	                  
+	                </tr>
+	                
+	              </tbody>
+	          </table>
+
+
+
+           
           </div>
       </div>
     </div>

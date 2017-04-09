@@ -10,7 +10,7 @@
         .state('tarifasPuntoAPunto', {
           url: '/tarifasPuntoAPunto',
           templateUrl: 'app/pages/tarifasPuntoAPunto/tarifasPuntoAPunto.html',
-          title: 'Punto a punto',
+          title: 'Tarifas punto a punto',
           controller:'TarifasPuntoAPuntoCtrl',
           sidebarMeta: {
             icon: 'ion-cash',

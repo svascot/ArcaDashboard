@@ -22,6 +22,20 @@
       }
       )
     }
+    $scope.verDetalleDestino = function(destino){
+      $rootScope.openModalController('app/pages/destinos/modal/detalleDestinoModal.html','detalleDestinoModal',
+        {
+          
+          destino:function(){
+            return destino
+          },
+          destinosActuales:function(){
+            return destinos
+          }
+
+        }
+      )
+    }
 
    
 

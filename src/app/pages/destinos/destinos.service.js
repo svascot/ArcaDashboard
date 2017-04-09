@@ -27,7 +27,7 @@
         )
       },
       eliminarDestino:function(destino){
-        var query = $rootScope.serviceURL+"destino/"+destino.uuid;
+        var query = $rootScope.serviceURL+"destino/"+destino.id;
         return $http.delete(query).then(
           function(resultado){
             return resultado.data
