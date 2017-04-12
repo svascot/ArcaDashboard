@@ -22,7 +22,8 @@
     'BlurAdmin.pages.listarViajes',
     'BlurAdmin.pages.tags',
     'BlurAdmin.pages.destinos',
-    'BlurAdmin.pages.tarifasPuntoAPunto'
+    'BlurAdmin.pages.tarifasPuntoAPunto',
+    'BlurAdmin.pages.tarifasPorHora'
 
   ])
       .config(routeConfig);

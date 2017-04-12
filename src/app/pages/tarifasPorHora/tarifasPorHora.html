@@ -1,0 +1,55 @@
+
+<div class="row">
+  <div class="col-md-12">
+    <div
+    ba-panel
+    ba-panel-title="Tarifas por hora"
+    ba-panel-class="with-scroll">
+    <div class="col-md-12">
+        
+        <div class="row">
+            <div class="col-md-3">
+              <input type="text" class="form-control" id="capacidad" ng-model="nuevaTarifa.capacidadDelVehiculo" placeholder="Capacidad del vehiculo">
+            </div>
+            <div class="col-md-3">
+              <input type="text" class="form-control" id="capacidad" ng-model="nuevaTarifa.tiempoMinimo" placeholder="Tiempo minimo">
+            </div>
+            <div class="col-md-3">
+              <input type="text" class="form-control" id="capacidad" ng-model="nuevaTarifa.tiempoMaximo" placeholder="Tiempo maximo">
+            </div>
+           
+            <div class="col-md-3">
+              <input  class="form-control" id="input01" ng-model="nuevaTarifa.valorPorHora" placeholder="Valor por hora" ui-money-mask="0">
+            </div>
+        </div>
+      <br>
+        <button  class="btn btn-primary" ng-click="crearTarifaPorHora(nuevaTarifa)">Crear tarifa</button>
+      <br>
+      <br>
+     
+          
+
+
+          <table class="table table-hover">
+              <thead>
+                <tr class="black-muted-bg">
+                <th class="align-left">Capacidad del vehiculo</th>
+                <th class="align-left">Tiempo minimo</th>
+                <th class="align-left">Tiempo maximo</th>
+                <th class="align-right">Valor por hora</th>
+              </thead>
+              <tbody ng-repeat="tarifa in tarifas | orderBy:'capacidadDelVehiculo+tiempoMinimo' ">
+                <tr class="no-top-border" ng-click="verDetalleTarifa(tarifa)" style="cursor:pointer">
+                  <td>{{tarifa.capacidadDelVehiculo}}</td>
+                  <td>{{tarifa.tiempoMinimo}}</td>
+                  <td>{{tarifa.tiempoMaximo}}</td>                  
+                  <td class="align-right">{{tarifa.valorPorHora | currency:'$':0}}</td>
+                </tr>
+                
+              </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+
+</div>
