@@ -1,0 +1,45 @@
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-hover" st-table="ordenes">
+
+        <thead>
+          <tr class="black-muted-bg">
+          <th class="align-left">Descripcion</th>
+          <th class="align-left">Valor</th>
+          <th class="align-right">Estado</th>
+          <th class="align-left">Cliente</th>
+          <th class="align-right">Email</th>
+          <th class="align-right">Telefono</th>
+          <th class="align-right">Direccion recogida</th>
+          <th class="align-left">Referencia</th> 
+
+          <tr>
+                <th><input st-search="descripcion" placeholder="Descripcion" class="input-sm form-control search-input" type="search"></th>
+                <th><input st-search="amount" placeholder="Valor" class="input-sm form-control search-input" type="search"></th>
+                <th><input st-search="status" placeholder="Estado" class="input-sm form-control search-input" type="search"></th>
+                <th><input st-search="buyerName" placeholder="Nombre" class="input-sm form-control search-input" type="search"></th>
+                <th><input st-search="buyerEmail" placeholder="Email" class="input-sm form-control search-input" type="search"></th>
+                <th><input st-search="buyerPhone" placeholder="Celular" class="input-sm form-control search-input" type="search"></th>
+                <th><input st-search="pickupAddres" placeholder="Direccion" class="input-sm form-control search-input" type="search"></th>
+                <th><input st-search="referenceCode" placeholder="Referencia" class="input-sm form-control search-input" type="search"></th>
+
+          </tr>
+        </thead>
+
+        <tbody ng-repeat="orden in ordenes ">
+          <tr class="no-top-border" style="cursor:pointer">
+            <td>{{orden.descripcion}}</td>
+            <td>{{orden.amount | currency:'$':0}}</td>
+            <td>{{orden.status}}</td>
+             <td>{{orden.buyerName}}</td>
+            <td>{{orden.buyerEmail}}</td>
+            <td>{{orden.buyerPhone}}</td>
+            <td>{{orden.pickupAddres}}</td>
+            <td>{{orden.referenceCode}}</td>          
+          </tr>         
+        </tbody>
+
+    </table>
+  </div>
+  </div>

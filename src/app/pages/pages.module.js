@@ -24,7 +24,9 @@
     'BlurAdmin.pages.destinos',
     'BlurAdmin.pages.tarifasPuntoAPunto',
     'BlurAdmin.pages.tarifasPorHora',
-    'BlurAdmin.pages.paquetes'
+    'BlurAdmin.pages.paquetes',
+    'BlurAdmin.pages.ordenes'
+
     
 
   ])
