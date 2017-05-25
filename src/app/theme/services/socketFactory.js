@@ -9,8 +9,8 @@
     .factory('Socket', Socket);
 
   /** @ngInject */
-  function Socket(socketFactory,$rootScope) {
-  	var myIoSocket = io.connect($rootScope.serviceURL);
+  function Socket(socketFactory,envService) {
+  	var myIoSocket = io.connect( envService.read('apiUrl'));
   	
  	
  	var socket = socketFactory({

@@ -11,6 +11,8 @@
   /** @ngInject */
   function themeRun($timeout, $rootScope, layoutPaths, preloader, $q, baSidebarService,
     themeLayoutSettings,$uibModal,$state,envService,AuthService,$http,Socket,toastr,toastrConfig) {
+    $rootScope.serviceURL = envService.read('apiUrl');
+    $rootScope.s3bucketURL = envService.read('bucketS3');
 
     var whatToWait = [
       preloader.loadAmCharts(),
@@ -39,7 +41,6 @@
     }
 
     $q.all(whatToWait).then(function () {
-      $rootScope.$pageFinishedLoading = true;
     });
 
     $timeout(function () {
@@ -50,8 +51,7 @@
 
     $rootScope.$baSidebarService = baSidebarService;
     //$rootScope.serviceURL = "http://localhost:3000/"
-    $rootScope.serviceURL = envService.read('apiUrl');
-    $rootScope.s3bucketURL = envService.read('bucketS3');
+    
 
     $rootScope.toastDefautlOptions={
         "autoDismiss": true,

@@ -13,10 +13,10 @@ angular.module('BlurAdmin', [
   'smart-table',
   "xeditable",
   'ui.slimscroll',  
-  'angular-progress-button-styles',
-  'BlurAdmin.theme',
-  'BlurAdmin.pages',
+  'angular-progress-button-styles',  
   'ngFileUpload',
   'ui.utils.masks',
-  'mwl.confirm'
+  'mwl.confirm',
+  'BlurAdmin.theme',
+  'BlurAdmin.pages'
 ]);
