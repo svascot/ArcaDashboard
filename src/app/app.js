@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('BlurAdmin', [
+angular.module('BlurAdmin', [  
+  'btford.socket-io',
   'ngAnimate',
   'environment',
   'ui.bootstrap',
@@ -11,7 +12,7 @@ angular.module('BlurAdmin', [
   'toastr',
   'smart-table',
   "xeditable",
-  'ui.slimscroll',
+  'ui.slimscroll',  
   'angular-progress-button-styles',
   'BlurAdmin.theme',
   'BlurAdmin.pages',

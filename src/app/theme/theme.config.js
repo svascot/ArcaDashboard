@@ -34,7 +34,7 @@
 
             },
             lab: {
-                apiUrl: 'http://52.25.135.134:3000/',
+                apiUrl: 'http://arkap.co/',
                 bucketS3: 'https://s3-us-west-2.amazonaws.com/arca/'
 
             },

@@ -9,7 +9,9 @@
     .run(themeRun);
 
   /** @ngInject */
-  function themeRun($timeout, $rootScope, layoutPaths, preloader, $q, baSidebarService, themeLayoutSettings,$uibModal,$state,envService,AuthService,$http) {
+  function themeRun($timeout, $rootScope, layoutPaths, preloader, $q, baSidebarService,
+    themeLayoutSettings,$uibModal,$state,envService,AuthService,$http,Socket,toastr,toastrConfig) {
+
     var whatToWait = [
       preloader.loadAmCharts(),
       $timeout(500)
@@ -137,6 +139,10 @@
         checkLoguedInFN();
 
       })
+
+    Socket.on('newPayment',function(){           
+      toastr["success"]("Nuevo pago recibido", "Ordenes", $rootScope.toastDefautlOptions)
+    })
 
      
   }
