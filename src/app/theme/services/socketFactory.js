@@ -10,7 +10,7 @@
 
   /** @ngInject */
   function Socket(socketFactory,envService) {
-  	var myIoSocket = io.connect('http://52.39.7.127:3000');
+  	var myIoSocket = io.connect('http://52.39.7.127:3000'); 
   	
  	
  	var socket = socketFactory({
