@@ -13,6 +13,7 @@
           <th class="align-right">Telefono</th>
           <th class="align-right">Direccion recogida</th>
           <th class="align-left">Referencia</th> 
+          <th class="align-left">Pasajeros</th> 
 
           <tr>
                 <th><input st-search="descripcion" placeholder="Descripcion" class="input-sm form-control search-input" type="search"></th>
@@ -23,7 +24,8 @@
                 <th><input st-search="buyerPhone" placeholder="Celular" class="input-sm form-control search-input" type="search"></th>
                 <th><input st-search="pickupAddres" placeholder="Direccion" class="input-sm form-control search-input" type="search"></th>
                 <th><input st-search="referenceCode" placeholder="Referencia" class="input-sm form-control search-input" type="search"></th>
-
+                <th></th>
+                  
           </tr>
         </thead>
 
@@ -37,6 +39,7 @@
             <td>{{orden.buyerPhone}}</td>
             <td>{{orden.pickupAddres}}</td>
             <td>{{orden.referenceCode}}</td>          
+            <td><button ng-click="verPasajeros(orden)">Ver Pasajeros</button></td>
           </tr>         
         </tbody>
 

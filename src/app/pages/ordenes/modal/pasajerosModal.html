@@ -1,0 +1,39 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" ng-click="$dismiss()" aria-label="Close">
+      <em class="ion-ios-close-empty sn-link-close"></em>
+    </button>
+    <h4 class="modal-title">Pasajeros</h4>
+  </div>
+   
+<div class="modal-body">
+  <div class="col-md-12">
+         
+          
+    <div class="row">
+      <div class="col-md-12">
+          <table class="table table-hover" st-table="passengers">
+              <thead>
+                <tr class="black-muted-bg">
+                <th class="align-left">Nombre</th>
+                <th class="align-left">Documento</th>
+                <tr>
+                    <th><input st-search="name" placeholder="Nombre" class="input-sm form-control search-input" type="search"></th>
+                    <th><input st-search="document" placeholder="Documento" class="input-sm form-control search-input" type="search"></th>             
+                </tr>
+              </thead>
+              <tbody ng-repeat="passenger in passengers ">
+                <tr class="no-top-border" style="cursor:pointer">
+                  <td>{{passenger.name}}</td>
+                  <td>{{passenger.document}}</td>
+                </tr>         
+              </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+    
+</div>
