@@ -10,16 +10,16 @@
           <div class="col-md-12">
               <div class="userpic">
                 <div class="userpic-wrapper">
-                  <img ng-src="{{paquete.nuevaImagen.path || paquete.imagen}}" ng-click="uploadPicture()">
+                  <img  ngf-thumbnail="paquete.imagenDestacada" ng-click="uploadPicture()">
                 </div>
               <!--  <i class="ion-ios-close-outline" ng-click="removePicture()" ng-if="!noPicture"></i> -->
               <!--  <a href class="change-userpic" ng-click="uploadPicture()">Subir foto</a>  -->
-              <a ngf-select ng-model="paquete.nuevaImagen"
+              <a ngf-select ng-model="paquete.imagenDestacada"
                       ngf-multiple="false" ngf-max-size="2MB"
                       class="change-userpic"> Subir foto
               </a>
                 <input type="file" ng-show="false" id="uploadFile" ng-file-select="onFileSelect($files)"
-                       ng-model="paquete.nuevaImagen" ngf-multiple="false" ngf-max-size="2MB">
+                       ng-model="paquete.imagenDestacada" ngf-multiple="false" ngf-max-size="2MB">
               </div>
             <div class="form-group">
               <input type="text" class="form-control input-sm"
@@ -42,7 +42,7 @@
             </div>
             <div class="form-group">
               <input type="text" class="form-control input-sm"
-                      placeholder="Tarifa" ng-model="paquete.tarifa">
+                      placeholder="Tarifa" ng-model="paquete.tarifa" ui-money-mask="0">
             </div> 
             <div class="form-group">
               <input type="text" class="form-control input-sm"
@@ -81,7 +81,7 @@
       </div>
       <div class="modal-footer">
         <button class="btn btn-primary" ng-click="crearPaquete(paquete)">Crear</button>
-        <button class="btn btn-primary" ng-click="$dismiss()">Cancelar</button>
+        <button class="btn btn-danger" ng-click="$dismiss()">Cancelar</button>
       </div>
       </form>
 </div>

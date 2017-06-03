@@ -3,65 +3,89 @@
     <button type="button" class="close" ng-click="$dismiss()" aria-label="Close">
       <em class="ion-ios-close-empty sn-link-close"></em>
     </button>
-    <h4 class="modal-title">Editar destino</h4>
+    <h4 class="modal-title">Editar paquete</h4>
   </div>
     <form class="form-horizontal">
       <div class="modal-body">
-          <div class="col-md-6">
-
+          <div class="col-md-12">
+              <div class="userpic">
+                <div class="userpic-wrapper">
+                  <img  ngf-thumbnail=" paquete.nuevaImagenDestacada || paquete.imagenDestacada" ng-click="uploadPicture()">
+                </div>
+              <!--  <i class="ion-ios-close-outline" ng-click="removePicture()" ng-if="!noPicture"></i> -->
+              <!--  <a href class="change-userpic" ng-click="uploadPicture()">Subir foto</a>  -->
+              <a ngf-select ng-model="paquete.nuevaImagenDestacada"
+                      ngf-multiple="false" ngf-max-size="2MB"
+                      class="change-userpic"> Subir foto
+              </a>
+                <input type="file" ng-show="false" id="uploadFile" ng-file-select="onFileSelect($files)"
+                       ng-model="paquete.nuevaImagenDestacada" ngf-multiple="false" ngf-max-size="2MB">
+              </div>
             <div class="form-group">
               <input type="text" class="form-control input-sm"
-                      placeholder="Nombre" ng-model="destino.nombre">
-            </div>
-            <div class="form-group">
-              <textarea class="form-control" rows="5" id="descripcion" placeholder="Descripcion" ng-model="destino.descripcion"></textarea>
+                      placeholder="Nombre" ng-model="paquete.nombre">
             </div>
             <div class="form-group">
               <input type="text" class="form-control input-sm"
-                      placeholder="Ubicacion (Coordenadas google maps)" ng-model="destino.ubicacion">
-            </div>
-           
-            <div class="form-group">
-              <div ng-repeat="imagenActual in destino.imagenes">
-                <img ng-src="{{imagenActual}}" class="img-rounded"  width="100px" height="100px" >
-                <button ng-click="eliminarImagenActual($index)">x</button>
-              </div>  
-            </div>
-
-             <div class="form-group">
-              <div ng-repeat="nuevaImagen in nuevasImagenes">
-                <img ngf-thumbnail="nuevaImagen" class="img-rounded"  width="100px" height="100px" >
-                <button ng-click="deleteNewImage($index)">x</button>
-              </div>  
+                      placeholder="No incluye" ng-model="noIncluido">
+              <button ng-click="addContenidoNoIncluido(noIncluido)">+</button>
               <br>
-              <button class="btn btn-primary btn-xs" ngf-select
-                             ng-model="nuevasImagenes" ngf-multiple="true" ngf-max-size="2MB"
-                             style="margin-top: 6%;margin-left: 3%;">
-                             <span class="span-adjuntar" style="color: white;"
-                             style="color: white;"style="margin-left: 2%;margin-top: 1%;"> Adjuntar fotos</span>
-              </button>
+              <ul>
+                <li ng-repeat="contendioNoIncluido in paquete.noIncluye">
+                      {{contendioNoIncluido}}
+                      <button ng-click="eliminarContenidoNoIncluido($index)">x</button>
+                </li>
+              </ul>
             </div>
-                        
+            <div class="form-group">
+              <textarea class="form-control" rows="5" id="descripcion" placeholder="Descripcion" ng-model="paquete.descripcion"></textarea>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control input-sm"
+                      placeholder="Tarifa" ng-model="paquete.tarifa" ui-money-mask="0">
+            </div> 
+            <div class="form-group">
+              <input type="text" class="form-control input-sm"
+                      placeholder="Numero de desayunos incluidos" ng-model="paquete.desayunos">
+            </div> 
+            <div class="form-group">
+              <input type="text" class="form-control input-sm"
+                      placeholder="Numero de almuerzos incluidos" ng-model="paquete.almuerzos">
+            </div> 
+            <div class="form-group">
+              <input type="text" class="form-control input-sm"
+                      placeholder="Numero de cenas incluidos" ng-model="paquete.cenas">
+            </div> 
+            <div class="form-group">
+              <input type="text" class="form-control input-sm"
+                      placeholder="Numero de snacks de mañana incluidos" ng-model="paquete.snacksManana">
+            </div> 
+            <div class="form-group">
+              <input type="text" class="form-control input-sm"
+                      placeholder="Numero de snacks de tarde incluidos" ng-model="paquete.snacksTarde">
+            </div> 
+            <div class="form-group">
+		          <label>Recomendaciones</label>
+		          <textarea class="form-control" ng-model="paquete.recomendaciones" rows="5"></textarea>
+		        </div>
+             <div class="form-group">
+                Destinos que incluye el paquete
+                <label class="checkbox-inline custom-checkbox nowrap" ng-repeat="destino in destinos">
+                  <input type="checkbox" ng-value="destino.id" checklist-model="paquete.destinos" checklist-value="destino.id"> 
+                    <span>{{destino.nombre}}</span>
+                  </label>
 
-            
-            
-            
-            
-            
+                  <label ng-repeat="role in roles">
+  <input type="checkbox" checklist-model="user.roles" checklist-value="role"> {{role}}
+</label>
+             </div>
+
           </div>
 
-        </div>
+      </div>
       <div class="modal-footer">
-        <button class="btn btn-primary" ng-click="actualizarDestino(destino)">Actualizar</button>
-        <button class="btn btn-warning" ng-click="$dismiss()">Cancelar</button>
-         <button class="btn btn-danger" mwl-confirm  
-          on-confirm="eliminarDestino(destino)" title="¿Estás seguro?"
-          message="¿En realidad deseas eliminar este destino?"
-          confirm-text="Si"
-          cancel-text="No"
-          confirm-button-type="danger"
-          cancel-button-type="default">Eliminar Destino
-        </button>
+        <button class="btn btn-primary" ng-click="actualizarPaquete(paquete)">Actualizar</button>
+        <button class="btn btn-danger" ng-click="$dismiss()">Cancelar</button>
       </div>
       </form>
 </div>

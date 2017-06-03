@@ -18,7 +18,7 @@
         )
       },
       
-      crearDestino :function(paquete){
+      crearPaquete :function(paquete){
         var query = $rootScope.serviceURL+"paquete";
         return $http.post(query,{paquete:paquete}).then(
           function(resultado){
@@ -26,7 +26,7 @@
           }
         )
       },
-      eliminarDestino:function(paquete){
+      eliminarPaquete:function(paquete){
         var query = $rootScope.serviceURL+"paquete/"+paquete.id;
         return $http.delete(query).then(
           function(resultado){
@@ -34,7 +34,7 @@
           }
         )
       },
-      actualizarDestino:function(paquete){
+      actualizarPaquete:function(paquete){
         var query = $rootScope.serviceURL+"paquete";
         return $http.patch(query,{paquete:paquete}).then(
           function(resultado){

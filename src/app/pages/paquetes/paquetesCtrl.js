@@ -26,7 +26,7 @@
       )
     }
     $scope.verDetallePaquete = function(paquete){
-      $rootScope.openModalController('app/pages/paquetes/modal/detallePaqueteModal.html','detallePaqueteModal',
+      $rootScope.openModalController('app/pages/paquetes/modal/detallePaqueteModal.html','detallePaqueteModalCtrl',
         {
           
           paquete:function(){
@@ -34,6 +34,9 @@
           },
           paquetesActuales:function(){
             return paquetes
+          },
+          destinos:function () {
+            return destinos;
           }
 
         }

@@ -2,61 +2,54 @@
   'use strict';
 
   angular.module('BlurAdmin.pages.paquetes')
-      .controller('detallePaqueteModal', detallePaqueteModal);
+      .controller('detallePaqueteModalCtrl', detallePaqueteModalCtrl);
 
   /** @ngInject */
   var openedToasts =[];
-  function detallePaqueteModal($scope,$rootScope,uploadToAWS,toastr,toastrConfig,PaquetesService,paquetesActuales,paquete) {
+  function detallePaqueteModalCtrl($scope,$rootScope,uploadToAWS,toastr,toastrConfig,PaquetesService,paquetesActuales,paquete,destinos) {
      
     $scope.paquete = paquete;
+    $scope.destinos = destinos;
+     $scope.paquete.destinos = []
+    $scope.paquete.PaqueteDestinos.forEach(function(destino) {
+          $scope.paquete.destinos.push(destino.id);
+    }, this);
+
 
     var actualizarPaquete = function(paquete){
-      PaquetesService.actualizarPaquete(paquete).then(function(response){
-            console.dir(response)
-              openedToasts.push(toastr["success"]("Destino actualizado", "Exito", $rootScope.toastDefautlOptions));
-              $scope.paquete = {};              
-          })
-
-       $rootScope.currentOpenModal.close();
-    }
-
-
-    $scope.actualizarPaquete = function(paquete){
-      paquete.imagenes = paquete.imagenes || [];
-      if($scope.nuevasImagenes && $scope.nuevasImagenes.length){
-        uploadToAWS.uploadFiles($scope.nuevasImagenes).then(function(urls){
-          for (var i = urls.length - 1; i >= 0; i--) {
-            paquete.imagenes.push(urls[i].endPoint);
-          }
-          actualizarPaquete(paquete);
-        })
-
-      }
-      else{
-        actualizarDestino(paquete);
-      }
-
-          
-    }
-
-    $scope.eliminarDestino= function(paquete){
-      PaquetesService.eliminarDestino(paquete).then(function(){
-        for (var i = paquetesActuales.length - 1; i >= 0; i--) {
-          if(paquetesActuales[i].id == paquete.id){
-            paquetesActuales.splice(i,1)
-            openedToasts.push(toastr["success"]("Paquete eliminado", "Exito", $rootScope.toastDefautlOptions));
+       PaquetesService.actualizarPaquete(paquete).then(function(paqueteCreado){
+            paquetesActuales.filter(paquete=>paquete.id == paqueteCreado.id).map(paquete=>paquete = paqueteCreado);
+            toastr["success"]("Paquete actualizado", "Exito", $rootScope.toastDefautlOptions);
+            $scope.paquete = {}
             $rootScope.currentOpenModal.close();
-          }
-        }
-      })
+         })
     }
 
-    $scope.deleteNewImage = function(index){
-      $scope.nuevasImagenes.splice(index,1)
+      $scope.actualizarPaquete = function(paquete){
+        if(paquete.nuevaImagenDestacada){
+            uploadToAWS.uploadFiles(new Array(paquete.nuevaImagenDestacada)).then(function(urls){
+              paquete.imagenDestacada = urls[0].endPoint        
+              actualizarPaquete(paquete) 
+            })
+        }
+        else{
+          actualizarPaquete(paquete)
+        }
+       
+
     }
-    $scope.eliminarImagenActual = function(index){
-      $scope.paquete.imagenes.splice(index,1)
+
+    
+
+ 
+    $scope.addContenidoNoIncluido = function(contenidoNoIncluido){     
+    	$scope.paquete.noIncluye.push(contenidoNoIncluido)
+      $scope.noIncluido = "";
     }
+    $scope.eliminarContenidoNoIncluido=function(index){
+    	$scope.paquete.noIncluye.splice(index,1);
+    }
+    
 
   }
 

@@ -11,7 +11,7 @@
     var crearDestino = function(destino){
       DestinosService.crearDestino(destino).then(function(response){
             console.dir(response)
-              openedToasts.push(toastr["success"]("Destino creado", "Exito", $rootScope.toastDefautlOptions));
+              toastr["success"]("Destino creado", "Exito", $rootScope.toastDefautlOptions);
               $scope.destino = {};
               destinos.push(response)
           })

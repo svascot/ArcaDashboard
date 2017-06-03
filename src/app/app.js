@@ -17,6 +17,7 @@ angular.module('BlurAdmin', [
   'ngFileUpload',
   'ui.utils.masks',
   'mwl.confirm',
+  'checklist-model',
   'BlurAdmin.theme',
   'BlurAdmin.pages'
 ]);
