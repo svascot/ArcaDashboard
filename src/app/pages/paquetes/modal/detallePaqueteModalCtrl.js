@@ -18,7 +18,7 @@
 
     var actualizarPaquete = function(paquete){
        PaquetesService.actualizarPaquete(paquete).then(function(paqueteCreado){
-            paquetesActuales.filter(paquete=>paquete.id == paqueteCreado.id).map(paquete=>paquete = paqueteCreado);
+            paquetesActuales.filter((paquete)=>paquete.id == paqueteCreado.id).map((paquete)=>paquete = paqueteCreado);
             toastr["success"]("Paquete actualizado", "Exito", $rootScope.toastDefautlOptions);
             $scope.paquete = {}
             $rootScope.currentOpenModal.close();
